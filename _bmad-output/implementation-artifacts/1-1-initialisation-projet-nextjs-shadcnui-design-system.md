@@ -1,6 +1,6 @@
 # Story 1.1 : Initialisation du projet Next.js + shadcn/ui + Design System
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -26,35 +26,35 @@ Afin de disposer d'un socle technique cohérent visuellement pour construire le 
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 : Initialiser le projet Next.js (AC: #1)
-  - [ ] 1.1 Exécuter `npx create-next-app@latest clbge --yes`
-  - [ ] 1.2 Vérifier que le projet démarre en dev (`npm run dev`) sans erreur
-  - [ ] 1.3 Nettoyer le boilerplate par défaut (page.tsx, globals.css) — supprimer le contenu démo, conserver la structure
+- [x] Task 1 : Initialiser le projet Next.js (AC: #1)
+  - [x] 1.1 Exécuter `npx create-next-app@latest clbge --yes`
+  - [x] 1.2 Vérifier que le projet démarre en dev (`npm run dev`) sans erreur
+  - [x] 1.3 Nettoyer le boilerplate par défaut (page.tsx, globals.css) — supprimer le contenu démo, conserver la structure
 
-- [ ] Task 2 : Initialiser shadcn/ui (AC: #1, #3)
-  - [ ] 2.1 Exécuter `npx shadcn@latest init` (choisir le style "default", couleur de base neutre — on override ensuite)
-  - [ ] 2.2 Vérifier que `components.json` est créé et que `cssVariables: true` est activé
-  - [ ] 2.3 Installer les composants shadcn/ui nécessaires pour Epic 1 : `npx shadcn@latest add button sheet navigation-menu skeleton separator accordion`
+- [x] Task 2 : Initialiser shadcn/ui (AC: #1, #3)
+  - [x] 2.1 Exécuter `npx shadcn@latest init` (choisir le style "default", couleur de base neutre — on override ensuite)
+  - [x] 2.2 Vérifier que `components.json` est créé et que `cssVariables: true` est activé
+  - [x] 2.3 Installer les composants shadcn/ui nécessaires pour Epic 1 : `npx shadcn@latest add button sheet navigation-menu skeleton separator accordion`
 
-- [ ] Task 3 : Configurer les design tokens CLBGE dans Tailwind v4 (AC: #2, #3)
-  - [ ] 3.1 Configurer les couleurs CLBGE via `@theme` dans `globals.css` (PAS dans un fichier `tailwind.config.ts` — Tailwind v4 utilise la config CSS)
-  - [ ] 3.2 Mapper les CSS variables shadcn/ui vers la palette CLBGE
-  - [ ] 3.3 Configurer les couleurs sémantiques (destructive `#DC2626`, success `#16A34A`, ring/focus `#B5342B`)
-  - [ ] 3.4 Configurer border-radius par défaut à `rounded-lg` (8px)
-  - [ ] 3.5 Vérifier que max-width container est 1200px
+- [x] Task 3 : Configurer les design tokens CLBGE dans Tailwind v4 (AC: #2, #3)
+  - [x] 3.1 Configurer les couleurs CLBGE via `@theme` dans `globals.css` (PAS dans un fichier `tailwind.config.ts` — Tailwind v4 utilise la config CSS)
+  - [x] 3.2 Mapper les CSS variables shadcn/ui vers la palette CLBGE
+  - [x] 3.3 Configurer les couleurs sémantiques (destructive `#DC2626`, success `#16A34A`, ring/focus `#B5342B`)
+  - [x] 3.4 Configurer border-radius par défaut à `rounded-lg` (8px)
+  - [x] 3.5 Vérifier que max-width container est 1200px
 
-- [ ] Task 4 : Configurer la typographie Inter (AC: #4)
-  - [ ] 4.1 Configurer Inter via `next/font/google` dans `layout.tsx`
-  - [ ] 4.2 Définir l'échelle typographique via des classes utilitaires ou `@theme` dans le CSS
-  - [ ] 4.3 Vérifier le rendu Inter sur la page d'accueil (pas de FOUT)
+- [x] Task 4 : Configurer la typographie Inter (AC: #4)
+  - [x] 4.1 Configurer Inter via `next/font/google` dans `layout.tsx`
+  - [x] 4.2 Définir l'échelle typographique via des classes utilitaires ou `@theme` dans le CSS
+  - [x] 4.3 Vérifier le rendu Inter sur la page d'accueil (pas de FOUT)
 
-- [ ] Task 5 : Configurer les headers de sécurité (AC: #6)
-  - [ ] 5.1 Ajouter dans `next.config.ts` les headers : Content-Security-Policy, X-Frame-Options (SAMEORIGIN), X-Content-Type-Options (nosniff)
-  - [ ] 5.2 La CSP doit autoriser les iframes Tally (`tally.so`) et Zcal (`zcal.co`) — prévoir les directives `frame-src`
-  - [ ] 5.3 Vérifier que les headers sont présents dans la réponse HTTP en dev
+- [x] Task 5 : Configurer les headers de sécurité (AC: #6)
+  - [x] 5.1 Ajouter dans `next.config.ts` les headers : Content-Security-Policy, X-Frame-Options (SAMEORIGIN), X-Content-Type-Options (nosniff)
+  - [x] 5.2 La CSP doit autoriser les iframes Tally (`tally.so`) et Zcal (`zcal.co`) — prévoir les directives `frame-src`
+  - [x] 5.3 Vérifier que les headers sont présents dans la réponse HTTP en dev
 
-- [ ] Task 6 : Créer la structure de dossiers (AC: #7)
-  - [ ] 6.1 Créer les dossiers vides avec fichiers `.gitkeep` ou `index.ts` :
+- [x] Task 6 : Créer la structure de dossiers (AC: #7)
+  - [x] 6.1 Créer les dossiers vides avec fichiers `.gitkeep` ou `index.ts` :
     - `/components/layout/`
     - `/components/sections/`
     - `/components/blog/`
@@ -65,10 +65,10 @@ Afin de disposer d'un socle technique cohérent visuellement pour construire le 
     - `/lib/`
     - `/types/`
     - `/public/images/`
-  - [ ] 6.2 `/components/ui/` est déjà créé par shadcn/ui — vérifier qu'il existe
+  - [x] 6.2 `/components/ui/` est déjà créé par shadcn/ui — vérifier qu'il existe
 
-- [ ] Task 7 : Créer le fichier `.env.example` (AC: #5)
-  - [ ] 7.1 Créer `.env.example` avec les variables documentées :
+- [x] Task 7 : Créer le fichier `.env.example` (AC: #5)
+  - [x] 7.1 Créer `.env.example` avec les variables documentées :
     ```
     # Sanity CMS
     NEXT_PUBLIC_SANITY_PROJECT_ID=
@@ -81,13 +81,13 @@ Afin de disposer d'un socle technique cohérent visuellement pour construire le 
     # Google Analytics (Epic 5)
     NEXT_PUBLIC_GA_MEASUREMENT_ID=
     ```
-  - [ ] 7.2 Créer `.env.local` avec les mêmes variables (valeurs vides ou de dev) et vérifier qu'il est dans `.gitignore`
+  - [x] 7.2 Créer `.env.local` avec les mêmes variables (valeurs vides ou de dev) et vérifier qu'il est dans `.gitignore`
 
-- [ ] Task 8 : Validation finale
-  - [ ] 8.1 `npm run dev` démarre sans erreur
-  - [ ] 8.2 `npm run build` réussit sans erreur
-  - [ ] 8.3 Les couleurs CLBGE sont visibles si on utilise `bg-primary` ou `text-primary` dans une page test
-  - [ ] 8.4 Inter est chargé correctement (vérifier dans les DevTools)
+- [x] Task 8 : Validation finale
+  - [x] 8.1 `npm run dev` démarre sans erreur
+  - [x] 8.2 `npm run build` réussit sans erreur
+  - [x] 8.3 Les couleurs CLBGE sont visibles si on utilise `bg-primary` ou `text-primary` dans une page test
+  - [x] 8.4 Inter est chargé correctement (vérifier dans les DevTools)
 
 ## Dev Notes
 
@@ -190,8 +190,61 @@ La Content-Security-Policy doit inclure :
 
 ### Agent Model Used
 
+Claude Opus 4.6 (1M context)
+
 ### Debug Log References
+
+- Next.js 16.2.0 installé avec create-next-app (TypeScript, Tailwind v4, ESLint, App Router)
+- shadcn/ui v4.0.8 initialisé avec style base-nova, cssVariables activé
+- 6 composants shadcn/ui installés : button, sheet, navigation-menu, skeleton, separator, accordion
+- Palette CLBGE configurée en hex dans :root (pas d'oklch pour compatibilité directe avec les specs)
+- Échelle typographique responsive h1-h3/body avec breakpoint lg (1024px)
+- Headers CSP configurés avec frame-src Tally/Zcal, script-src GA, img-src Sanity
+- Container max-width 7xl overridé à 1200px
 
 ### Completion Notes List
 
+- Task 1 : Projet Next.js 16 initialisé, boilerplate nettoyé, build/dev OK
+- Task 2 : shadcn/ui initialisé, components.json avec cssVariables:true, 6 composants installés
+- Task 3 : Design tokens CLBGE dans globals.css via @theme + :root, couleurs sémantiques, radius 8px, container 1200px
+- Task 4 : Inter configuré via next/font/google avec display:swap, échelle typographique responsive dans @layer base
+- Task 5 : CSP complète (Tally, Zcal, Sanity, GA), X-Frame-Options SAMEORIGIN, X-Content-Type-Options nosniff
+- Task 6 : Structure de dossiers créée avec .gitkeep (layout, sections, blog, embeds, seo, sanity/schemas, sanity/lib, types, public/images)
+- Task 7 : .env.example créé avec variables Sanity/Site/GA, .env.local créé, .gitignore mis à jour pour autoriser .env.example
+- Task 8 : Build réussi, ESLint OK, couleurs CLBGE visibles (text-primary sur page test)
+
+### Change Log
+
+- 2026-03-19 : Implémentation complète Story 1.1 — initialisation Next.js 16 + shadcn/ui + design tokens CLBGE
+
 ### File List
+
+- app/globals.css (modifié — design tokens CLBGE, typographie, palette)
+- app/layout.tsx (modifié — Inter font, metadata CLBGE, lang="fr")
+- app/page.tsx (modifié — page minimale avec couleurs CLBGE)
+- next.config.ts (modifié — headers de sécurité CSP, X-Frame-Options, X-Content-Type-Options)
+- .gitignore (modifié — ajout !.env.example)
+- .env.example (nouveau — variables d'environnement documentées)
+- .env.local (nouveau — variables de dev, ignoré par git)
+- components.json (nouveau — config shadcn/ui)
+- components/ui/button.tsx (nouveau — shadcn/ui)
+- components/ui/sheet.tsx (nouveau — shadcn/ui)
+- components/ui/navigation-menu.tsx (nouveau — shadcn/ui)
+- components/ui/skeleton.tsx (nouveau — shadcn/ui)
+- components/ui/separator.tsx (nouveau — shadcn/ui)
+- components/ui/accordion.tsx (nouveau — shadcn/ui)
+- lib/utils.ts (nouveau — shadcn/ui utils cn())
+- components/layout/.gitkeep (nouveau)
+- components/sections/.gitkeep (nouveau)
+- components/blog/.gitkeep (nouveau)
+- components/embeds/.gitkeep (nouveau)
+- components/seo/.gitkeep (nouveau)
+- sanity/schemas/.gitkeep (nouveau)
+- sanity/lib/.gitkeep (nouveau)
+- types/.gitkeep (nouveau)
+- public/images/.gitkeep (nouveau)
+- package.json (modifié — dépendances Next.js, shadcn/ui)
+- package-lock.json (modifié)
+- tsconfig.json (nouveau — config TypeScript)
+- postcss.config.mjs (nouveau — PostCSS pour Tailwind)
+- eslint.config.mjs (nouveau — ESLint config)
