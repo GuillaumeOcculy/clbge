@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "frame-src 'self' https://tally.so https://*.tally.so https://zcal.co https://*.zcal.co",
+              "frame-src 'self' https://tally.so https://*.tally.so https://zcal.co https://*.zcal.co https://www.google.com https://maps.google.com",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tally.so https://*.google-analytics.com https://*.googletagmanager.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' https://cdn.sanity.io data:",
