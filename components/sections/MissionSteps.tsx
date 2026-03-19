@@ -7,16 +7,19 @@ interface MissionStep {
 
 interface MissionStepsProps {
   steps: MissionStep[];
+  hideTitle?: boolean;
 }
 
-export function MissionSteps({ steps }: MissionStepsProps) {
+export function MissionSteps({ steps, hideTitle }: MissionStepsProps) {
   return (
     <section className="bg-card py-12 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4">Comment se déroule une mission</h2>
-          <div className="mx-auto h-0.5 w-12 bg-primary" />
-        </div>
+        {!hideTitle && (
+          <div className="mb-12 text-center">
+            <h2 className="mb-4">Comment se déroule une mission</h2>
+            <div className="mx-auto h-0.5 w-12 bg-primary" />
+          </div>
+        )}
 
         <ol className="flex flex-col gap-8 md:flex-row md:gap-4">
           {steps.map((step, index) => (

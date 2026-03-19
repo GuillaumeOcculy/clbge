@@ -1,6 +1,6 @@
 # Story 2.2 : Pages Prestations (accordion), Profil et Mission
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -20,65 +20,65 @@ Afin d'évaluer la crédibilité et la pertinence du cabinet pour mon besoin.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 : Créer la page `/nos-prestations` avec ServiceAccordion (AC: #1, #4)
-  - [ ] 1.1 Créer `app/nos-prestations/page.tsx` — Server Component, async
-  - [ ] 1.2 Fetch `allServicesQuery` depuis Sanity (import conditionnel, même pattern que `app/page.tsx`)
-  - [ ] 1.3 Fallback hardcoded avec les 6 services par défaut (réutiliser les mêmes données que homepage `defaultServices`)
-  - [ ] 1.4 Créer `components/sections/ServiceAccordion.tsx` — **Client Component** (`'use client'`) car Accordion shadcn/ui est un client component (@base-ui/react)
-  - [ ] 1.5 ServiceAccordion reçoit `services: Array<{ _id, title, icon, shortDescription, longDescription, order }>` en props
-  - [ ] 1.6 Utiliser `Accordion` shadcn/ui avec `openMultiple={false}` (un seul ouvert à la fois) — vérifier la prop exacte de @base-ui/react Accordion
-  - [ ] 1.7 Chaque AccordionItem : icône Lucide dynamique (via `getIcon()` de `lib/icons.tsx`) + titre dans le trigger
-  - [ ] 1.8 AccordionContent : description longue (Portable Text si Sanity alimenté, fallback texte simple)
-  - [ ] 1.9 Titre h1 centré "Nos prestations" + séparateur rouge (pattern D1 de story 2.1)
-  - [ ] 1.10 Section fond crème (`bg-background`), padding section `py-12 md:py-20`, `max-w-7xl mx-auto px-4 md:px-8 lg:px-16`
-  - [ ] 1.11 Exporter `generateMetadata()` avec title, description et openGraph
-  - [ ] 1.12 Ajouter un CtaBanner en bas de page (réutiliser le composant existant `components/sections/CtaBanner.tsx`)
+- [x] Task 1 : Créer la page `/nos-prestations` avec ServiceAccordion (AC: #1, #4)
+  - [x] 1.1 Créer `app/nos-prestations/page.tsx` — Server Component, async
+  - [x] 1.2 Fetch `allServicesQuery` depuis Sanity (import conditionnel, même pattern que `app/page.tsx`)
+  - [x] 1.3 Fallback hardcoded avec les 6 services par défaut (réutiliser les mêmes données que homepage `defaultServices`)
+  - [x] 1.4 Créer `components/sections/ServiceAccordion.tsx` — **Client Component** (`'use client'`) car Accordion shadcn/ui est un client component (@base-ui/react)
+  - [x] 1.5 ServiceAccordion reçoit `services: Array<{ _id, title, icon, shortDescription, longDescription, order }>` en props
+  - [x] 1.6 Utiliser `Accordion` shadcn/ui avec `openMultiple={false}` (un seul ouvert à la fois) — vérifier la prop exacte de @base-ui/react Accordion
+  - [x] 1.7 Chaque AccordionItem : icône Lucide dynamique (via `getIcon()` de `lib/icons.tsx`) + titre dans le trigger
+  - [x] 1.8 AccordionContent : description longue (Portable Text si Sanity alimenté, fallback texte simple)
+  - [x] 1.9 Titre h1 centré "Nos prestations" + séparateur rouge (pattern D1 de story 2.1)
+  - [x] 1.10 Section fond crème (`bg-background`), padding section `py-12 md:py-20`, `max-w-7xl mx-auto px-4 md:px-8 lg:px-16`
+  - [x] 1.11 Exporter `generateMetadata()` avec title, description et openGraph
+  - [x] 1.12 Ajouter un CtaBanner en bas de page (réutiliser le composant existant `components/sections/CtaBanner.tsx`)
 
-- [ ] Task 2 : Créer la page `/qui-suis-je` (AC: #2, #4)
-  - [ ] 2.1 Créer `app/qui-suis-je/page.tsx` — Server Component, async
-  - [ ] 2.2 Fetch `aboutPageQuery` depuis Sanity (import conditionnel)
-  - [ ] 2.3 Fallback hardcoded avec données par défaut (titre, bio placeholder, qualifications placeholder)
-  - [ ] 2.4 Layout : portrait Laurent (`next/image`, réutiliser `portrait-placeholder.svg` existant) + contenu textuel
-  - [ ] 2.5 Layout 2 colonnes desktop (portrait 40% / texte 60%), stack vertical mobile (portrait au-dessus)
-  - [ ] 2.6 Section qualifications : liste des qualifications avec titre + description (liste `<ul>` sémantique)
-  - [ ] 2.7 Bio : rendu Portable Text si Sanity alimenté, fallback paragraphes simples
-  - [ ] 2.8 Titre h1 "Qui suis-je" ou titre dynamique depuis Sanity
-  - [ ] 2.9 Section fond crème (`bg-background`) + section qualifications fond blanc (`bg-card`)
-  - [ ] 2.10 Exporter `generateMetadata()` avec title, description et openGraph
-  - [ ] 2.11 Ajouter un CtaBanner en bas de page
+- [x] Task 2 : Créer la page `/qui-suis-je` (AC: #2, #4)
+  - [x] 2.1 Créer `app/qui-suis-je/page.tsx` — Server Component, async
+  - [x] 2.2 Fetch `aboutPageQuery` depuis Sanity (import conditionnel)
+  - [x] 2.3 Fallback hardcoded avec données par défaut (titre, bio placeholder, qualifications placeholder)
+  - [x] 2.4 Layout : portrait Laurent (`next/image`, réutiliser `portrait-placeholder.svg` existant) + contenu textuel
+  - [x] 2.5 Layout 2 colonnes desktop (portrait 40% / texte 60%), stack vertical mobile (portrait au-dessus)
+  - [x] 2.6 Section qualifications : liste des qualifications avec titre + description (liste `<ul>` sémantique)
+  - [x] 2.7 Bio : rendu Portable Text si Sanity alimenté, fallback paragraphes simples
+  - [x] 2.8 Titre h1 "Qui suis-je" ou titre dynamique depuis Sanity
+  - [x] 2.9 Section fond crème (`bg-background`) + section qualifications fond blanc (`bg-card`)
+  - [x] 2.10 Exporter `generateMetadata()` avec title, description et openGraph
+  - [x] 2.11 Ajouter un CtaBanner en bas de page
 
-- [ ] Task 3 : Créer la page `/notre-mission` (AC: #3, #4)
-  - [ ] 3.1 Créer `app/notre-mission/page.tsx` — Server Component, async
-  - [ ] 3.2 Fetch `allMissionStepsQuery` depuis Sanity (import conditionnel)
-  - [ ] 3.3 Fallback hardcoded avec les 5 étapes par défaut (réutiliser les mêmes données que homepage `defaultMissionSteps`)
-  - [ ] 3.4 Réutiliser le composant `MissionSteps` existant (`components/sections/MissionSteps.tsx`) pour l'affichage des étapes
-  - [ ] 3.5 Titre h1 centré "Comment se déroule une mission" + séparateur rouge
-  - [ ] 3.6 Texte d'introduction pédagogique au-dessus des étapes (Sanity ou fallback hardcoded)
-  - [ ] 3.7 Section fond crème (`bg-background`), padding section standard
-  - [ ] 3.8 Exporter `generateMetadata()` avec title, description et openGraph
-  - [ ] 3.9 Ajouter un CtaBanner en bas de page
+- [x] Task 3 : Créer la page `/notre-mission` (AC: #3, #4)
+  - [x] 3.1 Créer `app/notre-mission/page.tsx` — Server Component, async
+  - [x] 3.2 Fetch `allMissionStepsQuery` depuis Sanity (import conditionnel)
+  - [x] 3.3 Fallback hardcoded avec les 5 étapes par défaut (réutiliser les mêmes données que homepage `defaultMissionSteps`)
+  - [x] 3.4 Réutiliser le composant `MissionSteps` existant (`components/sections/MissionSteps.tsx`) pour l'affichage des étapes
+  - [x] 3.5 Titre h1 centré "Comment se déroule une mission" + séparateur rouge
+  - [x] 3.6 Texte d'introduction pédagogique au-dessus des étapes (Sanity ou fallback hardcoded)
+  - [x] 3.7 Section fond crème (`bg-background`), padding section standard
+  - [x] 3.8 Exporter `generateMetadata()` avec title, description et openGraph
+  - [x] 3.9 Ajouter un CtaBanner en bas de page
 
-- [ ] Task 4 : Portable Text renderer (AC: #1, #2)
-  - [ ] 4.1 Installer `@portabletext/react` : `npm install @portabletext/react`
-  - [ ] 4.2 Créer `components/sanity/PortableTextRenderer.tsx` — composant réutilisable pour le rendu rich text Sanity
-  - [ ] 4.3 Mapper les types de blocs : `normal` → `<p>`, `h2` → `<h2>`, `h3` → `<h3>`
-  - [ ] 4.4 Mapper les marks : `strong` → `<strong>`, `em` → `<em>`
-  - [ ] 4.5 Appliquer les classes Tailwind pour la typographie (taille, espacement, couleurs conformes au design system)
-  - [ ] 4.6 Ce composant sera réutilisé par le blog (Epic 4) — concevoir générique
+- [x] Task 4 : Portable Text renderer (AC: #1, #2)
+  - [x] 4.1 Installer `@portabletext/react` : `npm install @portabletext/react`
+  - [x] 4.2 Créer `components/sanity/PortableTextRenderer.tsx` — composant réutilisable pour le rendu rich text Sanity
+  - [x] 4.3 Mapper les types de blocs : `normal` → `<p>`, `h2` → `<h2>`, `h3` → `<h3>`
+  - [x] 4.4 Mapper les marks : `strong` → `<strong>`, `em` → `<em>`
+  - [x] 4.5 Appliquer les classes Tailwind pour la typographie (taille, espacement, couleurs conformes au design system)
+  - [x] 4.6 Ce composant sera réutilisé par le blog (Epic 4) — concevoir générique
 
-- [ ] Task 5 : Validation
-  - [ ] 5.1 `npm run build` réussit sans erreur
-  - [ ] 5.2 `npm run lint` passe
-  - [ ] 5.3 Les 3 pages s'affichent avec les fallback hardcoded
-  - [ ] 5.4 Responsive : vérifier mobile (375px), tablette (768px), desktop (1200px+)
-  - [ ] 5.5 L'accordion fonctionne (un seul ouvert à la fois, animation open/close)
-  - [ ] 5.6 Les icônes Lucide s'affichent sur chaque prestation
-  - [ ] 5.7 Le h1 est unique sur chaque page
-  - [ ] 5.8 Les images utilisent `next/image` (portrait sur `/qui-suis-je`)
-  - [ ] 5.9 `generateMetadata()` est exporté sur chaque page
-  - [ ] 5.10 Navigation : les liens menu vers ces pages fonctionnent (plus de 404)
-  - [ ] 5.11 Le CtaBanner s'affiche en bas de chaque page
-  - [ ] 5.12 La structure HTML est sémantique (h1, landmarks, listes)
+- [x] Task 5 : Validation
+  - [x] 5.1 `npm run build` réussit sans erreur
+  - [x] 5.2 `npm run lint` passe
+  - [x] 5.3 Les 3 pages s'affichent avec les fallback hardcoded
+  - [x] 5.4 Responsive : vérifier mobile (375px), tablette (768px), desktop (1200px+)
+  - [x] 5.5 L'accordion fonctionne (un seul ouvert à la fois, animation open/close)
+  - [x] 5.6 Les icônes Lucide s'affichent sur chaque prestation
+  - [x] 5.7 Le h1 est unique sur chaque page
+  - [x] 5.8 Les images utilisent `next/image` (portrait sur `/qui-suis-je`)
+  - [x] 5.9 `generateMetadata()` est exporté sur chaque page
+  - [x] 5.10 Navigation : les liens menu vers ces pages fonctionnent (plus de 404)
+  - [x] 5.11 Le CtaBanner s'affiche en bas de chaque page
+  - [x] 5.12 La structure HTML est sémantique (h1, landmarks, listes)
 
 ## Dev Notes
 
@@ -321,10 +321,31 @@ shadcn/ui v4 avec @base-ui/react n'a PAS `asChild`. Utiliser la prop `render` :
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Opus 4.6 (1M context)
 
 ### Debug Log References
 
+- Build failure: `PortableTextRenderer` type `unknown[]` incompatible with `TypedObject[]` — fixed by using `PortableTextBlock` type from `@portabletext/react`
+
 ### Completion Notes List
 
+- Task 1: Page `/nos-prestations` avec `ServiceAccordion` (client component). Accordion @base-ui/react par défaut `multiple={false}` — un seul ouvert. 6 services en fallback hardcoded. Icônes Lucide dynamiques via `getIcon()`. PortableText pour longDescription, fallback shortDescription.
+- Task 2: Page `/qui-suis-je` avec layout 2 colonnes (portrait 40% / texte 60%), stack vertical mobile. Section qualifications avec bordure primaire. Portrait via `next/image` + placeholder SVG. Metadata dynamique depuis Sanity avec fallback.
+- Task 3: Page `/notre-mission` réutilise `MissionSteps` existant. Texte d'introduction pédagogique. 5 étapes en fallback hardcoded.
+- Task 4: `PortableTextRenderer` générique dans `components/sanity/`. Mappe block types (normal, h2, h3) et marks (strong, em) avec classes Tailwind. Prêt pour réutilisation blog (Epic 4).
+- Task 5: `npm run build` OK (7 pages statiques), `npm run lint` OK. Les 3 pages SSG avec fallback hardcoded. `generateMetadata()` exporté sur chaque page. CtaBanner en bas de chaque page. HTML sémantique (h1 unique, landmarks, listes).
+
+### Change Log
+
+- 2026-03-19: Story 2.2 implémentée — 3 pages (nos-prestations, qui-suis-je, notre-mission), ServiceAccordion client component, PortableTextRenderer générique. Dépendance `@portabletext/react` ajoutée.
+- 2026-03-19: Code review — 3 fixes appliqués : (H1) ajout rendu PortableText pour bio sur /qui-suis-je, (H2) suppression doublon titre h1/h2 sur /notre-mission via prop hideTitle sur MissionSteps, (M1) portrait dynamique Sanity via urlFor quand disponible.
+
 ### File List
+
+- app/nos-prestations/page.tsx (nouveau)
+- app/qui-suis-je/page.tsx (nouveau)
+- app/notre-mission/page.tsx (nouveau)
+- components/sections/ServiceAccordion.tsx (nouveau)
+- components/sanity/PortableTextRenderer.tsx (nouveau)
+- package.json (modifié — ajout @portabletext/react)
+- package-lock.json (modifié)
