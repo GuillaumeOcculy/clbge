@@ -3,6 +3,26 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async headers() {
     return [
+      // CSP permissive pour Sanity Studio (charge ses propres scripts/styles)
+      {
+        source: "/studio/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "frame-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' https://cdn.sanity.io data: blob:",
+              "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.sanity.io",
+              "font-src 'self' data:",
+              "media-src 'self' https://cdn.sanity.io",
+            ].join("; "),
+          },
+        ],
+      },
+      // CSP restrictive pour le reste du site
       {
         source: "/(.*)",
         headers: [
