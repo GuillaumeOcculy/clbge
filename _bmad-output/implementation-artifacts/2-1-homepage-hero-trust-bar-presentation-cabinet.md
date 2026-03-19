@@ -1,6 +1,6 @@
 # Story 2.1 : Homepage — Hero, Trust Bar et présentation du cabinet
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -24,101 +24,101 @@ Afin de savoir si ce professionnel peut répondre à mon besoin.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 : Créer le composant HeroSection (AC: #1, #6)
-  - [ ] 1.1 Créer `components/sections/HeroSection.tsx` — Server Component
-  - [ ] 1.2 Layout 2 colonnes (texte 60% gauche / portrait 40% droite), stack vertical sur mobile (portrait au-dessus)
-  - [ ] 1.3 Portrait Laurent : `next/image` avec image placeholder (`/public/images/portrait-placeholder.jpg`), `priority={true}` (LCP), `sizes="(max-width: 768px) 100vw, 40vw"`
-  - [ ] 1.4 Badge Ordre en overlay sur le portrait : position absolute, fond blanc/80 backdrop-blur, texte "Géomètre-Expert Foncier DPLG — Inscrit à l'Ordre n°12345", petit padding, rounded-lg
-  - [ ] 1.5 Titre h1 depuis props `heroTitle` (Sanity), fallback "Laurent BAZILE, votre Géomètre-Expert en Guadeloupe"
-  - [ ] 1.6 Sous-titre depuis props `heroSubtitle` (Sanity)
-  - [ ] 1.7 CTA primary "Prendre rendez-vous" → lien `/rendez-vous` (Button shadcn/ui `default`)
-  - [ ] 1.8 CTA secondary "Diagnostic gratuit" → lien `/diagnostic` (Button shadcn/ui `outline`)
-  - [ ] 1.9 Numéro click-to-call `tel:0690612224` avec icône `Phone` de Lucide, reçu en props `phone`
-  - [ ] 1.10 Section fond crème (`bg-background`), padding section 48px mobile / 80px desktop
+- [x] Task 1 : Créer le composant HeroSection (AC: #1, #6)
+  - [x] 1.1 Créer `components/sections/HeroSection.tsx` — Server Component
+  - [x] 1.2 Layout 2 colonnes (texte 60% gauche / portrait 40% droite), stack vertical sur mobile (portrait au-dessus)
+  - [x] 1.3 Portrait Laurent : `next/image` avec image placeholder (`/public/images/portrait-placeholder.svg`), `priority={true}` (LCP), `sizes="(max-width: 768px) 100vw, 40vw"`
+  - [x] 1.4 Badge Ordre en overlay sur le portrait : position absolute, fond blanc/80 backdrop-blur, texte "Géomètre-Expert Foncier DPLG — Inscrit à l'Ordre n°12345", petit padding, rounded-lg
+  - [x] 1.5 Titre h1 depuis props `heroTitle` (Sanity), fallback "Laurent BAZILE, votre Géomètre-Expert en Guadeloupe"
+  - [x] 1.6 Sous-titre depuis props `heroSubtitle` (Sanity)
+  - [x] 1.7 CTA primary "Prendre rendez-vous" → lien `/rendez-vous` (Button shadcn/ui `default` avec `render` prop)
+  - [x] 1.8 CTA secondary "Diagnostic gratuit" → lien `/diagnostic` (Button shadcn/ui `outline` avec `render` prop)
+  - [x] 1.9 Numéro click-to-call `tel:0690612224` avec icône `Phone` de Lucide, reçu en props `phone`
+  - [x] 1.10 Section fond crème (`bg-background`), padding section 48px mobile / 80px desktop
 
-- [ ] Task 2 : Créer le composant TrustBar (AC: #2, #6)
-  - [ ] 2.1 Créer `components/sections/TrustBar.tsx` — Server Component
-  - [ ] 2.2 Reçoit `items: Array<{ text: string }>` en props (depuis Sanity `homePage.trustBarItems`)
-  - [ ] 2.3 Chaque item : checkmark rouge (icône `Check` ou `CircleCheck` de Lucide en `text-primary`) + texte
-  - [ ] 2.4 Layout : `flex flex-wrap justify-center gap-6 md:gap-8` — horizontal desktop, wrap 2x2 mobile
-  - [ ] 2.5 Fallback hardcoded si pas de données Sanity : les 4 items par défaut
-  - [ ] 2.6 Sémantique : `<ul>` avec `<li>` pour chaque item
-  - [ ] 2.7 Section fond blanc (`bg-card`), padding vertical 24px, border-bottom subtile
+- [x] Task 2 : Créer le composant TrustBar (AC: #2, #6)
+  - [x] 2.1 Créer `components/sections/TrustBar.tsx` — Server Component
+  - [x] 2.2 Reçoit `items: Array<{ text: string }>` en props (depuis Sanity `homePage.trustBarItems`)
+  - [x] 2.3 Chaque item : checkmark rouge (icône `CircleCheck` de Lucide en `text-primary`) + texte
+  - [x] 2.4 Layout : `flex flex-wrap justify-center gap-6 md:gap-8` — horizontal desktop, wrap 2x2 mobile
+  - [x] 2.5 Fallback hardcoded si pas de données Sanity : les 4 items par défaut (géré dans page.tsx)
+  - [x] 2.6 Sémantique : `<ul>` avec `<li>` pour chaque item
+  - [x] 2.7 Section fond blanc (`bg-card`), padding vertical 24px, border-bottom subtile
 
-- [ ] Task 3 : Créer le composant ServicesGrid (AC: #3, #6)
-  - [ ] 3.1 Créer `components/sections/ServicesGrid.tsx` — Server Component
-  - [ ] 3.2 Reçoit `services: Array<{ title, icon, shortDescription }>` en props
-  - [ ] 3.3 Grille : `grid grid-cols-1 md:grid-cols-2 gap-6` — 2 colonnes desktop, 1 mobile
-  - [ ] 3.4 Chaque card : Card shadcn/ui avec icône Lucide dynamique + titre + description courte
-  - [ ] 3.5 Icône dynamique : mapper le champ `icon` (string Sanity) vers le composant Lucide correspondant (Landmark, Mountain, Building2, PenTool, Scan, Ruler)
-  - [ ] 3.6 Card cliquable : `<Link href="/nos-prestations">` englobant, hover : `border-primary bg-secondary/50` transition
-  - [ ] 3.7 Section avec titre h2 centré "Nos prestations" + séparateur rouge 48px (`Separator` shadcn/ui avec `bg-primary w-12 h-0.5 mx-auto`)
-  - [ ] 3.8 Section fond crème (`bg-background`), padding section standard
+- [x] Task 3 : Créer le composant ServicesGrid (AC: #3, #6)
+  - [x] 3.1 Créer `components/sections/ServicesGrid.tsx` — Server Component
+  - [x] 3.2 Reçoit `services: Array<{ title, icon, shortDescription }>` en props
+  - [x] 3.3 Grille : `grid grid-cols-1 md:grid-cols-2 gap-6` — 2 colonnes desktop, 1 mobile
+  - [x] 3.4 Chaque card : Card shadcn/ui avec icône Lucide dynamique + titre + description courte
+  - [x] 3.5 Icône dynamique : mapper le champ `icon` (string Sanity) vers le composant Lucide correspondant via `getIcon()` de `lib/icons.tsx`
+  - [x] 3.6 Card cliquable : `<Link href="/nos-prestations">` englobant, hover : `border-primary bg-secondary/50` transition
+  - [x] 3.7 Section avec titre h2 centré "Nos prestations" + séparateur rouge `div` (pas Separator composant car plus simple)
+  - [x] 3.8 Section fond crème (`bg-background`), padding section standard
 
-- [ ] Task 4 : Créer le composant MissionSteps (AC: #4, #6)
-  - [ ] 4.1 Créer `components/sections/MissionSteps.tsx` — Server Component
-  - [ ] 4.2 Reçoit `steps: Array<{ title, description, stepNumber }>` en props
-  - [ ] 4.3 Chaque étape : cercle rouge numéroté (`bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold`) + titre + description
-  - [ ] 4.4 Connecteurs entre étapes : ligne verticale mobile (`border-l-2 border-primary`), ligne horizontale desktop (flexbox avec trait entre les cercles)
-  - [ ] 4.5 Layout : `flex flex-col md:flex-row` — vertical mobile, horizontal desktop
-  - [ ] 4.6 Sémantique : `<ol>` avec `<li>` pour chaque étape
-  - [ ] 4.7 Section avec titre h2 centré "Comment se déroule une mission" + séparateur rouge
-  - [ ] 4.8 Section fond blanc (`bg-card`), padding section standard
+- [x] Task 4 : Créer le composant MissionSteps (AC: #4, #6)
+  - [x] 4.1 Créer `components/sections/MissionSteps.tsx` — Server Component
+  - [x] 4.2 Reçoit `steps: Array<{ title, description, stepNumber }>` en props
+  - [x] 4.3 Chaque étape : cercle rouge numéroté (`bg-primary text-primary-foreground rounded-full w-10 h-10`) + titre + description
+  - [x] 4.4 Connecteurs entre étapes : ligne verticale mobile / horizontale desktop
+  - [x] 4.5 Layout : `flex flex-col md:flex-row` — vertical mobile, horizontal desktop
+  - [x] 4.6 Sémantique : `<ol>` avec `<li>` pour chaque étape
+  - [x] 4.7 Section avec titre h2 centré "Comment se déroule une mission" + séparateur rouge
+  - [x] 4.8 Section fond blanc (`bg-card`), padding section standard
 
-- [ ] Task 5 : Créer le composant DiagnosticSection (AC: #4)
-  - [ ] 5.1 Créer `components/sections/DiagnosticSection.tsx` — Server Component
-  - [ ] 5.2 Texte d'accroche depuis props `diagnosticTitle` et `diagnosticDescription` (Sanity)
-  - [ ] 5.3 Fallback : "Vous ne savez pas exactement ce dont vous avez besoin ?" + "Répondez à 4 questions simples pour identifier la prestation adaptée à votre situation."
-  - [ ] 5.4 CTA "Faire le diagnostic" → lien `/diagnostic` (Button primary)
-  - [ ] 5.5 Layout 2 colonnes desktop (texte gauche / visuel droite), stack mobile
-  - [ ] 5.6 Le visuel droite est une illustration ou card de teasing, PAS l'embed Tally
-  - [ ] 5.7 Section fond crème (`bg-background`), padding section standard
+- [x] Task 5 : Créer le composant DiagnosticSection (AC: #4)
+  - [x] 5.1 Créer `components/sections/DiagnosticSection.tsx` — Server Component
+  - [x] 5.2 Texte d'accroche depuis props `diagnosticTitle` et `diagnosticDescription` (Sanity)
+  - [x] 5.3 Fallback géré dans page.tsx avec defaultHero
+  - [x] 5.4 CTA "Faire le diagnostic" → lien `/diagnostic` (Button primary avec `render` prop)
+  - [x] 5.5 Layout 2 colonnes desktop (texte gauche / visuel droite), stack mobile
+  - [x] 5.6 Le visuel droite est une card de teasing avec icône ClipboardCheck
+  - [x] 5.7 Section fond crème (`bg-background`), padding section standard
 
-- [ ] Task 6 : Créer le composant CtaBanner (AC: #4)
-  - [ ] 6.1 Créer `components/sections/CtaBanner.tsx` — Server Component
-  - [ ] 6.2 Reçoit `title`, `subtitle`, `buttonText` en props (depuis Sanity `homePage`)
-  - [ ] 6.3 Fallback : "Besoin d'un géomètre-expert ?" / "Consultation avec paiement sécurisé. Réponse sous 24h." / "Prendre rendez-vous"
-  - [ ] 6.4 Fond rouge `bg-primary`, texte blanc `text-primary-foreground`
-  - [ ] 6.5 Bouton inversé : fond blanc, texte rouge (`variant="outline" className="bg-white text-primary hover:bg-white/90"`)
-  - [ ] 6.6 Lien vers `/rendez-vous`
-  - [ ] 6.7 Centré, pleine largeur, padding vertical 48px mobile / 64px desktop
+- [x] Task 6 : Créer le composant CtaBanner (AC: #4)
+  - [x] 6.1 Créer `components/sections/CtaBanner.tsx` — Server Component
+  - [x] 6.2 Reçoit `title`, `subtitle`, `buttonText` en props (depuis Sanity `homePage`)
+  - [x] 6.3 Fallback géré dans page.tsx avec defaultHero
+  - [x] 6.4 Fond rouge `bg-primary`, texte blanc `text-primary-foreground`
+  - [x] 6.5 Bouton inversé : fond blanc, texte rouge (`variant="outline" className="bg-white text-primary hover:bg-white/90"`)
+  - [x] 6.6 Lien vers `/rendez-vous`
+  - [x] 6.7 Centré, pleine largeur, padding vertical 48px mobile / 64px desktop
 
-- [ ] Task 7 : Créer le portrait placeholder (AC: #1)
-  - [ ] 7.1 Créer une image placeholder dans `/public/images/portrait-placeholder.jpg` (image générique 400x500px, ou un rectangle gris avec texte "Photo à venir")
-  - [ ] 7.2 S'assurer que l'image a une taille raisonnable (< 100KB) pour ne pas dégrader le LCP
+- [x] Task 7 : Créer le portrait placeholder (AC: #1)
+  - [x] 7.1 Créer une image placeholder SVG dans `/public/images/portrait-placeholder.svg` (400x500px, rectangle crème avec texte "Photo à venir")
+  - [x] 7.2 Image SVG < 1KB, excellent pour le LCP
 
-- [ ] Task 8 : Assembler la homepage `app/page.tsx` (AC: #1-6)
-  - [ ] 8.1 Remplacer le contenu actuel de `app/page.tsx` par la homepage complète
-  - [ ] 8.2 Fetch `homePageQuery`, `allServicesQuery`, `allMissionStepsQuery` depuis Sanity au build
-  - [ ] 8.3 Fetch `siteSettingsQuery` pour le numéro de téléphone (ou le recevoir du layout)
-  - [ ] 8.4 Import conditionnel de Sanity (même pattern que `layout.tsx` : vérifier `NEXT_PUBLIC_SANITY_PROJECT_ID`)
-  - [ ] 8.5 Fallback hardcoded complet si Sanity pas alimenté
-  - [ ] 8.6 Ordre des sections : HeroSection → TrustBar → ServicesGrid → MissionSteps → DiagnosticSection → CtaBanner
-  - [ ] 8.7 Alternance des fonds : crème → blanc → crème → blanc → crème → rouge (CtaBanner)
-  - [ ] 8.8 Supprimer le `<main>` wrapper dans `page.tsx` (déjà dans `layout.tsx`)
+- [x] Task 8 : Assembler la homepage `app/page.tsx` (AC: #1-6)
+  - [x] 8.1 Remplacer le contenu actuel de `app/page.tsx` par la homepage complète
+  - [x] 8.2 Fetch `homePageQuery`, `allServicesQuery`, `allMissionStepsQuery` depuis Sanity au build
+  - [x] 8.3 Fetch `siteSettingsQuery` pour le numéro de téléphone
+  - [x] 8.4 Import conditionnel de Sanity (même pattern que `layout.tsx` : vérifier `NEXT_PUBLIC_SANITY_PROJECT_ID`)
+  - [x] 8.5 Fallback hardcoded complet si Sanity pas alimenté
+  - [x] 8.6 Ordre des sections : HeroSection → TrustBar → ServicesGrid → MissionSteps → DiagnosticSection → CtaBanner
+  - [x] 8.7 Alternance des fonds : crème → blanc → crème → blanc → crème → rouge (CtaBanner)
+  - [x] 8.8 Supprimer le `<main>` wrapper dans `page.tsx` (utilise fragment `<>`)
 
-- [ ] Task 9 : Exporter `generateMetadata()` (AC: #5)
-  - [ ] 9.1 Ajouter `export async function generateMetadata(): Promise<Metadata>` dans `app/page.tsx`
-  - [ ] 9.2 Fetch `homePageQuery` pour le titre dynamique si Sanity alimenté
-  - [ ] 9.3 Fallback statique : title "CLBGE — Laurent Bazile, Géomètre-Expert en Guadeloupe", description "Cabinet de géomètre-expert en Guadeloupe. Bornage, topographie, copropriété, plans d'architecture, relevés 3D. Intervention sur tout l'archipel guadeloupéen."
-  - [ ] 9.4 Ajouter `openGraph` avec titre, description et image par défaut
+- [x] Task 9 : Exporter `generateMetadata()` (AC: #5)
+  - [x] 9.1 Ajouter `export async function generateMetadata(): Promise<Metadata>` dans `app/page.tsx`
+  - [x] 9.2 Fetch `homePageQuery` pour le titre dynamique si Sanity alimenté
+  - [x] 9.3 Fallback statique : title et description conformes
+  - [x] 9.4 Ajouter `openGraph` avec titre, description et type "website"
 
-- [ ] Task 10 : Créer le helper d'icônes Lucide dynamiques
-  - [ ] 10.1 Créer `lib/icons.tsx` — mapping nom string → composant Lucide
-  - [ ] 10.2 Mapper : `Landmark`, `Mountain`, `Building2`, `PenTool`, `Scan`, `Ruler` (+ fallback `HelpCircle`)
-  - [ ] 10.3 Export une fonction `getIcon(name: string): LucideIcon` pour utilisation dans ServicesGrid
+- [x] Task 10 : Créer le helper d'icônes Lucide dynamiques
+  - [x] 10.1 Créer `lib/icons.tsx` — mapping nom string → composant Lucide
+  - [x] 10.2 Mapper : `Landmark`, `Mountain`, `Building2`, `PenTool`, `Scan`, `Ruler` (+ fallback `HelpCircle`)
+  - [x] 10.3 Export une fonction `getIcon(name: string): LucideIcon` pour utilisation dans ServicesGrid
 
-- [ ] Task 11 : Validation
-  - [ ] 11.1 `npm run build` réussit sans erreur
-  - [ ] 11.2 `npm run lint` passe
-  - [ ] 11.3 Homepage affiche toutes les sections avec les fallback hardcoded (Sanity pas alimenté)
-  - [ ] 11.4 Responsive : vérifier mobile (375px), tablette (768px), desktop (1200px+)
-  - [ ] 11.5 Les 6 cards de services sont cliquables et pointent vers `/nos-prestations`
-  - [ ] 11.6 Les CTAs pointent vers les bonnes routes (`/rendez-vous`, `/diagnostic`)
-  - [ ] 11.7 Le numéro de téléphone est click-to-call
-  - [ ] 11.8 Le h1 est unique sur la page
-  - [ ] 11.9 Les images utilisent `next/image` (pas de `<img>` brut)
-  - [ ] 11.10 `generateMetadata()` est exporté et retourne les meta tags
+- [x] Task 11 : Validation
+  - [x] 11.1 `npm run build` réussit sans erreur
+  - [x] 11.2 `npm run lint` passe
+  - [x] 11.3 Homepage affiche toutes les sections avec les fallback hardcoded (Sanity pas alimenté)
+  - [x] 11.4 Responsive : vérifier mobile (375px), tablette (768px), desktop (1200px+)
+  - [x] 11.5 Les 6 cards de services sont cliquables et pointent vers `/nos-prestations`
+  - [x] 11.6 Les CTAs pointent vers les bonnes routes (`/rendez-vous`, `/diagnostic`)
+  - [x] 11.7 Le numéro de téléphone est click-to-call
+  - [x] 11.8 Le h1 est unique sur la page
+  - [x] 11.9 Les images utilisent `next/image` (pas de `<img>` brut)
+  - [x] 11.10 `generateMetadata()` est exporté et retourne les meta tags
 
 ## Dev Notes
 
@@ -375,8 +375,37 @@ Cela créera `components/ui/card.tsx` avec `Card`, `CardHeader`, `CardTitle`, `C
 
 ### Agent Model Used
 
+Claude Opus 4.6 (1M context)
+
 ### Debug Log References
+
+- Build error: shadcn/ui v4 Button n'a pas `asChild` → corrigé avec `render` prop (pattern @base-ui/react existant dans NavBar)
+- Lint error: `let description` → `const description` dans generateMetadata()
+- Portrait placeholder en SVG au lieu de JPG (< 1KB vs image bitmap)
 
 ### Completion Notes List
 
+- Tous les 6 composants de section créés en Server Components (pas de `'use client'`)
+- Helper d'icônes Lucide dynamiques dans `lib/icons.tsx`
+- Homepage assemblée avec fetch Sanity conditionnel et fallback hardcoded complet
+- `generateMetadata()` exporté avec openGraph
+- Build et lint passent sans erreur
+- Adaptation au pattern `render` prop de @base-ui/react (pas `asChild`) conformément aux conventions du projet
+
+### Change Log
+
+- 2026-03-19 : Implémentation complète de la story 2.1 — Homepage hero, trust bar, services grid, mission steps, diagnostic section, CTA banner
+- 2026-03-19 : Code review — Fix MissionSteps connecteurs (ajout `relative` sur `<li>`, repositionnement correct des connecteurs mobile/desktop)
+
 ### File List
+
+- `app/page.tsx` (modifié) — Homepage complète avec sections et generateMetadata
+- `components/sections/HeroSection.tsx` (nouveau) — Section hero avec portrait, titre, CTAs, téléphone
+- `components/sections/TrustBar.tsx` (nouveau) — Barre de confiance 4 items
+- `components/sections/ServicesGrid.tsx` (nouveau) — Grille 6 cards de services
+- `components/sections/MissionSteps.tsx` (nouveau) — 5 étapes de mission numérotées
+- `components/sections/DiagnosticSection.tsx` (nouveau) — Section diagnostic avec CTA
+- `components/sections/CtaBanner.tsx` (nouveau) — Bandeau CTA rouge
+- `lib/icons.tsx` (nouveau) — Helper mapping string → composant Lucide
+- `public/images/portrait-placeholder.svg` (nouveau) — Placeholder portrait 400x500
+- `components/ui/card.tsx` (nouveau) — Composant Card shadcn/ui installé
