@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { draftMode } from "next/headers";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { DraftModeIndicator } from "@/components/blog/DraftModeIndicator";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = "Blog — CLBGE, Géomètre-Expert en Guadeloupe";
@@ -20,6 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
+  const isDraftMode = (await draftMode()).isEnabled;
+
   let posts: {
     _id: string;
     title: string;
@@ -34,7 +38,14 @@ export default async function BlogPage() {
     if (projectId) {
       const { client } = await import("@/sanity/lib/client");
       const { allBlogPostsQuery } = await import("@/sanity/lib/queries");
-      posts = (await client.fetch(allBlogPostsQuery)) ?? [];
+      posts =
+        (await client.fetch(allBlogPostsQuery, {}, {
+          perspective: isDraftMode ? "previewDrafts" : "published",
+          useCdn: !isDraftMode,
+          ...(isDraftMode
+            ? { token: process.env.SANITY_API_READ_TOKEN }
+            : {}),
+        })) ?? [];
     }
   } catch {
     // Sanity pas encore alimenté
@@ -42,6 +53,7 @@ export default async function BlogPage() {
 
   return (
     <>
+      {isDraftMode && <DraftModeIndicator />}
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
           <div className="mb-12 text-center">

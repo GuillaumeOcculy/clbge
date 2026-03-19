@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { draftMode } from "next/headers";
 import { BlogPostContent } from "@/components/blog/BlogPostContent";
 import { BlogCtaEndArticle } from "@/components/blog/BlogCtaEndArticle";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { DraftModeIndicator } from "@/components/blog/DraftModeIndicator";
 
 export async function generateStaticParams() {
   try {
@@ -51,6 +53,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const isDraftMode = (await draftMode()).isEnabled;
 
   let post = null;
 
@@ -59,7 +62,13 @@ export default async function BlogPostPage({
     if (projectId) {
       const { client } = await import("@/sanity/lib/client");
       const { blogPostBySlugQuery } = await import("@/sanity/lib/queries");
-      post = await client.fetch(blogPostBySlugQuery, { slug });
+      post = await client.fetch(blogPostBySlugQuery, { slug }, {
+        perspective: isDraftMode ? "previewDrafts" : "published",
+        useCdn: !isDraftMode,
+        ...(isDraftMode
+          ? { token: process.env.SANITY_API_READ_TOKEN }
+          : {}),
+      });
     }
   } catch {
     // Sanity pas encore alimenté
@@ -71,6 +80,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      {isDraftMode && <DraftModeIndicator />}
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
           <BlogPostContent
