@@ -5,9 +5,10 @@ interface CtaBannerProps {
   title: string;
   subtitle: string;
   buttonText: string;
+  href?: string;
 }
 
-export function CtaBanner({ title, subtitle, buttonText }: CtaBannerProps) {
+export function CtaBanner({ title, subtitle, buttonText, href = "/rendez-vous" }: CtaBannerProps) {
   return (
     <section className="bg-primary py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-4 text-center md:px-8 lg:px-16">
@@ -18,7 +19,7 @@ export function CtaBanner({ title, subtitle, buttonText }: CtaBannerProps) {
         <Button
           variant="outline"
           className="border-white bg-white text-primary hover:bg-white/90"
-          render={<Link href="/rendez-vous" />}
+          render={<Link href={href} />}
         >
           {buttonText}
         </Button>
