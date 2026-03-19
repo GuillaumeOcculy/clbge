@@ -5,6 +5,7 @@ import {
   PenTool,
   Scan,
   Ruler,
+  MapPin,
   HelpCircle,
   type LucideIcon,
 } from "lucide-react";
@@ -16,6 +17,7 @@ const iconMap: Record<string, LucideIcon> = {
   PenTool,
   Scan,
   Ruler,
+  MapPin,
 };
 
 export function getIcon(name: string): LucideIcon {
