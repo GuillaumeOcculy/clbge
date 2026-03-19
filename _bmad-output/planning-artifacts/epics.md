@@ -7,13 +7,14 @@ stepsCompleted:
 inputDocuments:
   - planning-artifacts/prd.md
   - planning-artifacts/architecture.md
+  - planning-artifacts/ux-design-specification.md
 ---
 
 # clbge - Epic Breakdown
 
 ## Overview
 
-This document provides the complete epic and story breakdown for clbge, decomposing the requirements from the PRD, UX Design if it exists, and Architecture requirements into implementable stories.
+This document provides the complete epic and story breakdown for clbge, decomposing the requirements from the PRD, UX Design and Architecture requirements into implementable stories.
 
 ## Requirements Inventory
 
@@ -23,7 +24,7 @@ This document provides the complete epic and story breakdown for clbge, decompos
 
 - FR1 : Le visiteur peut comprendre immédiatement les services proposés par le cabinet depuis la homepage
 - FR2 : Le visiteur peut consulter le profil, le parcours et les qualifications de Laurent Bazile
-- FR3 : Le visiteur peut consulter la liste détaillée des prestations proposées (bornage, copropriété, implantation, topographie, etc.)
+- FR3 : Le visiteur peut consulter la liste détaillée des prestations proposées (Foncier, Topographie, Copropriété, Plans d'architecture, Relevés 3D, Surfaces réglementaires)
 - FR4 : Le visiteur peut consulter les 5 étapes du déroulement d'une mission (prise de contact → consultation → terrain → traitement → restitution)
 - FR5 : Le visiteur peut consulter les technologies et équipements utilisés (logiciels et matériel terrain)
 
@@ -111,7 +112,8 @@ This document provides the complete epic and story breakdown for clbge, decompos
 ### Additional Requirements
 
 - **Starter Template** : `npx create-next-app@latest clbge --yes` (Next.js 16 + TypeScript + Tailwind CSS + ESLint + App Router + Turbopack) — impacte Epic 1 Story 1
-- **Sanity CMS** : Intégration manuelle (projet Sanity, schémas, Studio embedded dans `/app/studio/`) — story dédiée après l'init
+- **shadcn/ui** : `npx shadcn@latest init` après create-next-app — composants accessibles (Button, Card, Sheet, Accordion, Skeleton, Separator, Navigation Menu)
+- **Sanity CMS** : Intégration manuelle (projet Sanity, schémas, Studio embedded dans `/app/studio/`)
 - **Sanity Schémas** : blogPost, homePage, aboutPage, serviceItem, missionStep, technology, siteSettings, contactPage
 - **Webhook Sanity → Vercel** : Rebuild automatique à chaque publication de contenu
 - **Contenu pages statiques dans Sanity** : Tout le contenu (services, à propos, mission, technologies) géré dans Sanity pour modification sans développeur
@@ -126,7 +128,24 @@ This document provides the complete epic and story breakdown for clbge, decompos
 
 ### UX Design Requirements
 
-Aucun document UX Design n'a été fourni. Pas d'exigences UX-DR extraites.
+- UX-DR1 : Implémenter la direction "Hybride élégant" : hero avec portrait Laurent (next/image) + badge Ordre en overlay, titre "Laurent BAZILE, votre Géomètre-Expert en Guadeloupe", 2 CTAs (RDV + Diagnostic) + numéro click-to-call
+- UX-DR2 : Implémenter la TrustBar (4 points de confiance : Ordre, archipel, RDV en ligne, technologies) en flex horizontal, wrap 2x2 sur mobile
+- UX-DR3 : Mettre à jour les prestations : 6 services (Foncier, Topographie, Copropriété, Plans d'architecture, Relevés 3D, Surfaces réglementaires) avec descriptions courtes (homepage) et descriptions longues (page dédiée)
+- UX-DR4 : Implémenter le ServiceAccordion sur `/nos-prestations` (shadcn/ui Accordion, icône Lucide + titre visible, description longue au clic, un seul ouvert à la fois)
+- UX-DR5 : Implémenter le bandeau CTA rouge dédié (fond `#B5342B`, titre + sous-texte + bouton blanc, séparé du footer)
+- UX-DR6 : Configurer shadcn/ui avec la palette CLBGE (CSS variables dans globals.css : primary `#B5342B`, background `#F5F0EB`, etc.)
+- UX-DR7 : Configurer les design tokens Tailwind (colors, spacing scale 4px, border-radius `rounded-lg`, max-width 1200px)
+- UX-DR8 : Configurer Inter via `next/font/google` avec l'échelle typographique (h1 32/48px, h2 28/36px, h3 20/24px, body 16/18px)
+- UX-DR9 : Implémenter le composant TallyEmbed (`'use client'`, props: formId/redirectUrl/title, states: Skeleton → iframe → fallback lien externe)
+- UX-DR10 : Implémenter le composant ZcalEmbed (`'use client'`, props: calendarUrl/title, states: Skeleton → embed → fallback lien externe)
+- UX-DR11 : Configurer la redirection automatique Tally → `/rendez-vous` après soumission du formulaire diagnostic
+- UX-DR12 : Implémenter le menu mobile Sheet (slide-in droite, liens empilés 16px padding, CTA "Prendre RDV" pleine largeur en bas, coordonnées click-to-call)
+- UX-DR13 : Implémenter le CTA contextuel fin d'article blog ("Besoin d'un géomètre ? Faites le diagnostic en 4 questions" avec lien vers `/diagnostic`)
+- UX-DR14 : Implémenter l'empty state blog ("Les premiers articles arrivent bientôt. En attendant, n'hésitez pas à nous contacter." + lien contact)
+- UX-DR15 : Ajouter le lien LinkedIn (icône + lien) dans le footer
+- UX-DR16 : Intégrer Google Maps embed sur la page `/contact` uniquement (pas sur la homepage)
+- UX-DR17 : Implémenter le skip link "Aller au contenu principal" (visible au focus, premier élément du body)
+- UX-DR18 : Utiliser le logo image CLB dans le header (placeholder jusqu'à réception du SVG)
 
 ### FR Coverage Map
 
@@ -134,17 +153,17 @@ Aucun document UX Design n'a été fourni. Pas d'exigences UX-DR extraites.
 |----|------|-------------|
 | FR1 | Epic 2 | Comprendre les services depuis la homepage |
 | FR2 | Epic 2 | Profil et qualifications de Laurent |
-| FR3 | Epic 2 | Liste détaillée des prestations |
+| FR3 | Epic 2 | Liste détaillée des 6 prestations |
 | FR4 | Epic 2 | 5 étapes d'une mission |
 | FR5 | Epic 2 | Technologies et équipements |
-| FR6 | Epic 3 | Formulaire diagnostic interactif |
+| FR6 | Epic 3 | Formulaire diagnostic interactif (Tally) |
 | FR7 | Epic 3 | Redirection vers RDV après diagnostic |
-| FR8 | Epic 3 | Prise de RDV en ligne |
+| FR8 | Epic 3 | Prise de RDV en ligne (Zcal) |
 | FR9 | Epic 3 | Paiement en ligne |
 | FR10 | Epic 3 | Notification email diagnostic |
 | FR11 | Epic 3 | Notification email RDV |
 | FR12 | Epic 1 | Coordonnées accessibles (footer) |
-| FR13 | Epic 3 | Formulaire de contact |
+| FR13 | Epic 3 | Formulaire de contact (Tally) |
 | FR14 | Epic 3 | Notification email contact |
 | FR15 | Epic 4 | Liste des articles blog |
 | FR16 | Epic 4 | Article individuel |
@@ -165,45 +184,51 @@ Aucun document UX Design n'a été fourni. Pas d'exigences UX-DR extraites.
 
 ## Epic List
 
-### Epic 1 : Fondations & Navigation du site
-Le visiteur peut naviguer sur un site professionnel avec un layout complet (header, footer, menu responsive, CTA RDV) et accéder aux coordonnées du cabinet depuis n'importe quelle page.
+### Epic 1 : Fondations & Design System
+Le développeur dispose d'un projet Next.js fonctionnel avec Sanity CMS, shadcn/ui configuré aux couleurs CLBGE, et un layout global (header sticky avec logo + navigation + CTA, footer avec coordonnées et LinkedIn, menu mobile, skip link).
 **FRs couvertes :** FR12, FR22, FR23, FR24
+**UX-DRs couvertes :** UX-DR6, UX-DR7, UX-DR8, UX-DR12, UX-DR15, UX-DR17, UX-DR18
 
 ### Epic 2 : Découverte du cabinet
-Le visiteur peut découvrir le cabinet : comprendre les services proposés, consulter le profil de Laurent, suivre les 5 étapes d'une mission, voir les technologies utilisées et identifier la zone d'intervention.
+Le visiteur peut découvrir le cabinet depuis la homepage (hero avec portrait Laurent, trust bar, grille des 6 prestations, 5 étapes de mission, section diagnostic, bandeau CTA), consulter le détail des prestations (accordion), le profil de Laurent, les technologies et la zone d'intervention.
 **FRs couvertes :** FR1, FR2, FR3, FR4, FR5, FR25
+**UX-DRs couvertes :** UX-DR1, UX-DR2, UX-DR3, UX-DR4, UX-DR5
 
 ### Epic 3 : Conversion & Contact
-Le visiteur peut passer à l'action : remplir le formulaire diagnostic interactif, prendre RDV avec paiement en ligne, ou envoyer un message via le formulaire de contact. Laurent reçoit les notifications.
+Le visiteur peut remplir le formulaire diagnostic (Tally), être redirigé automatiquement vers la prise de RDV (Zcal Pro), prendre RDV avec paiement en ligne, ou envoyer un message via le formulaire de contact. Laurent reçoit les notifications. La page contact inclut Google Maps.
 **FRs couvertes :** FR6, FR7, FR8, FR9, FR10, FR11, FR13, FR14
+**UX-DRs couvertes :** UX-DR9, UX-DR10, UX-DR11, UX-DR16
 
 ### Epic 4 : Blog & Gestion de contenu
-Laurent peut créer, éditer, prévisualiser et publier des articles de blog en autonomie. Les visiteurs peuvent consulter la liste des articles et lire un article individuel.
+Laurent peut créer, éditer, prévisualiser et publier des articles de blog en autonomie via Sanity Studio. Les visiteurs consultent la liste des articles et lisent un article individuel. Chaque article se termine par un CTA contextuel. L'empty state blog est géré au lancement.
 **FRs couvertes :** FR15, FR16, FR17, FR18, FR19, FR20, FR21
+**UX-DRs couvertes :** UX-DR13, UX-DR14
 
-### Epic 5 : SEO & Découvrabilité
-Le site est optimisé pour les moteurs de recherche : meta tags dynamiques, sitemap XML, données structurées schema.org, et articles de blog optimisés SEO.
+### Epic 5 : SEO & Performance
+Le site est optimisé pour les moteurs de recherche : meta tags dynamiques par page, sitemap XML incluant les articles blog, données structurées JSON-LD (LocalBusiness, ProfessionalService), balises canoniques. Google Analytics est intégré en async.
 **FRs couvertes :** FR26, FR27, FR28, FR29, FR30
 
-## Epic 1 : Fondations & Navigation du site
+## Epic 1 : Fondations & Design System
 
-Le visiteur peut naviguer sur un site professionnel avec un layout complet (header, footer, menu responsive, CTA RDV) et accéder aux coordonnées du cabinet depuis n'importe quelle page.
+Le développeur dispose d'un projet Next.js fonctionnel avec Sanity CMS, shadcn/ui configuré aux couleurs CLBGE, et un layout global (header sticky avec logo + navigation + CTA, footer avec coordonnées et LinkedIn, menu mobile, skip link).
 
-### Story 1.1 : Initialisation du projet Next.js
+### Story 1.1 : Initialisation du projet Next.js + shadcn/ui + Design System
 
 En tant que développeur,
-Je veux initialiser le projet Next.js avec la configuration de base,
-Afin de disposer d'un socle technique fonctionnel pour construire le site.
+Je veux initialiser le projet avec Next.js, shadcn/ui et les design tokens CLBGE,
+Afin de disposer d'un socle technique cohérent visuellement pour construire le site.
 
 **Acceptance Criteria :**
 
 **Given** aucun projet n'existe
-**When** le projet est initialisé avec `npx create-next-app@latest clbge --yes`
+**When** le projet est initialisé avec `npx create-next-app@latest clbge --yes` et `npx shadcn@latest init`
 **Then** le projet démarre en dev sans erreur avec TypeScript, Tailwind CSS, ESLint, App Router
+**And** la configuration Tailwind inclut les design tokens CLBGE (colors: primary `#B5342B`, text `#2D2D3F`, background `#F5F0EB`, surface `#FFFFFF`, border `#C0B8B0`, muted `#6B6B7B`)
+**And** les CSS variables shadcn/ui dans `globals.css` utilisent la palette CLBGE
+**And** Inter est configuré via `next/font/google` avec l'échelle typographique (h1 32/48px, h2 28/36px, h3 20/24px, body 16/18px)
 **And** le fichier `.env.example` documente les variables d'environnement requises
-**And** le fichier `next.config.ts` inclut les headers de sécurité (CSP, X-Frame-Options, X-Content-Type-Options)
-**And** le projet se déploie sur Vercel avec HTTPS automatique
-**And** la structure de dossiers suit l'architecture définie (`/components`, `/sanity`, `/lib`, `/types`)
+**And** `next.config.ts` inclut les headers de sécurité (CSP, X-Frame-Options, X-Content-Type-Options)
+**And** la structure de dossiers suit l'architecture (`/components`, `/sanity`, `/lib`, `/types`)
 
 ### Story 1.2 : Configuration Sanity CMS & Studio
 
@@ -231,47 +256,78 @@ Afin de trouver rapidement l'information dont j'ai besoin.
 
 **Given** je suis sur n'importe quelle page du site
 **When** je consulte le header
-**Then** un menu principal affiche les liens vers toutes les sections (Accueil, Nos services, Qui suis-je, Notre mission, Nos technologies, Diagnostic, Blog, Contact)
-**And** un bouton CTA "Prendre RDV" est visible en permanence
+**Then** le logo CLB est affiché à gauche (image placeholder jusqu'à réception du SVG)
+**And** un menu principal affiche les liens vers toutes les sections (Accueil, Nos prestations, Qui suis-je, Notre mission, Nos technologies, Diagnostic, Blog, Contact)
+**And** un bouton CTA "Prendre RDV" est visible en permanence à droite
+**And** le header est sticky (reste visible au scroll)
 
 **Given** je suis sur mobile (< 768px)
 **When** je consulte le header
-**Then** le menu est remplacé par un menu hamburger fonctionnel
-**And** le CTA "Prendre RDV" reste visible
+**Then** le menu est remplacé par un menu hamburger
+**And** le menu mobile s'ouvre en slide-in depuis la droite (Sheet shadcn/ui)
+**And** les liens sont empilés verticalement avec padding 16px
+**And** un CTA "Prendre RDV" pleine largeur est affiché en bas du menu
+**And** le numéro de téléphone click-to-call (`tel:0690612224`) est visible dans le menu
+**And** le CTA "Prendre RDV" reste visible dans le header même quand le menu est fermé
 
 **Given** je suis sur n'importe quelle page
 **When** je consulte le footer
-**Then** les coordonnées du cabinet sont affichées (téléphone, email, adresse)
-**And** le footer inclut les liens de navigation et les mentions légales
+**Then** les coordonnées du cabinet sont affichées (téléphone click-to-call, email click-to-mailto, adresse)
+**And** le footer inclut les liens de navigation et les liens vers les prestations
+**And** un lien LinkedIn avec icône est affiché
+**And** le copyright est visible
 
 **Given** je navigue au clavier
-**When** je parcours le menu et le footer
-**Then** tous les éléments sont accessibles et le focus est visible (WCAG 2.1 AA)
+**When** je presse Tab
+**Then** un skip link "Aller au contenu principal" apparaît en premier (visible au focus uniquement)
+**And** tous les éléments du menu et du footer sont accessibles au clavier avec focus ring visible (`#B5342B`)
 
 ## Epic 2 : Découverte du cabinet
 
-Le visiteur peut découvrir le cabinet : comprendre les services proposés, consulter le profil de Laurent, suivre les 5 étapes d'une mission, voir les technologies utilisées et identifier la zone d'intervention.
+Le visiteur peut découvrir le cabinet depuis la homepage (hero avec portrait Laurent, trust bar, grille des 6 prestations, 5 étapes de mission, section diagnostic, bandeau CTA), consulter le détail des prestations (accordion), le profil de Laurent, les technologies et la zone d'intervention.
 
-### Story 2.1 : Homepage — Présentation du cabinet
+### Story 2.1 : Homepage — Hero, Trust Bar et présentation du cabinet
 
 En tant que visiteur,
-Je veux comprendre immédiatement les services proposés par le cabinet depuis la homepage,
+Je veux comprendre immédiatement qui est Laurent et ce que fait le cabinet depuis la homepage,
 Afin de savoir si ce professionnel peut répondre à mon besoin.
 
 **Acceptance Criteria :**
 
 **Given** je suis un visiteur arrivant sur la homepage
 **When** la page se charge
-**Then** une section hero présente clairement le cabinet et son activité de géomètre-expert en Guadeloupe
-**And** une section résume les services proposés avec des liens vers la page détaillée
-**And** une preview du profil de Laurent est visible avec un lien vers "Qui suis-je"
-**And** une section présente les 5 étapes d'une mission de manière synthétique
-**And** un CTA vers le formulaire diagnostic et/ou la prise de RDV est visible
+**Then** un hero affiche le portrait de Laurent (`next/image`) à droite avec un badge Ordre en overlay ("Géomètre-Expert Foncier DPLG — Inscrit à l'Ordre n°12345")
+**And** le titre h1 affiche "Laurent BAZILE, votre Géomètre-Expert en Guadeloupe"
+**And** un sous-titre décrit l'activité et la zone d'intervention (archipel guadeloupéen)
+**And** 2 CTAs sont visibles : "Prendre rendez-vous" (primary) et "Diagnostic gratuit" (outline)
+**And** le numéro de téléphone click-to-call est affiché à côté des CTAs
+
+**Given** la page est chargée
+**When** je regarde sous le hero
+**Then** une TrustBar affiche 4 points de confiance avec checkmarks rouges (Inscrit à l'Ordre, Intervention sur tout l'archipel, RDV et paiement en ligne, Technologies de pointe)
+**And** la TrustBar est en flex horizontal sur desktop et wrap 2x2 sur mobile
+
+**Given** je scroll la homepage
+**When** je passe la section services
+**Then** une grille de 6 cards présente les prestations (Foncier, Topographie, Copropriété, Plans d'architecture, Relevés 3D, Surfaces réglementaires)
+**And** chaque card affiche une icône Lucide + titre + description courte
+**And** chaque card est cliquable et mène vers `/nos-prestations`
+
+**And** une section présente les 5 étapes de mission (numéros rouges circulaires + titre + description + connecteurs)
+**And** une section diagnostic affiche le texte "Vous ne savez pas exactement ce dont vous avez besoin ?" avec un CTA "Faire le diagnostic"
+**And** un bandeau CTA rouge est affiché avant le footer ("Besoin d'un géomètre-expert ?" + bouton blanc "Prendre rendez-vous")
+
 **And** le contenu est fetché depuis Sanity (schéma `homePage`) au build (SSG)
 **And** la page exporte `generateMetadata()` avec title et description optimisées
-**And** les images utilisent `next/image` avec lazy loading et formats modernes
+**And** les images utilisent `next/image` avec lazy loading
 
-### Story 2.2 : Pages Services, Profil et Mission
+**Given** je suis sur mobile
+**When** la page se charge
+**Then** le hero s'affiche en stack vertical (portrait au-dessus du texte)
+**And** les cards de services passent en 1 colonne
+**And** les étapes de mission s'empilent verticalement
+
+### Story 2.2 : Pages Prestations (accordion), Profil et Mission
 
 En tant que visiteur,
 Je veux consulter le détail des prestations, le profil de Laurent et le déroulement d'une mission,
@@ -279,9 +335,12 @@ Afin d'évaluer la crédibilité et la pertinence du cabinet pour mon besoin.
 
 **Acceptance Criteria :**
 
-**Given** je navigue vers `/nos-services`
+**Given** je navigue vers `/nos-prestations`
 **When** la page se charge
-**Then** la liste complète des prestations est affichée (bornage, copropriété, implantation, topographie, etc.) avec descriptions
+**Then** les 6 prestations sont affichées en accordion (shadcn/ui Accordion)
+**And** chaque item affiche une icône Lucide + titre de la prestation (visible)
+**And** au clic, la description longue fournie par Laurent s'affiche
+**And** un seul accordion est ouvert à la fois
 **And** le contenu est fetché depuis Sanity (schéma `serviceItem`) au build
 
 **Given** je navigue vers `/qui-suis-je`
@@ -291,7 +350,7 @@ Afin d'évaluer la crédibilité et la pertinence du cabinet pour mon besoin.
 
 **Given** je navigue vers `/notre-mission`
 **When** la page se charge
-**Then** les 5 étapes du déroulement d'une mission sont affichées de manière claire et pédagogique (prise de contact → consultation → terrain → traitement → restitution)
+**Then** les 5 étapes du déroulement d'une mission sont affichées de manière claire et pédagogique
 **And** le contenu est fetché depuis Sanity (schéma `missionStep`) au build
 
 **Given** je suis sur chacune de ces pages
@@ -315,16 +374,15 @@ Afin de vérifier le sérieux des équipements et la couverture géographique.
 
 **Given** je suis sur la homepage ou une page pertinente
 **When** je consulte la section zone d'intervention
-**Then** l'archipel guadeloupéen est identifié comme zone de couverture (Guadeloupe, Marie-Galante, Les Saintes, La Désirade)
-**And** la présentation est claire (texte et/ou visuel)
+**Then** l'archipel guadeloupéen est identifié (Guadeloupe, Marie-Galante, Les Saintes, La Désirade)
 
 **Given** je suis sur chacune de ces pages
 **Then** chaque page exporte `generateMetadata()` avec meta tags optimisées
-**And** la structure HTML est sémantique et accessible (WCAG 2.1 AA)
+**And** la structure HTML est sémantique et accessible
 
 ## Epic 3 : Conversion & Contact
 
-Le visiteur peut passer à l'action : remplir le formulaire diagnostic interactif, prendre RDV avec paiement en ligne, ou envoyer un message via le formulaire de contact. Laurent reçoit les notifications.
+Le visiteur peut remplir le formulaire diagnostic (Tally), être redirigé automatiquement vers la prise de RDV (Zcal Pro), prendre RDV avec paiement en ligne, ou envoyer un message via le formulaire de contact. Laurent reçoit les notifications. La page contact inclut Google Maps.
 
 ### Story 3.1 : Formulaire diagnostic interactif (Tally)
 
@@ -336,20 +394,24 @@ Afin d'être guidé vers la bonne prestation sans avoir besoin de jargon techniq
 
 **Given** je navigue vers `/diagnostic`
 **When** la page se charge
-**Then** le formulaire Tally est affiché en embed (iframe) avec les questions : type de projet, localisation, documents disponibles, urgence
-**And** un texte d'introduction explique l'objectif du diagnostic
+**Then** un texte d'introduction explique l'objectif du diagnostic ("Pas de jargon, on vous guide. Répondez à 4 questions simples...")
+**And** le composant TallyEmbed (`'use client'`) affiche le formulaire Tally en iframe
+**And** un Skeleton shadcn/ui est affiché pendant le chargement de l'iframe
+**And** l'iframe a un attribut `title="Formulaire de diagnostic"`
 
 **Given** le formulaire Tally est soumis
 **When** je termine les questions
-**Then** je suis redirigé vers la page de prise de RDV (`/rendez-vous`)
-**And** Laurent reçoit une notification email avec les réponses
+**Then** Tally redirige automatiquement vers `/rendez-vous` (redirection configurée dans Tally)
+**And** Laurent reçoit une notification email avec les réponses (natif Tally)
 
 **Given** l'iframe Tally est bloquée (navigateur, extension)
 **When** la page se charge
-**Then** un lien externe vers le formulaire Tally est affiché en fallback
+**Then** un message fallback est affiché : "Le formulaire ne s'affiche pas ?" avec un lien externe vers le formulaire Tally
 
 **Given** je consulte la page sur mobile
 **Then** l'embed Tally est responsive et utilisable sans dégradation
+
+**And** la page exporte `generateMetadata()` avec meta tags optimisées
 
 ### Story 3.2 : Prise de RDV & paiement en ligne (Zcal Pro)
 
@@ -361,13 +423,14 @@ Afin de sécuriser mon créneau rapidement sans échange préalable.
 
 **Given** je navigue vers `/rendez-vous`
 **When** la page se charge
-**Then** l'interface Zcal Pro est affichée (embed ou lien externe) permettant de choisir un créneau
-**And** un texte d'introduction explique le processus de consultation
+**Then** un texte d'introduction explique le processus de consultation et rassure ("Consultation avec paiement sécurisé. Réponse sous 24h.")
+**And** le composant ZcalEmbed (`'use client'`) affiche l'interface Zcal Pro
+**And** un Skeleton shadcn/ui est affiché pendant le chargement de l'embed
+**And** l'embed a un attribut `title="Prise de rendez-vous"`
 
-**Given** je sélectionne un créneau
-**When** je finalise la réservation
-**Then** le paiement en ligne est traité via Zcal Pro
-**And** Laurent reçoit une notification email de confirmation du RDV et du paiement
+**Given** je sélectionne un créneau et finalise le paiement
+**When** la réservation est confirmée
+**Then** Laurent reçoit une notification email de confirmation du RDV et du paiement (natif Zcal)
 
 **Given** l'embed Zcal est indisponible
 **When** la page se charge
@@ -376,35 +439,37 @@ Afin de sécuriser mon créneau rapidement sans échange préalable.
 **Given** je consulte la page sur mobile
 **Then** l'embed/lien Zcal est fonctionnel et utilisable
 
-### Story 3.3 : Formulaire de contact (Tally)
+**And** la page exporte `generateMetadata()` avec meta tags optimisées
+
+### Story 3.3 : Formulaire de contact (Tally) & Google Maps
 
 En tant que visiteur,
-Je veux envoyer un message au cabinet via un formulaire de contact,
-Afin de poser une question ou demander des informations sans prendre RDV.
+Je veux envoyer un message au cabinet ou localiser ses bureaux,
+Afin de poser une question ou me rendre sur place.
 
 **Acceptance Criteria :**
 
 **Given** je navigue vers `/contact`
 **When** la page se charge
-**Then** un formulaire de contact Tally est affiché en embed (nom, email, message)
-**And** les coordonnées du cabinet sont également affichées (téléphone, email, adresse)
+**Then** un formulaire de contact Tally est affiché en embed (nom, email, message) via le composant TallyEmbed
+**And** les coordonnées du cabinet sont affichées sur la page (téléphone click-to-call, email click-to-mailto, adresse)
+**And** un embed Google Maps affiche la localisation du cabinet à Petit-Bourg
 **And** le contenu de la page est fetché depuis Sanity (schéma `contactPage`)
 
 **Given** le formulaire est soumis
 **When** je clique sur envoyer
-**Then** Laurent reçoit une notification email avec le contenu du message
+**Then** Laurent reçoit une notification email avec le contenu du message (natif Tally)
 **And** la protection anti-spam est gérée nativement par Tally
 
 **Given** l'iframe Tally est bloquée
 **When** la page se charge
 **Then** un lien externe vers le formulaire est affiché en fallback
 
-**Given** la page exporte `generateMetadata()`
-**Then** les meta tags sont optimisées pour la page contact
+**And** la page exporte `generateMetadata()` avec meta tags optimisées
 
 ## Epic 4 : Blog & Gestion de contenu
 
-Laurent peut créer, éditer, prévisualiser et publier des articles de blog en autonomie. Les visiteurs peuvent consulter la liste des articles et lire un article individuel.
+Laurent peut créer, éditer, prévisualiser et publier des articles de blog en autonomie via Sanity Studio. Les visiteurs consultent la liste des articles et lisent un article individuel. Chaque article se termine par un CTA contextuel. L'empty state blog est géré au lancement.
 
 ### Story 4.1 : Blog côté visiteur — Liste et articles
 
@@ -416,19 +481,28 @@ Afin de m'informer sur le métier de géomètre-expert et les sujets fonciers.
 
 **Given** je navigue vers `/blog`
 **When** la page se charge
-**Then** la liste des articles publiés est affichée avec pour chacun : titre, date, image, extrait
+**Then** la liste des articles publiés est affichée avec pour chacun : image principale, titre, date, extrait
 **And** les articles sont triés par date de publication (plus récent en premier)
-**And** le contenu est fetché depuis Sanity (query GROQ centralisée) au build (SSG)
+**And** le contenu est fetché depuis Sanity (query GROQ centralisée dans `/sanity/lib/queries.ts`) au build (SSG)
+
+**Given** aucun article n'est publié
+**When** la page `/blog` se charge
+**Then** un empty state est affiché : "Les premiers articles arrivent bientôt. En attendant, n'hésitez pas à nous contacter." avec un lien vers `/contact`
 
 **Given** je clique sur un article
 **When** la page `/blog/[slug]` se charge
-**Then** l'article complet est affiché avec titre, date, image principale, corps rich text
+**Then** l'article complet est affiché avec titre, date, image principale, corps rich text (Portable Text rendu en HTML sémantique)
 **And** le slug est en kebab-case et l'URL est propre (`/blog/combien-coute-un-geometre`)
 **And** les images de l'article utilisent `@sanity/image-url` avec optimisation CDN Sanity
+**And** la colonne de lecture est centrée avec max-width 720px
+
+**Given** je suis en fin d'article
+**When** je termine la lecture
+**Then** un CTA contextuel est affiché : "Besoin d'un géomètre ? Faites le diagnostic en 4 questions" avec un lien vers `/diagnostic`
 
 **Given** je suis sur la page blog ou un article
 **Then** la page exporte `generateMetadata()` avec title et description dynamiques (tirées du contenu Sanity)
-**And** la structure HTML est sémantique (headings, article, time)
+**And** la structure HTML est sémantique (`<article>`, `<time>`, headings)
 **And** les pages sont pré-rendues en SSG
 
 ### Story 4.2 : Blog côté admin — Création et publication
@@ -441,7 +515,7 @@ Afin de gérer ma stratégie de contenu SEO en autonomie.
 
 **Given** je suis connecté à Sanity Studio (`/studio`)
 **When** je crée un nouvel article
-**Then** je peux remplir : titre, slug (auto-généré), corps rich text, image principale, date de publication, meta SEO (title, description)
+**Then** je peux remplir : titre, slug (auto-généré depuis le titre), corps rich text, image principale, date de publication, meta SEO (title, description)
 
 **Given** je suis dans l'éditeur d'article
 **When** je mets en forme le contenu
@@ -464,9 +538,9 @@ Afin de gérer ma stratégie de contenu SEO en autonomie.
 **When** j'ajoute une image
 **Then** l'image est uploadée sur le CDN Sanity et optimisée automatiquement
 
-## Epic 5 : SEO & Découvrabilité
+## Epic 5 : SEO & Performance
 
-Le site est optimisé pour les moteurs de recherche : meta tags dynamiques, sitemap XML, données structurées schema.org, et articles de blog optimisés SEO.
+Le site est optimisé pour les moteurs de recherche : meta tags dynamiques par page, sitemap XML incluant les articles blog, données structurées JSON-LD (LocalBusiness, ProfessionalService), balises canoniques. Google Analytics est intégré en async.
 
 ### Story 5.1 : SEO technique — Sitemap, données structurées & canoniques
 
@@ -478,7 +552,7 @@ Afin d'indexer correctement le site et afficher des résultats enrichis.
 
 **Given** un crawler accède à `/sitemap.xml`
 **When** le sitemap est généré
-**Then** toutes les pages du site sont listées (homepage, services, qui suis-je, mission, technologies, diagnostic, rendez-vous, contact, blog)
+**Then** toutes les pages du site sont listées (homepage, prestations, qui suis-je, mission, technologies, diagnostic, rendez-vous, contact, blog)
 **And** les articles de blog publiés sont inclus dynamiquement via Sanity
 **And** le sitemap est généré par `/app/sitemap.ts`
 
