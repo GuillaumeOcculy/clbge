@@ -7,7 +7,7 @@ export function BlogCtaEndArticle() {
       <p className="mb-4 text-lg font-medium">
         Besoin d&apos;un géomètre ? Faites le diagnostic en 4 questions
       </p>
-      <Button variant="outline" render={<Link href="/diagnostic" />}>
+      <Button variant="outline" nativeButton={false} render={<Link href="/diagnostic" />}>
         Faire le diagnostic
       </Button>
     </div>

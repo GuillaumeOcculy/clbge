@@ -20,7 +20,7 @@ export function DiagnosticSection({
             <p className="mb-2 text-[13px] font-semibold uppercase tracking-[1.5px] text-primary">Diagnostic</p>
             <h2 className="mb-4">{diagnosticTitle}</h2>
             <p className="mb-6 text-muted-foreground">{diagnosticDescription}</p>
-            <Button render={<Link href="/diagnostic" />}>
+            <Button nativeButton={false} render={<Link href="/diagnostic" />}>
               Faire le diagnostic
             </Button>
           </div>

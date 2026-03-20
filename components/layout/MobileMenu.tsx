@@ -77,6 +77,7 @@ export function MobileMenu({ phone = "0690 61 22 24" }: MobileMenuProps) {
         <div className="p-4 mt-auto">
           <Button
             className="w-full"
+            nativeButton={false}
             render={<Link href="/rendez-vous" />}
             onClick={() => setOpen(false)}
           >

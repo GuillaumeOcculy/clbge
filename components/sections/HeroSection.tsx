@@ -24,15 +24,14 @@ export function HeroSection({
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
         <div className="flex flex-col md:flex-row md:items-center md:gap-16">
           {/* Portrait — mobile first (au-dessus) */}
-          <div className="relative mx-auto mb-8 w-full max-w-[300px] md:order-2 md:mb-0 md:w-2/5 md:max-w-none">
+          <div className="relative mx-auto mb-8 aspect-[380/460] w-full max-w-[300px] overflow-hidden rounded-xl md:order-2 md:mb-0 md:w-2/5 md:max-w-[380px]">
             <Image
               src="/images/portrait-laurent.jpg"
               alt="Laurent Bazile, Géomètre-Expert en Guadeloupe"
-              width={380}
-              height={460}
+              fill
               priority
               sizes="(max-width: 768px) 100vw, 40vw"
-              className="rounded-xl"
+              className="object-cover"
             />
             {/* Badge Ordre overlay */}
             <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/80 px-4 py-3 text-xs backdrop-blur-sm md:text-sm">
@@ -55,12 +54,13 @@ export function HeroSection({
             <p className="mb-8 text-[17px] leading-relaxed text-muted-foreground">{heroSubtitle}</p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Button render={<Link href="/rendez-vous" />}>
+              <Button nativeButton={false} render={<Link href="/rendez-vous" />}>
                 {heroCtaPrimary}
               </Button>
               <Button
                 variant="outline"
                 className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                nativeButton={false}
                 render={<Link href="/diagnostic" />}
               >
                 {heroCtaSecondary}

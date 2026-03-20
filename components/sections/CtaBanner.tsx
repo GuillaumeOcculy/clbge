@@ -19,6 +19,7 @@ export function CtaBanner({ title, subtitle, buttonText, href = "/rendez-vous" }
         <Button
           variant="outline"
           className="border-white bg-white text-primary hover:bg-background"
+          nativeButton={false}
           render={<Link href={href} />}
         >
           {buttonText}

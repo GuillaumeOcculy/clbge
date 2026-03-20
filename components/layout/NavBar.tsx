@@ -31,14 +31,14 @@ export function NavBar({ phone }: NavBarProps) {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center">
-          <Button render={<Link href="/rendez-vous" />}>
+          <Button nativeButton={false} render={<Link href="/rendez-vous" />}>
             Prendre RDV
           </Button>
         </div>
 
         {/* Mobile: CTA + Hamburger */}
         <div className="flex md:hidden items-center gap-2">
-          <Button size="sm" render={<Link href="/rendez-vous" />}>
+          <Button size="sm" nativeButton={false} render={<Link href="/rendez-vous" />}>
             Prendre RDV
           </Button>
           <MobileMenu phone={phone} />
