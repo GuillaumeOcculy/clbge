@@ -10,6 +10,12 @@ test.describe('Blog — liste et empty state', () => {
     if (hasArticles) {
       const firstCard = articleCards.first();
       await expect(firstCard).toBeVisible();
+
+      // Vérifier le contenu de la card : titre (h3), date (time), image ou placeholder
+      const card = firstCard;
+      await expect(card.locator('h3')).toBeVisible();
+      await expect(card.locator('time')).toBeVisible();
+      await expect(card.locator('img, :text("Image à venir")')).toBeVisible();
     } else {
       await expect(
         page.getByText('Les premiers articles arrivent bientôt'),
@@ -66,11 +72,21 @@ test.describe('Blog — article individuel', () => {
     // Titre
     await expect(page.locator('h1')).toBeVisible();
 
-    // Date formatée fr-FR
-    await expect(page.locator('time')).toBeVisible();
+    // Date formatée fr-FR (ex: "15 mars 2026")
+    const timeEl = page.locator('time');
+    await expect(timeEl).toBeVisible();
+    const dateText = await timeEl.textContent();
+    expect(dateText).toMatch(/\d{1,2}\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+\d{4}/);
+
+    // Image principale (ou absence si pas d'image)
+    const articleEl = page.locator('article');
+    const articleImg = articleEl.locator('img');
+    if ((await articleImg.count()) > 0) {
+      await expect(articleImg.first()).toBeVisible();
+    }
 
     // Corps de l'article
-    await expect(page.locator('article, [data-testid="blog-content"], .prose').first()).toBeVisible();
+    await expect(articleEl).toBeVisible();
   });
 
   test('article a le CTA fin d\'article', async ({ page }) => {

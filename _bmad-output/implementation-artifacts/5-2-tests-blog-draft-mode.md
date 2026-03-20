@@ -309,6 +309,7 @@ Claude Opus 4.6
 
 - 2026-03-20 : Implémentation story 5.2 — tests E2E blog, draft mode et Sanity Studio
 - 2026-03-20 : Code review — ajout test tri par date (AC2), fix localhost hardcodé dans draft-mode.spec.ts
+- 2026-03-20 : Code review 2 — assertions contenu cards (M1), image article (L1), regex fr-FR date (L2), sélecteur .prose→article (L3)
 
 ### File List
 
