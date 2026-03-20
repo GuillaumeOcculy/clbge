@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
@@ -20,6 +21,9 @@ export const metadata: Metadata = {
     "Cabinet Laurent Bazile, géomètre-expert en Guadeloupe. Bornage, division, copropriété, topographie et diagnostics immobiliers à Petit-Bourg.",
   alternates: {
     canonical: "./",
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 
@@ -72,6 +76,9 @@ export default async function RootLayout({
         />
         {(await draftMode()).isEnabled && <VisualEditing />}
       </body>
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
     </html>
   );
 }

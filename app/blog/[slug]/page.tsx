@@ -33,13 +33,18 @@ export async function generateMetadata({
     const { blogPostBySlugQuery } = await import("@/sanity/lib/queries");
     const post = await client.fetch(blogPostBySlugQuery, { slug });
     if (!post) return { title: "Article introuvable — CLBGE" };
+    const { urlFor } = await import("@/sanity/lib/image");
+    const ogImage = post.mainImage?.asset
+      ? urlFor(post.mainImage).width(1200).height(630).auto("format").url()
+      : undefined;
     return {
       title: post.metaTitle || `${post.title} — CLBGE`,
-      description: post.metaDescription || `Article : ${post.title}`,
+      description: post.metaDescription || post.excerpt || `Article : ${post.title}`,
       openGraph: {
         title: post.metaTitle || post.title,
-        description: post.metaDescription || `Article : ${post.title}`,
+        description: post.metaDescription || post.excerpt || `Article : ${post.title}`,
         type: "article",
+        ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630 }] } : {}),
       },
     };
   } catch {

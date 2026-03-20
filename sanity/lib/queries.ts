@@ -110,7 +110,8 @@ export const blogPostBySlugQuery = defineQuery(`
       _type == "image" => { asset, alt, caption }
     },
     metaTitle,
-    metaDescription
+    metaDescription,
+    excerpt
   }
 `)
 
