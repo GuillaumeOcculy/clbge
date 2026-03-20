@@ -383,7 +383,9 @@ Claude Opus 4.6
 
 ### Debug Log References
 
-Aucun problème rencontré. Build et lint OK du premier coup.
+- Presentation Tool "Unable to connect" : manquait `basePath: '/studio'` dans `sanity.config.ts` (le Studio ne savait pas qu'il était monté sur `/studio`) et `<VisualEditing />` dans le layout (pont de communication Studio/iframe)
+- CSP bloquait les WebSocket Sanity : `wss://*.sanity.io` et `https://sanity-cdn.com` manquants dans la CSP générale
+- `next/image` hostname non configuré : ajout `images.remotePatterns` pour `cdn.sanity.io` dans `next.config.ts`
 
 ### Completion Notes List
 
@@ -391,12 +393,13 @@ Aucun problème rencontré. Build et lint OK du premier coup.
 - Task 2 : Pages `/blog` et `/blog/[slug]` adaptées avec `draftMode()` async, `perspective: 'previewDrafts'`, token server-side. Composant `DraftModeIndicator` créé (bandeau fixe en bas à gauche avec lien "Quitter")
 - Task 3 : Schéma `blogPost` amélioré avec 3 groups (Contenu, Publication, SEO), descriptions françaises sur tous les champs, `initialValue` sur `publishedAt`, listes bullet/numbered ajoutées explicitement au rich text
 - Task 4 : Desk structure custom dans `sanity.config.ts` — Articles de blog (BookIcon, tri publishedAt desc), Pages (singleton homePage/aboutPage/contactPage), Services & Contenu, Configuration (siteSettings)
-- Task 5 : CSP vérifiée — `connect-src https://*.sanity.io` déjà présent, requêtes draft mode server-side non impactées
+- Task 5 : CSP étendue — ajout `wss://*.sanity.io`, `https://sanity-cdn.com`, `https://*.sanity-cdn.com`, `https://core.sanity-cdn.com` pour le Presentation Tool
 - Task 6 : Build OK (14 pages, routes API draft-mode dynamiques), lint OK
 
 ### Change Log
 
 - 2026-03-20 : Implémentation complète story 4.2 — Draft Mode, schéma UX, desk structure
+- 2026-03-20 : Fix post-test — basePath Studio, VisualEditing, CSP wss/sanity-cdn, images.remotePatterns cdn.sanity.io
 
 ### File List
 
@@ -404,8 +407,10 @@ Aucun problème rencontré. Build et lint OK du premier coup.
 - `app/api/draft-mode/disable/route.ts` — nouveau (API route disable draft mode)
 - `sanity/lib/token.ts` — nouveau (export token Sanity Viewer)
 - `components/blog/DraftModeIndicator.tsx` — nouveau (bandeau prévisualisation)
-- `sanity.config.ts` — modifié (presentationTool, defineLocations, desk structure custom, icônes @sanity/icons)
+- `sanity.config.ts` — modifié (basePath, presentationTool, defineLocations, desk structure custom, icônes @sanity/icons)
 - `sanity/schemas/blogPost.ts` — modifié (groups, descriptions, initialValue, listes bullet/numbered)
+- `app/layout.tsx` — modifié (ajout VisualEditing conditionnel en draft mode)
 - `app/blog/page.tsx` — modifié (draftMode, perspective, token, DraftModeIndicator)
 - `app/blog/[slug]/page.tsx` — modifié (draftMode, perspective, token, DraftModeIndicator)
+- `next.config.ts` — modifié (images.remotePatterns cdn.sanity.io, CSP wss/sanity-cdn)
 - `.env.example` — modifié (ajout SANITY_API_READ_TOKEN)

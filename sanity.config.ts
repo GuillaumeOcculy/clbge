@@ -24,6 +24,7 @@ export default defineConfig({
   title: 'CLBGE — Cabinet Laurent Bazile',
   projectId,
   dataset,
+  basePath: '/studio',
   plugins: [
     structureTool({
       structure: (S) =>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
@@ -62,6 +64,7 @@ export default async function RootLayout({
           linkedinUrl={settings.linkedinUrl ?? defaults.linkedinUrl}
           cabinetName={settings.cabinetName ?? defaults.cabinetName}
         />
+        {(await draftMode()).isEnabled && <VisualEditing />}
       </body>
     </html>
   );
