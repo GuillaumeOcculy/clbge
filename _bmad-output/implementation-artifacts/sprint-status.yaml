@@ -79,6 +79,8 @@ development_status:
   epic-4-retrospective: done
 
   epic-5: backlog  # Tests E2E & Qualité (réorganisé en retro Epic 4)
+  5-1-setup-playwright-tests-pages-statiques: backlog
+  5-2-tests-blog-draft-mode: backlog
   epic-5-retrospective: optional
 
   epic-6: backlog  # SEO & Performance (ancien Epic 5, décalé en retro Epic 4)
