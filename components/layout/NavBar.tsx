@@ -11,15 +11,16 @@ interface NavBarProps {
 export function NavBar({ phone }: NavBarProps) {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/images/logo-placeholder.svg"
+            src="/images/logo-clb.jpeg"
             alt="Logo Cabinet Laurent Bazile Géomètre-Expert"
-            width={120}
-            height={40}
+            width={140}
+            height={140}
             priority
+            className="h-10 w-auto object-contain"
           />
         </Link>
 

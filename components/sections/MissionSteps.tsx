@@ -16,8 +16,9 @@ export function MissionSteps({ steps, hideTitle }: MissionStepsProps) {
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
         {!hideTitle && (
           <div className="mb-12 text-center">
-            <h2 className="mb-4">Comment se déroule une mission</h2>
-            <div className="mx-auto h-0.5 w-12 bg-primary" />
+            <h2 className="mb-3 text-4xl font-semibold">Comment se déroule une mission</h2>
+            <p className="mx-auto mb-4 max-w-[500px] text-base text-muted-foreground">5 étapes simples, un processus transparent</p>
+            <div className="mx-auto h-[3px] w-12 bg-primary" />
           </div>
         )}
 
@@ -38,7 +39,7 @@ export function MissionSteps({ steps, hideTitle }: MissionStepsProps) {
               </div>
               <div className="md:mt-4">
                 <h3 className="mb-1 font-semibold">{step.title}</h3>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <p className="text-[13px] text-muted-foreground">{step.description}</p>
               </div>
             </li>
           ))}
