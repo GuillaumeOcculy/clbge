@@ -13,6 +13,7 @@
 # story 4-1 created: 2026-03-19
 # story 4-2 created: 2026-03-20
 # story 5-1 created: 2026-03-20
+# story 5-2 created: 2026-03-20
 # project: clbge
 # project_key: NOKEY
 # tracking_system: file-system
@@ -48,7 +49,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-03-19
-last_updated: 2026-03-20  # story 5-1 done (code review passed)
+last_updated: 2026-03-20  # story 5-2 done (code review passed)
 
 project: clbge
 project_key: NOKEY
@@ -81,7 +82,7 @@ development_status:
 
   epic-5: in-progress  # Tests E2E & Qualité (réorganisé en retro Epic 4)
   5-1-setup-playwright-tests-pages-statiques: done
-  5-2-tests-blog-draft-mode: backlog
+  5-2-tests-blog-draft-mode: done
   epic-5-retrospective: optional
 
   epic-6: backlog  # SEO & Performance (ancien Epic 5, décalé en retro Epic 4)
