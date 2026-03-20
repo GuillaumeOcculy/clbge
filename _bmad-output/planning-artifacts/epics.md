@@ -176,11 +176,11 @@ This document provides the complete epic and story breakdown for clbge, decompos
 | FR23 | Epic 1 | Menu responsive mobile |
 | FR24 | Epic 1 | CTA RDV global |
 | FR25 | Epic 2 | Zone d'intervention |
-| FR26 | Epic 5 | Pages indexables |
-| FR27 | Epic 5 | Balises meta optimisées |
-| FR28 | Epic 5 | Sitemap XML |
-| FR29 | Epic 5 | Données structurées schema.org |
-| FR30 | Epic 5 | Blog optimisé SEO |
+| FR26 | Epic 6 | Pages indexables |
+| FR27 | Epic 6 | Balises meta optimisées |
+| FR28 | Epic 6 | Sitemap XML |
+| FR29 | Epic 6 | Données structurées schema.org |
+| FR30 | Epic 6 | Blog optimisé SEO |
 
 ## Epic List
 
@@ -204,7 +204,12 @@ Laurent peut créer, éditer, prévisualiser et publier des articles de blog en 
 **FRs couvertes :** FR15, FR16, FR17, FR18, FR19, FR20, FR21
 **UX-DRs couvertes :** UX-DR13, UX-DR14
 
-### Epic 5 : SEO & Performance
+### Epic 5 : Tests E2E & Qualité
+Le site dispose d'un framework de tests end-to-end (Playwright) couvrant toutes les pages et fonctionnalités existantes. Les tests vérifient le rendu, la navigation, les métadonnées, le responsive et les intégrations (Sanity, Tally, Zcal). Le draft mode est testable.
+**FRs couvertes :** Aucune FR directe — epic transversal de qualité
+**Justification :** Décision retro Epic 4 (2026-03-20) — 3ème report consécutif des tests, 3 bugs de configuration invisibles au build/lint en story 4.2
+
+### Epic 6 : SEO & Performance
 Le site est optimisé pour les moteurs de recherche : meta tags dynamiques par page, sitemap XML incluant les articles blog, données structurées JSON-LD (LocalBusiness, ProfessionalService), balises canoniques. Google Analytics est intégré en async.
 **FRs couvertes :** FR26, FR27, FR28, FR29, FR30
 
@@ -538,11 +543,95 @@ Afin de gérer ma stratégie de contenu SEO en autonomie.
 **When** j'ajoute une image
 **Then** l'image est uploadée sur le CDN Sanity et optimisée automatiquement
 
-## Epic 5 : SEO & Performance
+## Epic 5 : Tests E2E & Qualité
+
+Le site dispose d'un framework de tests end-to-end (Playwright) couvrant toutes les pages et fonctionnalités existantes. Les tests vérifient le rendu, la navigation, les métadonnées, le responsive et les intégrations (Sanity, Tally, Zcal). Le draft mode est testable. Cet epic transversal n'ajoute pas de fonctionnalités visibles pour l'utilisateur final, mais sécurise toutes les livraisons précédentes et futures.
+
+**Justification :** Décision retro Epic 4 (2026-03-20) — absence de tests automatisés identifiée comme risque systémique pour la 3ème retro consécutive. 3 bugs de configuration invisibles au build/lint découverts en story 4.2 (basePath Studio, CSP WebSocket, remotePatterns image).
+
+### Story 5.1 : Setup Playwright & tests des pages statiques
+
+En tant que développeur,
+Je veux un framework de tests E2E fonctionnel avec une couverture de base sur toutes les pages statiques,
+Afin de détecter les régressions de rendu, navigation et métadonnées à chaque changement de code.
+
+**Acceptance Criteria :**
+
+**Given** le projet n'a pas de framework de test
+**When** Playwright est installé et configuré
+**Then** `npx playwright test` exécute les tests sans erreur
+**And** `playwright.config.ts` est configuré pour le dev server Next.js (`webServer`)
+**And** les tests tournent en mode headless par défaut
+**And** un script `npm run test:e2e` est ajouté au `package.json`
+
+**Given** les tests sont configurés
+**When** les tests des pages statiques sont exécutés
+**Then** chaque page du site (homepage, nos-prestations, qui-suis-je, notre-mission, nos-technologies, diagnostic, rendez-vous, contact, blog) retourne un status 200
+**And** chaque page a un `<h1>` unique et visible
+**And** chaque page a un `<title>` non vide et un meta description
+**And** la navigation principale est présente sur chaque page (header, footer)
+**And** le CTA "Prendre RDV" est visible dans le header
+
+**Given** les tests vérifient le responsive
+**When** les tests sont exécutés en viewport mobile (375px) et desktop (1280px)
+**Then** le menu hamburger est visible en mobile et le menu desktop en desktop
+**And** aucune page n'a de contenu qui déborde horizontalement en mobile
+
+**Given** les tests vérifient les embeds tiers
+**When** la page `/diagnostic` est chargée
+**Then** l'iframe Tally est présente (ou le fallback s'affiche si le formulaire n'est pas configuré)
+**When** la page `/rendez-vous` est chargée
+**Then** l'iframe Zcal est présente (ou le fallback)
+**When** la page `/contact` est chargée
+**Then** l'iframe Google Maps est présente (ou le fallback)
+
+### Story 5.2 : Tests du blog & du Draft Mode
+
+En tant que développeur,
+Je veux des tests E2E couvrant le blog (liste, article, empty state) et le Draft Mode (Presentation Tool),
+Afin de détecter les régressions sur les fonctionnalités Sanity et les intégrations serveur avant la prod.
+
+**Acceptance Criteria :**
+
+**Given** la page `/blog` est chargée
+**When** aucun article n'est publié dans Sanity
+**Then** l'empty state s'affiche avec le texte "Les premiers articles arrivent bientôt" et un lien vers `/contact`
+
+**Given** la page `/blog` est chargée
+**When** des articles sont publiés dans Sanity
+**Then** les articles sont affichés sous forme de cards avec titre, date, extrait et image
+**And** les articles sont triés par date de publication (plus récent en premier)
+**And** chaque card est cliquable et mène vers `/blog/[slug]`
+
+**Given** la page `/blog/[slug]` est chargée avec un article existant
+**When** l'article s'affiche
+**Then** le titre, la date formatée fr-FR, l'image principale et le corps rich text sont présents
+**And** le CTA contextuel "Besoin d'un géomètre ?" est affiché en fin d'article
+**And** le CtaBanner "Prendre rendez-vous" est affiché en bas de page
+**And** les métadonnées (title, description, og:title) sont dynamiques et correspondent à l'article
+
+**Given** la page `/blog/slug-inexistant` est chargée
+**When** le slug ne correspond à aucun article
+**Then** la page retourne un 404
+
+**Given** l'API route `/api/draft-mode/enable` existe
+**When** un test vérifie sa disponibilité
+**Then** la route répond (status 200 ou redirect selon l'authentification)
+
+**Given** l'API route `/api/draft-mode/disable` est appelée
+**When** le draft mode est désactivé
+**Then** la route redirige vers la page d'origine ou la homepage
+
+**Given** la page `/studio` est chargée
+**When** le Sanity Studio se charge
+**Then** la page ne retourne pas une erreur 500
+**And** le DOM contient les éléments de base du Studio Sanity
+
+## Epic 6 : SEO & Performance
 
 Le site est optimisé pour les moteurs de recherche : meta tags dynamiques par page, sitemap XML incluant les articles blog, données structurées JSON-LD (LocalBusiness, ProfessionalService), balises canoniques. Google Analytics est intégré en async.
 
-### Story 5.1 : SEO technique — Sitemap, données structurées & canoniques
+### Story 6.1 : SEO technique — Sitemap, données structurées & canoniques
 
 En tant que moteur de recherche,
 Je veux accéder à un sitemap XML, des données structurées et des balises canoniques,
@@ -572,7 +661,7 @@ Afin d'indexer correctement le site et afficher des résultats enrichis.
 **Given** un audit Lighthouse SEO est exécuté
 **Then** le score est > 95
 
-### Story 5.2 : Analytics & optimisation blog SEO
+### Story 6.2 : Analytics & optimisation blog SEO
 
 En tant que propriétaire du site (Laurent),
 Je veux suivre le trafic du site et que les articles de blog soient optimisés pour le référencement,

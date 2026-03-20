@@ -21,7 +21,7 @@ export function Footer({
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer data-testid="main-footer" className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Coordonnées */}

@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
   async headers() {
     return [
       // CSP permissive pour Sanity Studio (charge ses propres scripts/styles)
@@ -12,10 +20,10 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               "frame-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://core.sanity-cdn.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' https://cdn.sanity.io data: blob:",
-              "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.sanity.io",
+              "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.sanity.io https://sanity-cdn.com https://*.sanity-cdn.com",
               "font-src 'self' data:",
               "media-src 'self' https://cdn.sanity.io",
             ].join("; "),
@@ -31,10 +39,10 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               "frame-src 'self' https://tally.so https://*.tally.so https://zcal.co https://*.zcal.co https://www.google.com https://maps.google.com",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tally.so https://*.google-analytics.com https://*.googletagmanager.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tally.so https://*.google-analytics.com https://*.googletagmanager.com https://core.sanity-cdn.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' https://cdn.sanity.io data:",
-              "connect-src 'self' https://*.sanity.io https://*.google-analytics.com",
+              "connect-src 'self' https://*.sanity.io wss://*.sanity.io https://sanity-cdn.com https://*.sanity-cdn.com https://*.google-analytics.com",
               "font-src 'self' data:",
             ].join("; "),
           },
