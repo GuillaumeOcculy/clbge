@@ -5,6 +5,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -13,9 +14,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://clbge.com"),
   title: "CLBGE — Laurent Bazile, Géomètre-Expert en Guadeloupe",
   description:
     "Cabinet Laurent Bazile, géomètre-expert en Guadeloupe. Bornage, division, copropriété, topographie et diagnostics immobiliers à Petit-Bourg.",
+  alternates: {
+    canonical: "./",
+  },
 };
 
 const defaults = {
@@ -53,6 +58,7 @@ export default async function RootLayout({
         >
           Aller au contenu principal
         </a>
+        <JsonLd />
         <NavBar phone={settings.phone ?? defaults.phone} />
         <main id="main-content" className="flex-1">
           {children}
