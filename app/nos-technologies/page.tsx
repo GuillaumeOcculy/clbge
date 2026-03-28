@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ZoneIntervention } from "@/components/sections/ZoneIntervention";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 const defaultTechnologies = [
-  { _id: "1", name: "AutoCAD", category: "Logiciel", description: "Conception assistée par ordinateur pour les plans topographiques et fonciers", image: null, order: 1 },
-  { _id: "2", name: "Covadis", category: "Logiciel", description: "Module topographique et VRD pour AutoCAD, calculs de surfaces et cubatures", image: null, order: 2 },
-  { _id: "3", name: "Trimble Business Center", category: "Logiciel", description: "Traitement des données GNSS et stations totales, calculs géodésiques", image: null, order: 3 },
-  { _id: "4", name: "Leica Cyclone", category: "Logiciel", description: "Traitement de nuages de points 3D issus du scanner laser", image: null, order: 4 },
-  { _id: "5", name: "Station totale Leica", category: "Matériel terrain", description: "Mesures angulaires et de distances de haute précision pour les levés topographiques", image: null, order: 5 },
-  { _id: "6", name: "GPS RTK Trimble", category: "Matériel terrain", description: "Positionnement centimétrique en temps réel pour les relevés de terrain", image: null, order: 6 },
-  { _id: "7", name: "Scanner 3D Leica BLK360", category: "Matériel terrain", description: "Acquisition 3D rapide et précise pour la modélisation de bâtiments et de sites", image: null, order: 7 },
-  { _id: "8", name: "Drone DJI", category: "Matériel terrain", description: "Photogrammétrie aérienne et relevés de grandes surfaces", image: null, order: 8 },
+  { _id: "1", name: "Trimble Business Center (TBC)", category: "Logiciel", description: "Solution de traitement et d'analyse de données géospatiales, Trimble Business Center permet de centraliser, contrôler et exploiter l'ensemble des relevés issus du terrain. Il garantit une précision optimale dans le calcul, l'ajustement et la modélisation des données, pour des résultats fiables et exploitables à chaque étape du projet.", image: null, order: 1 },
+  { _id: "2", name: "Trimble RealWorks", category: "Logiciel", description: "Logiciel dédié au traitement des nuages de points, RealWorks permet de transformer les relevés scanner 3D en modèles exploitables. Il offre une restitution fidèle des environnements complexes, avec un haut niveau de détail et de précision.", image: null, order: 2 },
+  { _id: "3", name: "AutoCAD", category: "Logiciel", description: "Référence mondiale en conception assistée par ordinateur, AutoCAD permet la réalisation de plans précis, clairs et parfaitement structurés. Il constitue la base de production graphique de l'ensemble des livrables.", image: null, order: 3 },
+  { _id: "4", name: "Covadis", category: "Logiciel", description: "Spécialisé dans les métiers de la topographie et du foncier, Covadis vient enrichir AutoCAD avec des outils métiers avancés. Il permet notamment le traitement des relevés topographiques, les calculs fonciers et la modélisation des projets d'aménagement.", image: null, order: 4 },
+  { _id: "5", name: "UAV Manager 2022", category: "Logiciel", description: "Logiciel dédié au traitement des données issues de relevés par drone, UAV Manager permet la production d'orthophotographies, de modèles numériques de terrain et de nuages de points. Il offre une vision globale et précise des sites, même les plus étendus ou difficiles d'accès.", image: null, order: 5 },
+  { _id: "6", name: "RD12", category: "Logiciel", description: "Solution de gestion et d'exploitation de données techniques, RD12 permet d'optimiser le traitement et l'organisation des informations issues du terrain. Il contribue à la fiabilité et à la structuration des données dans le cadre de projets complexes.", image: null, order: 6 },
+  { _id: "7", name: "Station totale Trimble", category: "Matériel terrain", description: "Instrument de mesure de haute précision, la station totale permet de relever avec exactitude les coordonnées et les distances sur le terrain. Elle constitue un outil essentiel pour les opérations de bornage, d'implantation et de topographie.", image: null, order: 7 },
+  { _id: "8", name: "Système GNSS Trimble", category: "Matériel terrain", description: "Grâce à la technologie satellitaire, le système GNSS permet de déterminer des positions avec une précision centimétrique en temps réel. Il garantit rapidité d'exécution et fiabilité des mesures, même sur de grandes surfaces.", image: null, order: 8 },
+  { _id: "9", name: "SLAM100 – Scanner LiDAR portatif", category: "Matériel terrain", description: "Technologie de pointe en acquisition 3D, le scanner SLAM100 permet de capturer rapidement des environnements complexes sous forme de nuages de points. Sans nécessiter de stationnement fixe, il offre une grande mobilité et une efficacité remarquable sur le terrain.", image: null, order: 9 },
 ];
 
 interface Technology {
@@ -107,8 +107,6 @@ export default async function NosTechnologies() {
           </div>
         </div>
       </section>
-
-      <ZoneIntervention />
 
       <CtaBanner
         title="Besoin d'un géomètre-expert ?"

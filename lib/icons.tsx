@@ -1,22 +1,22 @@
 import {
-  Landmark,
+  Scale,
   Mountain,
   Building2,
-  PenTool,
+  Home,
   Scan,
-  Ruler,
+  FileCheck,
   MapPin,
   HelpCircle,
   type LucideIcon,
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
-  Landmark,
+  Scale,
   Mountain,
   Building2,
-  PenTool,
+  Home,
   Scan,
-  Ruler,
+  FileCheck,
   MapPin,
 };
 

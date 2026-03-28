@@ -4,6 +4,7 @@ import { TrustBar } from "@/components/sections/TrustBar";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { MissionSteps } from "@/components/sections/MissionSteps";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
+import { ZoneIntervention } from "@/components/sections/ZoneIntervention";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 const defaultHero = {
@@ -27,20 +28,20 @@ const defaultHero = {
 };
 
 const defaultServices = [
-  { _id: "1", title: "Foncier", icon: "Landmark", shortDescription: "Bornage, reconnaissance de limites, divisions parcellaires, servitudes", order: 1 },
-  { _id: "2", title: "Topographie", icon: "Mountain", shortDescription: "Relevés topographiques, plans de terrain, modélisation", order: 2 },
-  { _id: "3", title: "Copropriété", icon: "Building2", shortDescription: "Mise en copropriété, état descriptif de division, règlement", order: 3 },
-  { _id: "4", title: "Plans d'architecture", icon: "PenTool", shortDescription: "Plans, relevés et modélisation de bâtiments existants", order: 4 },
-  { _id: "5", title: "Relevés et acquisitions 3D", icon: "Scan", shortDescription: "Scan 3D, nuages de points, modélisation numérique", order: 5 },
-  { _id: "6", title: "Surfaces réglementaires", icon: "Ruler", shortDescription: "Loi Carrez, surfaces habitables, surfaces de plancher", order: 6 },
+  { _id: "1", title: "Foncier", icon: "Scale", shortDescription: "Bornage et reconnaissance de limites · Délimitations de la propriété des personnes publiques · Divisions parcellaires · Étude de servitudes", order: 1 },
+  { _id: "2", title: "Topographie", icon: "Mountain", shortDescription: "Plans topographiques · Géoréférencement · Nivellement · Implantations", order: 2 },
+  { _id: "3", title: "Urbanisme", icon: "FileCheck", shortDescription: "Certificats d'urbanisme (CUa, CUb) · Déclaration préalable (DP) · Permis d'aménager (PA)", order: 3 },
+  { _id: "4", title: "Copropriété", icon: "Building2", shortDescription: "Mise en copropriété · États Descriptifs de Division en Copropriété · Modificatifs de copropriété · Calcul de charges de copropriété · Calculs de surface privative dite « Carrez »", order: 4 },
+  { _id: "5", title: "Plans d'architecture", icon: "Home", shortDescription: "Plans d'intérieurs · Plans de coupe · Plans de façades · Plans d'héberges et de figures de murs · Plans de toiture", order: 5 },
+  { _id: "6", title: "Relevés et acquisitions 3D", icon: "Scan", shortDescription: "Relevé par scanner 3D · Relevé par drone · Orthophotographie · Visites virtuelles", order: 6 },
 ];
 
 const defaultMissionSteps = [
   { _id: "1", title: "Prise de contact", description: "Échange téléphonique ou en ligne pour comprendre votre besoin", stepNumber: 1 },
   { _id: "2", title: "Consultation", description: "Analyse de votre dossier et proposition d'intervention adaptée", stepNumber: 2 },
   { _id: "3", title: "Terrain", description: "Intervention sur site avec nos équipements de pointe", stepNumber: 3 },
-  { _id: "4", title: "Traitement", description: "Traitement des données et élaboration des documents techniques", stepNumber: 4 },
-  { _id: "5", title: "Restitution", description: "Remise des documents finaux et explications claires", stepNumber: 5 },
+  { _id: "4", title: "Traitement", description: "Traitement des données et élaboration des documents techniques et juridiques", stepNumber: 4 },
+  { _id: "5", title: "Restitution", description: "Remise des documents finaux et explications claires des enjeux techniques et juridiques", stepNumber: 5 },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -76,6 +77,7 @@ export default async function Home() {
   let services: typeof defaultServices = [];
   let missionSteps: typeof defaultMissionSteps = [];
   let phone = "0690 61 22 24";
+  let phoneLandline = "0590 26 35 90";
 
   try {
     const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -108,10 +110,12 @@ export default async function Home() {
         heroCtaPrimary={hero.heroCtaPrimary ?? defaultHero.heroCtaPrimary}
         heroCtaSecondary={hero.heroCtaSecondary ?? defaultHero.heroCtaSecondary}
         phone={phone}
+        phoneLandline={phoneLandline}
       />
       <TrustBar items={trustBarItems} />
       <ServicesGrid services={servicesList} />
       <MissionSteps steps={stepsList} />
+      <ZoneIntervention />
       <DiagnosticSection
         diagnosticTitle={hero.diagnosticTitle ?? defaultHero.diagnosticTitle}
         diagnosticDescription={hero.diagnosticDescription ?? defaultHero.diagnosticDescription}

@@ -2,7 +2,7 @@
 title: 'Remarques Laurent — refonte contenu et structure site CLBGE'
 slug: 'remarques-laurent-refonte-contenu'
 created: '2026-03-28'
-status: 'ready-for-dev'
+status: 'implementation-complete'
 stepsCompleted: [1, 2, 3, 4]
 tech_stack: [Next.js 16, React 19, Tailwind CSS 4, Lucide React, Sanity CMS, Base UI, Playwright]
 files_to_modify: [app/page.tsx, app/layout.tsx, app/nos-prestations/page.tsx, app/qui-suis-je/page.tsx, app/notre-mission/page.tsx, app/nos-technologies/page.tsx, app/contact/page.tsx, components/layout/Footer.tsx, components/sections/HeroSection.tsx, components/sections/ServicesGrid.tsx, components/sections/ServiceAccordion.tsx, components/sections/Timeline.tsx, lib/navigation.ts, lib/icons.tsx]
@@ -89,7 +89,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
 
 ### Tasks
 
-- [ ] **Task 1 : Fondations — icônes, navigation, layout defaults**
+- [x] **Task 1 : Fondations — icônes, navigation, layout defaults**
   - File: `lib/icons.tsx`
   - Action: Remplacer `Landmark` par `Scale`, `PenTool` par `Home`. Ajouter `FileCheck` pour Urbanisme. Importer les nouvelles icônes depuis lucide-react.
   - File: `lib/navigation.ts`
@@ -97,12 +97,12 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
   - File: `app/layout.tsx`
   - Action: Modifier `defaults.address` en `"17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG"`. Ajouter `phoneLandline: "0590 26 35 90"` dans defaults. Passer `phoneLandline` au Footer.
 
-- [ ] **Task 2 : HeroSection — texte inscription Ordre + téléphone fixe**
+- [x] **Task 2 : HeroSection — texte inscription Ordre + téléphone fixe**
   - File: `components/sections/HeroSection.tsx`
   - Action: Dans le badge overlay, remplacer `Géomètre-Expert Foncier DPLG — Inscrit à l'Ordre n°12345` par `Inscrit au tableau de l'Ordre des Géomètres-Experts sous le n°12345`. Ajouter le téléphone fixe à côté du mobile dans la zone CTA : `ou appelez le 0590 26 35 90`.
   - Notes: Ajouter un prop `phoneLandline` à l'interface. Le passer depuis `app/page.tsx`.
 
-- [ ] **Task 3 : ServicesGrid — titre section + services reordonnés**
+- [x] **Task 3 : ServicesGrid — titre section + services reordonnés**
   - File: `components/sections/ServicesGrid.tsx`
   - Action: Changer le sous-titre `"Des solutions adaptées à chaque situation foncière"` → `"Des solutions adaptées à chaque projet"`
   - File: `app/page.tsx`
@@ -112,7 +112,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
     3. Changer icon Foncier : `"Scale"`, icon Plans d'architecture : `"Home"`
     4. Mettre à jour les `_id` et `order` pour refléter le nouvel ordre
 
-- [ ] **Task 4 : MissionSteps — étapes 4 et 5 corrigées**
+- [x] **Task 4 : MissionSteps — étapes 4 et 5 corrigées**
   - File: `app/page.tsx`
   - Action: Dans `defaultMissionSteps`, modifier :
     - Étape 4 description : `"Traitement des données et élaboration des documents techniques et juridiques"`
@@ -120,13 +120,13 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
   - File: `app/notre-mission/page.tsx`
   - Action: Mêmes modifications dans le `defaultMissionSteps` local. Changer le h1 de `"Comment se déroule une mission"` → `"Comment se déroule une mission ?"`
 
-- [ ] **Task 5 : Homepage — ZoneIntervention déplacée**
+- [x] **Task 5 : Homepage — ZoneIntervention déplacée**
   - File: `app/page.tsx`
   - Action: Importer `ZoneIntervention` depuis `@/components/sections/ZoneIntervention`. L'insérer dans le JSX entre `<MissionSteps>` et `<DiagnosticSection>`.
   - File: `app/nos-technologies/page.tsx`
   - Action: Retirer l'import et l'usage de `<ZoneIntervention />`.
 
-- [ ] **Task 6 : Footer — logo, navigation, prestations, contact**
+- [x] **Task 6 : Footer — logo, navigation, prestations, contact**
   - File: `components/layout/Footer.tsx`
   - Action:
     1. Ajouter import `Image` de `next/image`
@@ -136,7 +136,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
     5. Ajouter prop `phoneLandline?: string` à l'interface. Afficher le fixe au-dessus du mobile dans la section Contact.
     6. Rendre l'adresse multi-ligne (split sur `\n` ou affichage sur 3 lignes).
 
-- [ ] **Task 7 : Page Prestations — contenu détaillé + Urbanisme**
+- [x] **Task 7 : Page Prestations — contenu détaillé + Urbanisme**
   - File: `app/nos-prestations/page.tsx`
   - Action:
     1. Modifier `defaultServices` : même réordonnancement qu'en Task 3, remplacer Surfaces réglementaires par Urbanisme
@@ -147,7 +147,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
   - Action: Ajouter `longDescriptionHtml?: string` à l'interface Service. Dans le rendu, ajouter un 3ème cas : si `longDescriptionHtml` existe, le rendre via `<div dangerouslySetInnerHTML={{ __html: service.longDescriptionHtml }} className="prose prose-sm text-muted-foreground" />`. Priorité : PortableText > longDescriptionHtml > shortDescription.
   - Notes: Les textes détaillés incluent pour chaque prestation : un paragraphe intro + sous-sections (h4 + p). Contenu à prendre du PDF.
 
-- [ ] **Task 8 : Page Qui suis-je — bio + frise chronologique**
+- [x] **Task 8 : Page Qui suis-je — bio + frise chronologique**
   - File: `app/qui-suis-je/page.tsx`
   - Action:
     1. Changer `title: "Qui suis-je"` → `"Qui suis-je ?"`
@@ -166,10 +166,10 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
       - 2026 : "Reprise du cabinet d'Alain NEGRONI (créé en 1987)"
   - Notes: Le composant doit être responsive. Sur mobile, affichage vertical avec ligne à gauche. Sur desktop, horizontal avec points alignés sur une ligne.
 
-- [ ] **Task 9 : Page Notre mission — titre corrigé**
+- [x] **Task 9 : Page Notre mission — titre corrigé**
   - (Déjà couvert dans Task 4 — étapes + titre)
 
-- [ ] **Task 10 : Page Nos technologies — nouveau contenu**
+- [x] **Task 10 : Page Nos technologies — nouveau contenu**
   - File: `app/nos-technologies/page.tsx`
   - Action: Remplacer `defaultTechnologies` par le nouveau contenu du PDF :
     - **Logiciels** (6) : Trimble Business Center (TBC), Trimble RealWorks, AutoCAD, Covadis, UAV Manager 2022, RD12 — avec descriptions détaillées du PDF
@@ -177,7 +177,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
     - Mettre à jour les catégories pour matcher : `"Logiciel"` et `"Matériel terrain"`
   - Notes: ZoneIntervention déjà retirée en Task 5.
 
-- [ ] **Task 11 : Page Contact — titre, téléphone, adresse**
+- [x] **Task 11 : Page Contact — titre, téléphone, adresse**
   - File: `app/contact/page.tsx`
   - Action:
     1. Changer `defaultContact.title` : `"Contactez-nous"` → `"Contactez le cabinet CLB Géomètre-Expert"`
@@ -185,35 +185,35 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
     3. Remplacer l'adresse `"Petit-Bourg, Guadeloupe"` par l'adresse complète sur 3 lignes : `"17, rue Amédée FENGAROL"`, `"Lotissement Vince Arnouville"`, `"97170 PETIT-BOURG"`
   - Notes: Le téléphone fixe est hardcodé dans cette page. L'adresse aussi.
 
-- [ ] **Task 12 : Vérification build + tests**
+- [x] **Task 12 : Vérification build + tests**
   - Action: Lancer `npm run build` pour vérifier la compilation. Vérifier qu'il n'y a pas d'erreurs TypeScript. Lancer les tests Playwright si possible.
   - Notes: Les tests `pages-statiques.spec.ts` vérifient les h1 — il faudra peut-être les ajuster si les titres ont changé.
 
 ### Acceptance Criteria
 
-- [ ] AC 1: Given la homepage, when je regarde le badge portrait, then je vois "Inscrit au tableau de l'Ordre des Géomètres-Experts sous le n°12345"
-- [ ] AC 2: Given la homepage, when je regarde la section prestations, then le titre est "Nos prestations" avec sous-titre "Des solutions adaptées à chaque projet" et les 6 services sont dans l'ordre : Foncier, Topographie, Urbanisme, Copropriété, Plans d'architecture, Relevés et acquisitions 3D
-- [ ] AC 3: Given la homepage, when je regarde les icônes des services, then Foncier a une icône de balance (Scale), Architecture a une icône de maison (Home), et Urbanisme a une icône de document (FileCheck)
-- [ ] AC 4: Given la homepage, when je regarde les étapes de mission, then l'étape 4 mentionne "documents techniques et juridiques" et l'étape 5 mentionne "enjeux techniques et juridiques"
-- [ ] AC 5: Given la homepage, when je scrolle après les étapes de mission, then je vois la section Zone d'intervention avant le diagnostic
-- [ ] AC 6: Given le footer, when je regarde la colonne Brand, then je vois le logo SVG (pas le texte "CLBGE") et le texte mentionne l'inscription à l'Ordre
-- [ ] AC 7: Given le footer, when je regarde la colonne Navigation, then je vois un lien "Qui suis-je ?" (avec point d'interrogation)
-- [ ] AC 8: Given le footer, when je regarde les prestations, then "Surfaces réglementaires" est remplacé par "Urbanisme" et "Relevés 3D" est remplacé par "Relevés et acquisitions 3D"
-- [ ] AC 9: Given le footer, when je regarde la colonne Contact, then je vois le téléphone fixe 0590 26 35 90, le mobile, l'email et l'adresse complète sur 3 lignes
-- [ ] AC 10: Given la page /nos-prestations, when j'ouvre l'accordéon "Foncier", then je vois le contenu détaillé avec les sous-sections (Bornage, Délimitations, Divisions parcellaires, Étude de servitudes)
-- [ ] AC 11: Given la page /nos-prestations, when je regarde les services, then "Urbanisme" apparaît en 3ème position avec ses sous-sections (CUa/CUb, DP, PA)
-- [ ] AC 12: Given la page /qui-suis-je, when je regarde le titre, then il affiche "Qui suis-je ?"
-- [ ] AC 13: Given la page /qui-suis-je, when je lis le texte bio, then je vois le parcours complet de Laurent (ESGT, cabinets parisiens, reprise cabinet Negroni)
-- [ ] AC 14: Given la page /qui-suis-je, when je regarde la section sous la bio, then je vois une frise chronologique avec 4 jalons (2012, 2019, 2024, 2026)
-- [ ] AC 15: Given la page /qui-suis-je sur mobile, when je regarde la frise, then elle s'affiche verticalement
-- [ ] AC 16: Given la page /notre-mission, when je regarde le titre, then il affiche "Comment se déroule une mission ?"
-- [ ] AC 17: Given la page /nos-technologies, when je regarde les logiciels, then je vois TBC, RealWorks, AutoCAD, Covadis, UAV Manager 2022, RD12 avec leurs descriptions détaillées
-- [ ] AC 18: Given la page /nos-technologies, when je regarde le matériel, then je vois Station totale Trimble, Système GNSS Trimble, SLAM100 avec descriptions
-- [ ] AC 19: Given la page /nos-technologies, when je cherche la zone d'intervention, then elle n'est plus affichée (déplacée sur homepage)
-- [ ] AC 20: Given la page /contact, when je regarde le titre, then il affiche "Contactez le cabinet CLB Géomètre-Expert"
-- [ ] AC 21: Given la page /contact, when je regarde les coordonnées, then je vois le téléphone fixe 0590 26 35 90 et l'adresse complète (17 rue Amédée FENGAROL, Lotissement Vince Arnouville, 97170 PETIT-BOURG)
-- [ ] AC 22: Given n'importe quelle page, when je regarde la navigation, then le lien affiche "Qui suis-je ?" avec point d'interrogation
-- [ ] AC 23: Given le projet, when je lance `npm run build`, then la compilation réussit sans erreur
+- [x] AC 1: Given la homepage, when je regarde le badge portrait, then je vois "Inscrit au tableau de l'Ordre des Géomètres-Experts sous le n°12345"
+- [x] AC 2: Given la homepage, when je regarde la section prestations, then le titre est "Nos prestations" avec sous-titre "Des solutions adaptées à chaque projet" et les 6 services sont dans l'ordre : Foncier, Topographie, Urbanisme, Copropriété, Plans d'architecture, Relevés et acquisitions 3D
+- [x] AC 3: Given la homepage, when je regarde les icônes des services, then Foncier a une icône de balance (Scale), Architecture a une icône de maison (Home), et Urbanisme a une icône de document (FileCheck)
+- [x] AC 4: Given la homepage, when je regarde les étapes de mission, then l'étape 4 mentionne "documents techniques et juridiques" et l'étape 5 mentionne "enjeux techniques et juridiques"
+- [x] AC 5: Given la homepage, when je scrolle après les étapes de mission, then je vois la section Zone d'intervention avant le diagnostic
+- [x] AC 6: Given le footer, when je regarde la colonne Brand, then je vois le logo SVG (pas le texte "CLBGE") et le texte mentionne l'inscription à l'Ordre
+- [x] AC 7: Given le footer, when je regarde la colonne Navigation, then je vois un lien "Qui suis-je ?" (avec point d'interrogation)
+- [x] AC 8: Given le footer, when je regarde les prestations, then "Surfaces réglementaires" est remplacé par "Urbanisme" et "Relevés 3D" est remplacé par "Relevés et acquisitions 3D"
+- [x] AC 9: Given le footer, when je regarde la colonne Contact, then je vois le téléphone fixe 0590 26 35 90, le mobile, l'email et l'adresse complète sur 3 lignes
+- [x] AC 10: Given la page /nos-prestations, when j'ouvre l'accordéon "Foncier", then je vois le contenu détaillé avec les sous-sections (Bornage, Délimitations, Divisions parcellaires, Étude de servitudes)
+- [x] AC 11: Given la page /nos-prestations, when je regarde les services, then "Urbanisme" apparaît en 3ème position avec ses sous-sections (CUa/CUb, DP, PA)
+- [x] AC 12: Given la page /qui-suis-je, when je regarde le titre, then il affiche "Qui suis-je ?"
+- [x] AC 13: Given la page /qui-suis-je, when je lis le texte bio, then je vois le parcours complet de Laurent (ESGT, cabinets parisiens, reprise cabinet Negroni)
+- [x] AC 14: Given la page /qui-suis-je, when je regarde la section sous la bio, then je vois une frise chronologique avec 4 jalons (2012, 2019, 2024, 2026)
+- [x] AC 15: Given la page /qui-suis-je sur mobile, when je regarde la frise, then elle s'affiche verticalement
+- [x] AC 16: Given la page /notre-mission, when je regarde le titre, then il affiche "Comment se déroule une mission ?"
+- [x] AC 17: Given la page /nos-technologies, when je regarde les logiciels, then je vois TBC, RealWorks, AutoCAD, Covadis, UAV Manager 2022, RD12 avec leurs descriptions détaillées
+- [x] AC 18: Given la page /nos-technologies, when je regarde le matériel, then je vois Station totale Trimble, Système GNSS Trimble, SLAM100 avec descriptions
+- [x] AC 19: Given la page /nos-technologies, when je cherche la zone d'intervention, then elle n'est plus affichée (déplacée sur homepage)
+- [x] AC 20: Given la page /contact, when je regarde le titre, then il affiche "Contactez le cabinet CLB Géomètre-Expert"
+- [x] AC 21: Given la page /contact, when je regarde les coordonnées, then je vois le téléphone fixe 0590 26 35 90 et l'adresse complète (17 rue Amédée FENGAROL, Lotissement Vince Arnouville, 97170 PETIT-BOURG)
+- [x] AC 22: Given n'importe quelle page, when je regarde la navigation, then le lien affiche "Qui suis-je ?" avec point d'interrogation
+- [x] AC 23: Given le projet, when je lance `npm run build`, then la compilation réussit sans erreur
 
 ## Additional Context
 

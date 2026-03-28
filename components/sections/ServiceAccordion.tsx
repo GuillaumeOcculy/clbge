@@ -16,6 +16,7 @@ interface Service {
   icon: string;
   shortDescription: string;
   longDescription?: PortableTextBlock[] | null;
+  longDescriptionHtml?: string;
   order: number;
 }
 
@@ -37,6 +38,11 @@ export function ServiceAccordion({ services }: ServiceAccordionProps) {
             <AccordionContent className="px-4">
               {service.longDescription && Array.isArray(service.longDescription) && service.longDescription.length > 0 ? (
                 <PortableTextRenderer value={service.longDescription} />
+              ) : service.longDescriptionHtml ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: service.longDescriptionHtml }}
+                  className="prose prose-sm text-muted-foreground"
+                />
               ) : (
                 <p className="text-muted-foreground">
                   {service.shortDescription}

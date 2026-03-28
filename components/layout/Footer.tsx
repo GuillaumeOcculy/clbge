@@ -1,9 +1,11 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Linkedin } from "lucide-react"
 import { navigationLinks } from "@/lib/navigation"
 
 interface FooterProps {
   phone?: string
+  phoneLandline?: string
   email?: string
   address?: string
   linkedinUrl?: string | null
@@ -13,16 +15,17 @@ interface FooterProps {
 const prestationLinks = [
   { label: "Foncier", href: "/nos-prestations" },
   { label: "Topographie", href: "/nos-prestations" },
+  { label: "Urbanisme", href: "/nos-prestations" },
   { label: "Copropriété", href: "/nos-prestations" },
   { label: "Plans d'architecture", href: "/nos-prestations" },
-  { label: "Relevés 3D", href: "/nos-prestations" },
-  { label: "Surfaces réglementaires", href: "/nos-prestations" },
+  { label: "Relevés et acquisitions 3D", href: "/nos-prestations" },
 ]
 
 export function Footer({
   phone = "0690 61 22 24",
+  phoneLandline = "0590 26 35 90",
   email = "contact@clbge.com",
-  address = "Petit-Bourg, Guadeloupe",
+  address = "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",
   linkedinUrl = null,
   cabinetName = "Cabinet Laurent Bazile Géomètre-Expert",
 }: FooterProps) {
@@ -34,10 +37,10 @@ export function Footer({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
           <div>
-            <div className="mb-4 text-xl font-bold text-background">CLBGE</div>
+            <Image src="/images/logo-clb.svg" alt="Logo CLB Géomètre-Expert" width={140} height={140} className="mb-4 h-16 w-auto" />
             <p className="mb-4 text-sm text-muted-foreground">
               Cabinet Laurent Bazile<br />
-              Géomètre-Expert Foncier DPLG<br />
+              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts sous le n°12345<br />
               Guadeloupe, Marie-Galante, Les Saintes, La Désirade
             </p>
             {linkedinUrl && (
@@ -97,12 +100,22 @@ export function Footer({
               Contact
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              {phoneLandline && (
+                <li>
+                  <a
+                    href={`tel:+596${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
+                    className="hover:text-background transition-colors"
+                  >
+                    {phoneLandline} (fixe)
+                  </a>
+                </li>
+              )}
               <li>
                 <a
-                  href={`tel:${phone.replace(/\s/g, "")}`}
+                  href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
                   className="hover:text-background transition-colors"
                 >
-                  {phone}
+                  {phone} (mobile)
                 </a>
               </li>
               <li>
@@ -113,7 +126,14 @@ export function Footer({
                   {email}
                 </a>
               </li>
-              <li>{address}</li>
+              <li>
+                {address.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </span>
+                ))}
+              </li>
             </ul>
           </div>
         </div>

@@ -29,8 +29,9 @@ export const metadata: Metadata = {
 
 const defaults = {
   phone: "0690 61 22 24",
+  phoneLandline: "0590 26 35 90",
   email: "contact@clbge.com",
-  address: "Petit-Bourg, Guadeloupe",
+  address: "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",
   linkedinUrl: null,
   cabinetName: "Cabinet Laurent Bazile Géomètre-Expert",
 };
@@ -69,6 +70,7 @@ export default async function RootLayout({
         </main>
         <Footer
           phone={settings.phone ?? defaults.phone}
+          phoneLandline={(settings as typeof defaults).phoneLandline ?? defaults.phoneLandline}
           email={settings.email ?? defaults.email}
           address={settings.address ?? defaults.address}
           linkedinUrl={settings.linkedinUrl ?? defaults.linkedinUrl}

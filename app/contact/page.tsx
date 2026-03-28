@@ -5,7 +5,7 @@ import { GoogleMapsEmbed } from "@/components/embeds/GoogleMapsEmbed";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 const defaultContact = {
-  title: "Contactez-nous",
+  title: "Contactez le cabinet CLB Géomètre-Expert",
   introText:
     "Une question ? Un projet ? Contactez le cabinet CLBGE. Nous vous répondons sous 24h.",
   tallyFormId: "",
@@ -86,11 +86,18 @@ export default async function ContactPage() {
             <div className="mt-10 lg:mt-0">
               <div className="mb-8 space-y-4">
                 <a
-                  href="tel:0690612224"
+                  href="tel:+596590263590"
                   className="flex items-center gap-3 text-foreground hover:text-primary"
                 >
                   <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                  06 90 61 22 24
+                  0590 26 35 90 (fixe)
+                </a>
+                <a
+                  href="tel:+596690612224"
+                  className="flex items-center gap-3 text-foreground hover:text-primary"
+                >
+                  <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
+                  06 90 61 22 24 (mobile)
                 </a>
                 <a
                   href="mailto:contact@clbge.com"
@@ -99,12 +106,16 @@ export default async function ContactPage() {
                   <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
                   contact@clbge.com
                 </a>
-                <div className="flex items-center gap-3 text-foreground">
+                <div className="flex items-start gap-3 text-foreground">
                   <MapPin
-                    className="h-5 w-5 text-primary"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-primary"
                     aria-hidden="true"
                   />
-                  Petit-Bourg, Guadeloupe
+                  <div>
+                    17, rue Amédée FENGAROL<br />
+                    Lotissement Vince Arnouville<br />
+                    97170 PETIT-BOURG
+                  </div>
                 </div>
               </div>
 

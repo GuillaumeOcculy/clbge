@@ -66,7 +66,7 @@ export function MobileMenu({ phone = "0690 61 22 24" }: MobileMenuProps) {
 
         {/* Téléphone click-to-call */}
         <a
-          href={`tel:${phone.replace(/\s/g, "")}`}
+          href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
           className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
         >
           <Phone className="h-5 w-5 text-primary" />
