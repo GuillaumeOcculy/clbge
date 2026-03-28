@@ -62,14 +62,17 @@ export function HeroSection({
               <Button nativeButton={false} render={<Link href="/rendez-vous" />}>
                 {heroCtaPrimary}
               </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                nativeButton={false}
-                render={<Link href="/diagnostic" />}
+              <button
+                data-tally-open={process.env.NEXT_PUBLIC_TALLY_DIAGNOSTIC_FORM_ID || ""}
+                data-tally-layout="modal"
+                data-tally-width="700"
+                data-tally-emoji-text="👋"
+                data-tally-emoji-animation="wave"
+                data-tally-auto-close="3000"
+                className="inline-flex h-8 items-center justify-center rounded-lg border-2 border-primary bg-transparent px-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {heroCtaSecondary}
-              </Button>
+              </button>
               <span className="text-sm text-muted-foreground">
                 ou appelez le{" "}
                 {phoneLandline && landlineTel ? (

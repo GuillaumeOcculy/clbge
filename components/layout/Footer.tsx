@@ -127,12 +127,19 @@ export function Footer({
                 </a>
               </li>
               <li>
-                {address.split("\n").map((line, i) => (
-                  <span key={i}>
-                    {i > 0 && <br />}
-                    {line}
-                  </span>
-                ))}
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(address.replace(/\n/g, ", "))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-background transition-colors"
+                >
+                  {address.split("\n").map((line, i) => (
+                    <span key={i}>
+                      {i > 0 && <br />}
+                      {line}
+                    </span>
+                  ))}
+                </a>
               </li>
             </ul>
           </div>

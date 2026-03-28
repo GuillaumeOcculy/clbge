@@ -21,7 +21,7 @@ const defaultHero = {
   ],
   diagnosticTitle: "Vous ne savez pas exactement ce dont vous avez besoin ?",
   diagnosticDescription:
-    "Répondez à 4 questions simples pour identifier la prestation adaptée à votre situation. Sans jargon, on vous guide.",
+    "Répondez à quelques questions simples pour identifier la prestation adaptée à votre situation. Sans jargon, on vous guide.",
   ctaBannerTitle: "Besoin d'un géomètre-expert ?",
   ctaBannerSubtitle: "Consultation avec paiement sécurisé. Réponse sous 24h.",
   ctaBannerButton: "Prendre rendez-vous",

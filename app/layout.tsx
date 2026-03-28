@@ -56,6 +56,9 @@ export default async function RootLayout({
 
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script async src="https://tally.so/widgets/embed.js" />
+      </head>
       <body className="min-h-full flex flex-col">
         <a
           href="#main-content"
