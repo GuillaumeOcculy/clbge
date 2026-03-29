@@ -27,7 +27,9 @@ function formatDate(dateString: string): string {
 }
 
 export default async function BlogPage() {
-  const posts = await client.fetch<BlogPostListItem[]>(allBlogPostsQuery)
+  const posts = client
+    ? await client.fetch<BlogPostListItem[]>(allBlogPostsQuery)
+    : []
 
   return (
     <>

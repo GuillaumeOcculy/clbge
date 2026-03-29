@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogUrls: MetadataRoute.Sitemap = []
 
   try {
+    if (!client) throw new Error('no client')
     const posts = await client.fetch(blogPostSlugsQuery)
     blogUrls = (posts ?? []).map((post: { slug: string }) => ({
       url: `${SITE_URL}/blog/${post.slug}`,

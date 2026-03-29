@@ -8,6 +8,7 @@ import { BlogPortableText } from '@/components/blog/PortableText'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 
 export async function generateStaticParams() {
+  if (!client) return []
   const slugs = await client.fetch(blogPostSlugsQuery)
   return (slugs ?? []).map((s: { slug: string }) => ({ slug: s.slug }))
 }
@@ -18,7 +19,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = await client.fetch<BlogPost | null>(blogPostBySlugQuery, { slug })
+  const post = client
+    ? await client.fetch<BlogPost | null>(blogPostBySlugQuery, { slug })
+    : null
 
   if (!post) return { title: 'Article introuvable — CLBGE' }
 
@@ -54,7 +57,9 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await client.fetch<BlogPost | null>(blogPostBySlugQuery, { slug })
+  const post = client
+    ? await client.fetch<BlogPost | null>(blogPostBySlugQuery, { slug })
+    : null
 
   if (!post) notFound()
 
