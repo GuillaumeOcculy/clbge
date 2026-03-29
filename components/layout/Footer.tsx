@@ -72,6 +72,14 @@ export function Footer({
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/rendez-vous"
+                  className="text-sm text-muted-foreground hover:text-background transition-colors"
+                >
+                  Prendre rendez-vous
+                </Link>
+              </li>
             </ul>
           </div>
 

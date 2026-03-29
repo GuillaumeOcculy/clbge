@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { TallyEmbed } from "@/components/embeds/TallyEmbed";
 import { GoogleMapsEmbed } from "@/components/embeds/GoogleMapsEmbed";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
@@ -8,7 +7,6 @@ const defaultContact = {
   title: "Contactez le cabinet CLB Géomètre-Expert",
   introText:
     "Une question ? Un projet ? Contactez le cabinet CLBGE. Nous vous répondons sous 24h.",
-  tallyFormId: "",
   metaTitle: "Contact — CLBGE, Géomètre-Expert en Guadeloupe",
   metaDescription:
     "Contactez Laurent Bazile, géomètre-expert en Guadeloupe. Formulaire de contact, téléphone, email. Cabinet situé à Petit-Bourg.",
@@ -45,7 +43,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ContactPage() {
   let title = defaultContact.title;
   let introText = defaultContact.introText;
-  let sanityFormId = "";
 
   try {
     const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -55,14 +52,11 @@ export default async function ContactPage() {
       const data = await client.fetch(contactPageQuery);
       if (data?.title) title = data.title;
       if (data?.introText) introText = data.introText;
-      if (data?.tallyFormId) sanityFormId = data.tallyFormId;
     }
   } catch {
     // Sanity pas encore alimenté
   }
 
-  const formId =
-    process.env.NEXT_PUBLIC_TALLY_CONTACT_FORM_ID || sanityFormId || "";
   const mapsEmbedUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL || "";
 
   return (
@@ -79,46 +73,47 @@ export default async function ContactPage() {
           </p>
 
           <div className="lg:grid lg:grid-cols-2 lg:gap-12">
-            <div>
-              <TallyEmbed formId={formId} title="Formulaire de contact" />
+            <div className="space-y-4">
+              <a
+                href="tel:+596590263590"
+                className="flex items-center gap-3 text-foreground hover:text-primary"
+              >
+                <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
+                0590 26 35 90 (fixe)
+              </a>
+              <a
+                href="tel:+596690612224"
+                className="flex items-center gap-3 text-foreground hover:text-primary"
+              >
+                <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
+                06 90 61 22 24 (mobile)
+              </a>
+              <a
+                href="mailto:contact@clbge.com"
+                className="flex items-center gap-3 text-foreground hover:text-primary"
+              >
+                <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
+                contact@clbge.com
+              </a>
+              <div className="flex items-start gap-3 text-foreground">
+                <MapPin
+                  className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent("17, rue Amédée FENGAROL, Lotissement Vince Arnouville, 97170 PETIT-BOURG")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  17, rue Amédée FENGAROL<br />
+                  Lotissement Vince Arnouville<br />
+                  97170 PETIT-BOURG
+                </a>
+              </div>
             </div>
 
             <div className="mt-10 lg:mt-0">
-              <div className="mb-8 space-y-4">
-                <a
-                  href="tel:+596590263590"
-                  className="flex items-center gap-3 text-foreground hover:text-primary"
-                >
-                  <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                  0590 26 35 90 (fixe)
-                </a>
-                <a
-                  href="tel:+596690612224"
-                  className="flex items-center gap-3 text-foreground hover:text-primary"
-                >
-                  <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                  06 90 61 22 24 (mobile)
-                </a>
-                <a
-                  href="mailto:contact@clbge.com"
-                  className="flex items-center gap-3 text-foreground hover:text-primary"
-                >
-                  <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
-                  contact@clbge.com
-                </a>
-                <div className="flex items-start gap-3 text-foreground">
-                  <MapPin
-                    className="mt-0.5 h-5 w-5 shrink-0 text-primary"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    17, rue Amédée FENGAROL<br />
-                    Lotissement Vince Arnouville<br />
-                    97170 PETIT-BOURG
-                  </div>
-                </div>
-              </div>
-
               <GoogleMapsEmbed
                 src={mapsEmbedUrl}
                 title="Localisation du cabinet CLBGE à Petit-Bourg, Guadeloupe"
