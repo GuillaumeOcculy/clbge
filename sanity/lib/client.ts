@@ -1,6 +1,5 @@
 import { createClient } from 'next-sanity'
-
-import { apiVersion, dataset, projectId } from '../env'
+import { projectId, dataset, apiVersion } from '../env'
 
 export const client = projectId
   ? createClient({
@@ -9,4 +8,4 @@ export const client = projectId
       apiVersion,
       useCdn: false,
     })
-  : null as unknown as ReturnType<typeof createClient>
+  : null

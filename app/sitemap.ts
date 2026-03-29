@@ -1,4 +1,6 @@
 import type { MetadataRoute } from 'next'
+import { client } from '@/sanity/lib/client'
+import { blogPostSlugsQuery } from '@/sanity/lib/queries'
 
 const SITE_URL = 'https://clbge.com'
 
@@ -18,20 +20,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogUrls: MetadataRoute.Sitemap = []
 
   try {
-    const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-    if (projectId) {
-      const { client } = await import('@/sanity/lib/client')
-      const { blogPostSlugsQuery } = await import('@/sanity/lib/queries')
-      const posts = await client.fetch(blogPostSlugsQuery)
-      blogUrls = posts.map((post: { slug: string }) => ({
-        url: `${SITE_URL}/blog/${post.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
-      }))
-    }
+    if (!client) throw new Error('no client')
+    const posts = await client.fetch(blogPostSlugsQuery)
+    blogUrls = (posts ?? []).map((post: { slug: string }) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
   } catch {
-    // Sanity indisponible — retourne uniquement les pages statiques
+    // Sanity indisponible
   }
 
   return [...staticPages, ...blogUrls]

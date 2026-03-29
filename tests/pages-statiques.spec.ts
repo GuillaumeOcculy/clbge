@@ -9,7 +9,6 @@ const PAGES = [
   { path: '/diagnostic', name: 'Diagnostic' },
   { path: '/rendez-vous', name: 'Rendez-vous' },
   { path: '/contact', name: 'Contact' },
-  { path: '/blog', name: 'Blog' },
 ] as const;
 
 for (const { path, name } of PAGES) {

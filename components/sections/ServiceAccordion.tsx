@@ -7,15 +7,12 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { getIcon } from "@/lib/icons";
-import { PortableTextRenderer } from "@/components/sanity/PortableTextRenderer";
-import type { PortableTextBlock } from "@portabletext/react";
 
 interface Service {
   _id: string;
   title: string;
   icon: string;
   shortDescription: string;
-  longDescription?: PortableTextBlock[] | null;
   longDescriptionHtml?: string;
   order: number;
 }
@@ -36,9 +33,7 @@ export function ServiceAccordion({ services }: ServiceAccordionProps) {
               <span className="flex-1">{service.title}</span>
             </AccordionTrigger>
             <AccordionContent className="px-4">
-              {service.longDescription && Array.isArray(service.longDescription) && service.longDescription.length > 0 ? (
-                <PortableTextRenderer value={service.longDescription} />
-              ) : service.longDescriptionHtml ? (
+              {service.longDescriptionHtml ? (
                 <div
                   dangerouslySetInnerHTML={{ __html: service.longDescriptionHtml }}
                   className="prose prose-sm text-muted-foreground"

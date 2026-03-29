@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import { NavBar } from "@/components/layout/NavBar";
-import { Footer } from "@/components/layout/Footer";
-import Script from "next/script";
-import { JsonLd } from "@/components/seo/JsonLd";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -28,57 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-const defaults = {
-  phone: "0690 61 22 24",
-  phoneLandline: "0590 26 35 90",
-  email: "contact@clbge.com",
-  address: "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",
-  linkedinUrl: null,
-  cabinetName: "Cabinet Laurent Bazile Géomètre-Expert",
-};
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let settings = defaults;
-  try {
-    const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-    if (projectId) {
-      const { client } = await import("@/sanity/lib/client");
-      const { siteSettingsQuery } = await import("@/sanity/lib/queries");
-      const fetched = await client.fetch(siteSettingsQuery);
-      if (fetched) settings = { ...defaults, ...fetched };
-    }
-  } catch {
-    // Sanity pas encore configuré — utilise les valeurs par défaut
-  }
-
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
-        <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
-        >
-          Aller au contenu principal
-        </a>
-        <JsonLd />
-        <NavBar phone={settings.phone ?? defaults.phone} />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer
-          phone={settings.phone ?? defaults.phone}
-          phoneLandline={(settings as typeof defaults).phoneLandline ?? defaults.phoneLandline}
-          email={settings.email ?? defaults.email}
-          address={settings.address ?? defaults.address}
-          linkedinUrl={settings.linkedinUrl ?? defaults.linkedinUrl}
-          cabinetName={settings.cabinetName ?? defaults.cabinetName}
-        />
-        {(await draftMode()).isEnabled && <VisualEditing />}
+        {children}
       </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
