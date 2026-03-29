@@ -77,7 +77,7 @@ export default async function Home() {
   let services: typeof defaultServices = [];
   let missionSteps: typeof defaultMissionSteps = [];
   let phone = "0690 61 22 24";
-  let phoneLandline = "0590 26 35 90";
+  const phoneLandline = "0590 26 35 90";
 
   try {
     const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
