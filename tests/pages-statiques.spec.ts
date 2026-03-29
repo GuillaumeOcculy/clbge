@@ -44,11 +44,13 @@ for (const { path, name } of PAGES) {
       await page.goto(path);
 
       const header = page.locator('header');
-      const cta = header.getByRole('link', { name: /Prendre RDV/i });
+      const cta = header.getByRole('button', { name: /Prendre RDV/i }).or(
+        header.getByRole('link', { name: /Prendre RDV/i })
+      );
       if (isMobile) {
-        await expect(cta).toBeAttached();
+        await expect(cta.first()).toBeAttached();
       } else {
-        await expect(cta).toBeVisible();
+        await expect(cta.first()).toBeVisible();
       }
     });
   });
