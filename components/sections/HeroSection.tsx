@@ -40,7 +40,7 @@ export function HeroSection({
             />
             {/* Badge Ordre overlay */}
             <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/80 px-4 py-3 text-xs backdrop-blur-sm md:text-sm">
-              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts sous le n°12345
+              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts
             </div>
           </div>
 

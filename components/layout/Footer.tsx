@@ -40,7 +40,7 @@ export function Footer({
             <Image src="/images/logo-clb.svg" alt="Logo CLB Géomètre-Expert" width={140} height={140} className="mb-4 h-16 w-auto" />
             <p className="mb-4 text-sm text-muted-foreground">
               Cabinet Laurent Bazile<br />
-              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts sous le n°12345<br />
+              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts<br />
               Guadeloupe, Marie-Galante, Les Saintes, La Désirade
             </p>
             {linkedinUrl && (
