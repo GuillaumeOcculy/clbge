@@ -7,6 +7,8 @@ import { allBlogPostsQuery, type BlogPostListItem } from '@/sanity/lib/queries'
 import { Card, CardContent } from '@/components/ui/card'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Blog — CLBGE, Géomètre-Expert en Guadeloupe',
   description:

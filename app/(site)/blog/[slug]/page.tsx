@@ -7,6 +7,8 @@ import { blogPostBySlugQuery, blogPostSlugsQuery, type BlogPost } from '@/sanity
 import { BlogPortableText } from '@/components/blog/PortableText'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 
+export const revalidate = 60
+
 export async function generateStaticParams() {
   if (!client) return []
   const slugs = await client.fetch(blogPostSlugsQuery)
