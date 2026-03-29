@@ -15,12 +15,12 @@ export function NavBar({ phone }: NavBarProps) {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/images/logo-clb.jpeg"
+            src="/images/logo-clb.svg"
             alt="Logo Cabinet Laurent Bazile Géomètre-Expert"
             width={140}
             height={140}
             priority
-            className="h-10 w-auto object-contain"
+            className="h-20 w-auto object-contain"
           />
         </Link>
 

@@ -35,7 +35,7 @@ export function TallyEmbed({ formId, redirectUrl, title }: TallyEmbedProps) {
 
     timeoutRef.current = setTimeout(() => {
       setStatus((current) => (current === "loading" ? "error" : current));
-    }, 5000);
+    }, 15000);
 
     return () => {
       if (timeoutRef.current) {

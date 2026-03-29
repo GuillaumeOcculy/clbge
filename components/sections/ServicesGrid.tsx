@@ -19,7 +19,7 @@ export function ServicesGrid({ services }: ServicesGridProps) {
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-4xl font-semibold">Nos prestations</h2>
-          <p className="mx-auto mb-4 max-w-[500px] text-base text-muted-foreground">Des solutions adaptées à chaque situation foncière</p>
+          <p className="mx-auto mb-4 max-w-[500px] text-base text-muted-foreground">Des solutions adaptées à chaque projet</p>
           <div className="mx-auto h-[3px] w-12 bg-primary" />
         </div>
 

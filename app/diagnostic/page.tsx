@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { TallyEmbed } from "@/components/embeds/TallyEmbed";
+import { TallyPopupButton } from "@/components/embeds/TallyPopupButton";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Diagnostic gratuit — CLBGE, Géomètre-Expert en Guadeloupe",
     description:
-      "Répondez à 4 questions simples pour identifier la prestation de géomètre-expert adaptée à votre situation. Sans jargon, sans engagement.",
+      "Répondez à quelques questions simples pour identifier la prestation de géomètre-expert adaptée à votre situation. Sans jargon, sans engagement.",
     openGraph: {
       title: "Diagnostic gratuit — CLBGE",
       description:
-        "Identifiez votre besoin en géomètre-expert en 4 questions simples.",
+        "Identifiez votre besoin en géomètre-expert en quelques questions simples.",
       type: "website",
     },
   };
@@ -29,15 +29,18 @@ export default function DiagnosticPage() {
           </div>
 
           <p className="mb-10 text-center text-lg text-muted-foreground">
-            Pas de jargon, on vous guide. Répondez à 4 questions simples pour
-            identifier la prestation adaptée à votre situation.
+            Pas de jargon, on vous guide. Répondez à quelques questions simples
+            pour identifier la prestation adaptée à votre situation.
           </p>
 
-          <TallyEmbed
-            formId={formId}
-            redirectUrl="/rendez-vous"
-            title="Formulaire de diagnostic"
-          />
+          <p className="mb-2 text-center text-muted-foreground">
+            À l&apos;issue de ce diagnostic, vous pourrez prendre rendez-vous
+            pour une consultation personnalisée au cabinet.
+          </p>
+
+          <div className="flex justify-center pt-6">
+            <TallyPopupButton formId={formId} />
+          </div>
         </div>
       </section>
 

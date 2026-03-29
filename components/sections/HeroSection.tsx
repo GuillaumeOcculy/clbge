@@ -8,6 +8,7 @@ interface HeroSectionProps {
   heroCtaPrimary: string;
   heroCtaSecondary: string;
   phone: string;
+  phoneLandline?: string;
 }
 
 export function HeroSection({
@@ -16,8 +17,12 @@ export function HeroSection({
   heroCtaPrimary,
   heroCtaSecondary,
   phone,
+  phoneLandline,
 }: HeroSectionProps) {
   const phoneDigits = phone.replace(/\s/g, "");
+  const phoneTel = "+596" + phoneDigits.replace(/^0/, "");
+  const landlineDigits = phoneLandline?.replace(/\s/g, "");
+  const landlineTel = landlineDigits ? "+596" + landlineDigits.replace(/^0/, "") : undefined;
 
   return (
     <section className="bg-background py-12 md:pt-20 md:pb-16">
@@ -35,7 +40,7 @@ export function HeroSection({
             />
             {/* Badge Ordre overlay */}
             <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/80 px-4 py-3 text-xs backdrop-blur-sm md:text-sm">
-              Géomètre-Expert Foncier DPLG — Inscrit à l&apos;Ordre n°12345
+              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts sous le n°12345
             </div>
           </div>
 
@@ -57,18 +62,32 @@ export function HeroSection({
               <Button nativeButton={false} render={<Link href="/rendez-vous" />}>
                 {heroCtaPrimary}
               </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                nativeButton={false}
-                render={<Link href="/diagnostic" />}
+              <button
+                data-tally-open={process.env.NEXT_PUBLIC_TALLY_DIAGNOSTIC_FORM_ID || ""}
+                data-tally-layout="modal"
+                data-tally-width="700"
+                data-tally-emoji-text="👋"
+                data-tally-emoji-animation="wave"
+                data-tally-auto-close="3000"
+                className="inline-flex h-8 items-center justify-center rounded-lg border-2 border-primary bg-transparent px-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {heroCtaSecondary}
-              </Button>
+              </button>
               <span className="text-sm text-muted-foreground">
                 ou appelez le{" "}
+                {phoneLandline && landlineTel ? (
+                  <>
+                    <a
+                      href={`tel:${landlineTel}`}
+                      className="font-semibold text-foreground hover:underline"
+                    >
+                      {phoneLandline}
+                    </a>
+                    {" / "}
+                  </>
+                ) : null}
                 <a
-                  href={`tel:${phoneDigits}`}
+                  href={`tel:${phoneTel}`}
                   className="font-semibold text-foreground hover:underline"
                 >
                   {phone}

@@ -6,8 +6,8 @@ const defaultMissionSteps = [
   { _id: "1", title: "Prise de contact", description: "Échange téléphonique ou en ligne pour comprendre votre besoin", stepNumber: 1 },
   { _id: "2", title: "Consultation", description: "Analyse de votre dossier et proposition d'intervention adaptée", stepNumber: 2 },
   { _id: "3", title: "Terrain", description: "Intervention sur site avec nos équipements de pointe", stepNumber: 3 },
-  { _id: "4", title: "Traitement", description: "Traitement des données et élaboration des documents techniques", stepNumber: 4 },
-  { _id: "5", title: "Restitution", description: "Remise des documents finaux et explications claires", stepNumber: 5 },
+  { _id: "4", title: "Traitement", description: "Traitement des données et élaboration des documents techniques et juridiques", stepNumber: 4 },
+  { _id: "5", title: "Restitution", description: "Remise des documents finaux et explications claires des enjeux techniques et juridiques", stepNumber: 5 },
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,7 +43,7 @@ export default async function NotreMission() {
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
           <div className="mb-12 text-center">
-            <h1 className="mb-4">Comment se déroule une mission</h1>
+            <h1 className="mb-4">Comment se déroule une mission ?</h1>
             <div className="mx-auto h-0.5 w-12 bg-primary" />
           </div>
 
