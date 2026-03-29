@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { NavBar } from "@/components/layout/NavBar";
@@ -28,12 +26,12 @@ export const metadata: Metadata = {
   },
 };
 
-const defaults = {
+const settings = {
   phone: "0690 61 22 24",
   phoneLandline: "0590 26 35 90",
   email: "contact@clbge.com",
   address: "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",
-  linkedinUrl: null,
+  linkedinUrl: null as string | null,
   cabinetName: "Cabinet Laurent Bazile Géomètre-Expert",
 };
 
@@ -42,19 +40,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let settings = defaults;
-  try {
-    const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-    if (projectId) {
-      const { client } = await import("@/sanity/lib/client");
-      const { siteSettingsQuery } = await import("@/sanity/lib/queries");
-      const fetched = await client.fetch(siteSettingsQuery);
-      if (fetched) settings = { ...defaults, ...fetched };
-    }
-  } catch {
-    // Sanity pas encore configuré — utilise les valeurs par défaut
-  }
-
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
@@ -66,19 +51,18 @@ export default async function RootLayout({
           Aller au contenu principal
         </a>
         <JsonLd />
-        <NavBar phone={settings.phone ?? defaults.phone} />
+        <NavBar phone={settings.phone} />
         <main id="main-content" className="flex-1">
           {children}
         </main>
         <Footer
-          phone={settings.phone ?? defaults.phone}
-          phoneLandline={(settings as typeof defaults).phoneLandline ?? defaults.phoneLandline}
-          email={settings.email ?? defaults.email}
-          address={settings.address ?? defaults.address}
-          linkedinUrl={settings.linkedinUrl ?? defaults.linkedinUrl}
-          cabinetName={settings.cabinetName ?? defaults.cabinetName}
+          phone={settings.phone}
+          phoneLandline={settings.phoneLandline}
+          email={settings.email}
+          address={settings.address}
+          linkedinUrl={settings.linkedinUrl}
+          cabinetName={settings.cabinetName}
         />
-        {(await draftMode()).isEnabled && <VisualEditing />}
       </body>
       {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />

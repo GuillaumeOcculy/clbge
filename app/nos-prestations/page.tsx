@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { ServiceAccordion } from "@/components/sections/ServiceAccordion";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
-const defaultServices = [
+const services = [
   {
     _id: "1", title: "Foncier", icon: "Scale",
     shortDescription: "Bornage et reconnaissance de limites · Délimitations de la propriété des personnes publiques · Divisions parcellaires · Étude de servitudes",
-    longDescription: null, order: 1,
+    order: 1,
     longDescriptionHtml: `<p>Le foncier constitue le cœur du métier de géomètre-expert. Il vise à définir avec précision, sécuriser juridiquement et organiser durablement la propriété.</p>
 <p><strong>Bornage et reconnaissance de limites</strong></p>
 <p>Le bornage permet de fixer de manière précise, contradictoire et définitive les limites d'un terrain. Il constitue une garantie juridique essentielle, assurant la pérennité des droits de propriété et la prévention des litiges.</p>
@@ -20,7 +20,7 @@ const defaultServices = [
   {
     _id: "2", title: "Topographie", icon: "Mountain",
     shortDescription: "Plans topographiques · Géoréférencement · Nivellement · Implantations",
-    longDescription: null, order: 2,
+    order: 2,
     longDescriptionHtml: `<p>La topographie permet de mesurer et de représenter avec une grande précision l'ensemble des caractéristiques d'un terrain, qu'il s'agisse du relief naturel ou des ouvrages existants.</p>
 <p><strong>Plans topographiques – Plans de masse</strong></p>
 <p>Nous produisons des plans de haute précision (relief, constructions, réseaux), véritables supports de référence pour la conception, l'étude et la réalisation de vos projets.</p>
@@ -34,7 +34,7 @@ const defaultServices = [
   {
     _id: "3", title: "Urbanisme", icon: "FileCheck",
     shortDescription: "Certificats d'urbanisme (CUa, CUb) · Déclaration préalable (DP) · Permis d'aménager (PA)",
-    longDescription: null, order: 3,
+    order: 3,
     longDescriptionHtml: `<p>Nous vous accompagnons dans vos démarches administratives et réglementaires afin de sécuriser et concrétiser vos projets.</p>
 <p><strong>Certificats d'urbanisme (CUa, CUb)</strong></p>
 <p>Nous analysons la faisabilité de votre projet au regard des règles d'urbanisme applicables et des contraintes du terrain.</p>
@@ -46,7 +46,7 @@ const defaultServices = [
   {
     _id: "4", title: "Copropriété", icon: "Building2",
     shortDescription: "Mise en copropriété · États Descriptifs de Division en Copropriété · Modificatifs de copropriété · Calcul de charges de copropriété · Calculs de surface privative dite « Carrez »",
-    longDescription: null, order: 4,
+    order: 4,
     longDescriptionHtml: `<p>Nous structurons juridiquement vos biens immobiliers et garantissons leur conformité réglementaire.</p>
 <p><strong>Mise en copropriété</strong></p>
 <p>Nous organisons la division d'un immeuble en lots privatifs et parties communes, en définissant un cadre juridique clair et pérenne.</p>
@@ -62,7 +62,7 @@ const defaultServices = [
   {
     _id: "5", title: "Plans d'architecture", icon: "Home",
     shortDescription: "Plans d'intérieurs · Plans de coupe · Plans de façades · Plans d'héberges et de figures de murs · Plans de toiture",
-    longDescription: null, order: 5,
+    order: 5,
     longDescriptionHtml: `<p>Nous réalisons des plans précis et détaillés de bâtiments existants, véritables supports pour la conception, la rénovation ou la valorisation de vos biens.</p>
 <p><strong>Plans d'intérieurs</strong></p>
 <p>Relevé précis des espaces intérieurs, indispensable pour les projets d'aménagement ou de rénovation.</p>
@@ -78,7 +78,7 @@ const defaultServices = [
   {
     _id: "6", title: "Relevés et acquisitions 3D", icon: "Scan",
     shortDescription: "Relevé par scanner 3D · Relevé par drone · Orthophotographie · Visites virtuelles",
-    longDescription: null, order: 6,
+    order: 6,
     longDescriptionHtml: `<p>Nous intégrons des technologies de pointe pour capturer, analyser et modéliser les environnements avec un haut niveau de précision.</p>
 <p><strong>Relevé par scanner 3D</strong></p>
 <p>Acquisition rapide et extrêmement précise de l'existant sous forme de nuages de points, permettant une modélisation fidèle.</p>
@@ -91,34 +91,17 @@ const defaultServices = [
   },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Nos prestations — CLBGE, Géomètre-Expert en Guadeloupe",
-    description: "Découvrez nos 6 prestations : foncier, topographie, urbanisme, copropriété, plans d'architecture, relevés et acquisitions 3D.",
-    openGraph: {
-      title: "Nos prestations — CLBGE",
-      description: "Découvrez nos 6 prestations de géomètre-expert en Guadeloupe.",
-      type: "website",
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: "Nos prestations — CLBGE, Géomètre-Expert en Guadeloupe",
+  description: "Découvrez nos 6 prestations : foncier, topographie, urbanisme, copropriété, plans d'architecture, relevés et acquisitions 3D.",
+  openGraph: {
+    title: "Nos prestations — CLBGE",
+    description: "Découvrez nos 6 prestations de géomètre-expert en Guadeloupe.",
+    type: "website",
+  },
+};
 
-export default async function NosPrestation() {
-  let services: typeof defaultServices = [];
-
-  try {
-    const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-    if (projectId) {
-      const { client } = await import("@/sanity/lib/client");
-      const { allServicesQuery } = await import("@/sanity/lib/queries");
-      services = (await client.fetch(allServicesQuery)) ?? [];
-    }
-  } catch {
-    // Sanity pas encore alimenté — fallback hardcoded
-  }
-
-  const servicesList = services.length ? services : defaultServices;
-
+export default function NosPrestation() {
   return (
     <>
       <section className="bg-background py-12 md:py-20">
@@ -129,7 +112,7 @@ export default async function NosPrestation() {
             <div className="mx-auto h-0.5 w-12 bg-primary" />
           </div>
 
-          <ServiceAccordion services={servicesList} />
+          <ServiceAccordion services={services} />
         </div>
       </section>
 
