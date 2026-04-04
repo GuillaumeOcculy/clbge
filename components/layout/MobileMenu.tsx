@@ -18,9 +18,10 @@ import { cn } from "@/lib/utils"
 
 interface MobileMenuProps {
   phone?: string
+  phoneLandline?: string
 }
 
-export function MobileMenu({ phone = "0690 61 22 24" }: MobileMenuProps) {
+export function MobileMenu({ phone = "0690 61 22 24", phoneLandline }: MobileMenuProps) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
@@ -64,14 +65,25 @@ export function MobileMenu({ phone = "0690 61 22 24" }: MobileMenuProps) {
           })}
         </nav>
 
-        {/* Téléphone click-to-call */}
-        <a
-          href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
-          className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
-        >
-          <Phone className="h-5 w-5 text-primary" />
-          <span>{phone}</span>
-        </a>
+        {/* Téléphones click-to-call */}
+        <div className="flex flex-col">
+          {phoneLandline && (
+            <a
+              href={`tel:+596${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
+              className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
+            >
+              <Phone className="h-5 w-5 text-primary" />
+              <span>{phoneLandline}</span>
+            </a>
+          )}
+          <a
+            href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
+            className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
+          >
+            <Phone className="h-5 w-5 text-primary" />
+            <span>{phone}</span>
+          </a>
+        </div>
 
         {/* CTA pleine largeur */}
         <div className="p-4 mt-auto">

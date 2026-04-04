@@ -27,7 +27,7 @@ export default function SiteLayout({
         Aller au contenu principal
       </a>
       <JsonLd />
-      <NavBar phone={settings.phone} />
+      <NavBar phone={settings.phone} phoneLandline={settings.phoneLandline} />
       <main id="main-content" className="flex-1">
         {children}
       </main>

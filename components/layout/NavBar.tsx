@@ -6,9 +6,10 @@ import { MobileMenu } from "@/components/layout/MobileMenu"
 
 interface NavBarProps {
   phone?: string
+  phoneLandline?: string
 }
 
-export function NavBar({ phone }: NavBarProps) {
+export function NavBar({ phone, phoneLandline }: NavBarProps) {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 flex items-center justify-between h-[72px]">
@@ -41,7 +42,7 @@ export function NavBar({ phone }: NavBarProps) {
           <Button size="sm" nativeButton={false} render={<Link href="/rendez-vous" />}>
             Prendre RDV
           </Button>
-          <MobileMenu phone={phone} />
+          <MobileMenu phone={phone} phoneLandline={phoneLandline} />
         </div>
       </div>
     </header>
