@@ -9,23 +9,24 @@ export function NavLinks() {
   const pathname = usePathname()
 
   return (
-    <div className="flex items-center gap-7">
+    <div className="flex items-center gap-5 xl:gap-7">
       {navigationLinks.map((link) => {
         const isActive =
           link.href === "/"
             ? pathname === "/"
             : pathname.startsWith(link.href)
+        const display = "navLabel" in link ? link.navLabel : link.label
 
         return (
           <Link
             key={link.href}
             href={link.href}
             className={cn(
-              "text-sm font-medium text-foreground hover:text-primary transition-colors",
+              "whitespace-nowrap text-sm font-medium text-foreground hover:text-primary transition-colors",
               isActive && "text-primary font-semibold"
             )}
           >
-            {link.label}
+            {display}
           </Link>
         )
       })}

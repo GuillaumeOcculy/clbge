@@ -5,6 +5,8 @@ import {
   Home,
   Scan,
   FileCheck,
+  FileText,
+  Coins,
   MapPin,
   HelpCircle,
   type LucideIcon,
@@ -17,6 +19,8 @@ const iconMap: Record<string, LucideIcon> = {
   Home,
   Scan,
   FileCheck,
+  FileText,
+  Coins,
   MapPin,
 };
 

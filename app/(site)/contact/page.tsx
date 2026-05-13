@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ClipboardCheck } from "lucide-react";
 import { GoogleMapsEmbed } from "@/components/embeds/GoogleMapsEmbed";
+import { TallyPopupButton } from "@/components/embeds/TallyPopupButton";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
@@ -17,13 +18,14 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const mapsEmbedUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL || "";
+  const formId = process.env.NEXT_PUBLIC_TALLY_DIAGNOSTIC_FORM_ID || "";
 
   return (
     <>
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-5xl px-4 md:px-8 lg:px-16">
           <div className="mb-12 text-center">
-            <h1 className="mb-4">Contactez le cabinet CLB Géomètre-Expert</h1>
+            <h1 className="mb-4">Contactez CLB Géomètre-Expert</h1>
             <div className="mx-auto h-0.5 w-12 bg-primary" />
           </div>
 
@@ -45,7 +47,7 @@ export default function ContactPage() {
                 className="flex items-center gap-3 text-foreground hover:text-primary"
               >
                 <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                06 90 61 22 24 (mobile)
+                0690 61 22 24 (mobile)
               </a>
               <a
                 href="mailto:contact@clbge.com"
@@ -60,7 +62,7 @@ export default function ContactPage() {
                   aria-hidden="true"
                 />
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent("17, rue Amédée FENGAROL, Lotissement Vince Arnouville, 97170 PETIT-BOURG")}`}
+                  href="https://www.google.com/maps/search/?api=1&query=16.231611,-61.588806"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
@@ -73,11 +75,22 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-10 lg:mt-0">
-              <GoogleMapsEmbed
-                src={mapsEmbedUrl}
-                title="Localisation du cabinet CLBGE à Petit-Bourg, Guadeloupe"
-              />
+              <div className="flex h-full flex-col items-center justify-center gap-4 rounded-2xl border bg-card p-8 text-center">
+                <ClipboardCheck className="h-12 w-12 text-primary" aria-hidden="true" />
+                <h2 className="text-xl font-semibold">Identifier votre besoin</h2>
+                <p className="text-sm text-muted-foreground">
+                  Pas de jargon, on vous guide. Répondez à quelques questions simples pour identifier la prestation adaptée à votre situation.
+                </p>
+                <TallyPopupButton formId={formId} label="Identifier mon besoin" />
+              </div>
             </div>
+          </div>
+
+          <div className="mt-10">
+            <GoogleMapsEmbed
+              src={mapsEmbedUrl}
+              title="Localisation du cabinet CLBGE à Petit-Bourg, Guadeloupe"
+            />
           </div>
         </div>
       </section>

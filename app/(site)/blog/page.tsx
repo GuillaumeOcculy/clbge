@@ -10,11 +10,11 @@ import { CtaBanner } from '@/components/sections/CtaBanner'
 export const revalidate = 60
 
 export const metadata: Metadata = {
-  title: 'Blog — CLBGE, Géomètre-Expert en Guadeloupe',
+  title: 'Actualités & Publications — CLBGE, Géomètre-Expert en Guadeloupe',
   description:
     'Articles et actualités du cabinet CLBGE. Informations sur le métier de géomètre-expert, le foncier et les sujets immobiliers en Guadeloupe.',
   openGraph: {
-    title: 'Blog — CLBGE',
+    title: 'Actualités & Publications — CLBGE',
     description: 'Articles et actualités du cabinet CLBGE.',
     type: 'website',
   },
@@ -38,7 +38,7 @@ export default async function BlogPage() {
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
           <div className="mb-12 text-center">
-            <h1 className="mb-4">Blog</h1>
+            <h1 className="mb-4">Actualités & Publications</h1>
             <div className="mx-auto h-0.5 w-12 bg-primary" />
           </div>
 

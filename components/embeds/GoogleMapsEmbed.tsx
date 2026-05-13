@@ -3,10 +3,11 @@ interface GoogleMapsEmbedProps {
   title: string;
 }
 
-const DEFAULT_MAPS_QUERY = "17+rue+Amédée+FENGAROL+97170+PETIT-BOURG+Guadeloupe";
+// Coordonnées GPS précises du cabinet (16°13'53.8"N 61°35'19.7"W)
+const DEFAULT_MAPS_QUERY = "loc:16.231611,-61.588806";
 
 export function GoogleMapsEmbed({ src, title }: GoogleMapsEmbedProps) {
-  const embedSrc = src || `https://maps.google.com/maps?q=${DEFAULT_MAPS_QUERY}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  const embedSrc = src || `https://maps.google.com/maps?q=${DEFAULT_MAPS_QUERY}&t=&z=18&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <iframe

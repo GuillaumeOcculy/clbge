@@ -38,10 +38,6 @@ export function HeroSection({
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover"
             />
-            {/* Badge Ordre overlay */}
-            <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/80 px-4 py-3 text-xs backdrop-blur-sm md:text-sm">
-              Inscrit au tableau de l&apos;Ordre des Géomètres-Experts
-            </div>
           </div>
 
           {/* Texte — colonne gauche */}
@@ -69,7 +65,7 @@ export function HeroSection({
                 data-tally-emoji-text="👋"
                 data-tally-emoji-animation="wave"
                 data-tally-auto-close="3000"
-                className="inline-flex h-8 items-center justify-center rounded-lg border-2 border-primary bg-transparent px-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                className="inline-flex h-8 cursor-pointer items-center justify-center rounded-lg border-2 border-primary bg-transparent px-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {heroCtaSecondary}
               </button>

@@ -18,10 +18,10 @@ export function DiagnosticSection({
         <div className="flex flex-col items-center gap-8 md:flex-row md:gap-16">
           {/* Texte gauche */}
           <div className="md:w-1/2">
-            <p className="mb-2 text-[13px] font-semibold uppercase tracking-[1.5px] text-primary">Diagnostic</p>
+            <p className="mb-2 text-[13px] font-semibold uppercase tracking-[1.5px] text-primary">Mon besoin</p>
             <h2 className="mb-4">{diagnosticTitle}</h2>
             <p className="mb-6 text-muted-foreground">{diagnosticDescription}</p>
-            <TallyPopupButton formId={formId} label="Faire le diagnostic" />
+            <TallyPopupButton formId={formId} label="Identifier mon besoin" />
           </div>
 
           {/* Visuel droite — card teasing */}

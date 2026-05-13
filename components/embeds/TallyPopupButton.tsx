@@ -17,7 +17,7 @@ export function TallyPopupButton({
       data-tally-emoji-text="👋"
       data-tally-emoji-animation="wave"
       data-tally-auto-close="3000"
-      className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+      className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
     >
       {label}
     </button>

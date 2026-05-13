@@ -12,7 +12,7 @@ interface NavBarProps {
 export function NavBar({ phone, phoneLandline }: NavBarProps) {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16 flex items-center justify-between h-[72px]">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -26,19 +26,19 @@ export function NavBar({ phone, phoneLandline }: NavBarProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center" aria-label="Navigation principale">
+        <nav className="hidden xl:flex items-center" aria-label="Navigation principale">
           <NavLinks />
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden xl:flex items-center">
           <Button nativeButton={false} render={<Link href="/rendez-vous" />}>
             Prendre RDV
           </Button>
         </div>
 
-        {/* Mobile: CTA + Hamburger */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Mobile / Tablet: CTA + Hamburger */}
+        <div className="flex xl:hidden items-center gap-2">
           <Button size="sm" nativeButton={false} render={<Link href="/rendez-vous" />}>
             Prendre RDV
           </Button>

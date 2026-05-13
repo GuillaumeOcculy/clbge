@@ -4,8 +4,15 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 
 const services = [
   {
-    _id: "1", title: "Foncier", icon: "Scale",
-    shortDescription: "Bornage et reconnaissance de limites · Délimitations de la propriété des personnes publiques · Divisions parcellaires · Étude de servitudes",
+    _id: "1",
+    title: "Foncier",
+    icon: "Scale",
+    items: [
+      "Bornage et reconnaissance de limites",
+      "Délimitations de la propriété des personnes publiques",
+      "Divisions parcellaires",
+      "Étude de servitudes",
+    ],
     order: 1,
     longDescriptionHtml: `<p>Le foncier constitue le cœur du métier de géomètre-expert. Il vise à définir avec précision, sécuriser juridiquement et organiser durablement la propriété.</p>
 <p><strong>Bornage et reconnaissance de limites</strong></p>
@@ -18,22 +25,35 @@ const services = [
 <p>Nous analysons l'ensemble des servitudes (passage, vue, écoulement des eaux, réseaux…) afin d'identifier les contraintes juridiques et techniques pesant sur votre bien et de sécuriser vos projets.</p>`,
   },
   {
-    _id: "2", title: "Topographie", icon: "Mountain",
-    shortDescription: "Plans topographiques · Géoréférencement · Nivellement · Implantations",
+    _id: "2",
+    title: "Prescription acquisitive et usucapion",
+    icon: "FileText",
+    items: [
+      "Analyse des titres de propriété",
+      "Calcul des délais de prescription trentenaire et décennaire",
+      "Établissement des plans d'assiette de possession",
+      "Constitution du dossier de prescription",
+    ],
     order: 2,
-    longDescriptionHtml: `<p>La topographie permet de mesurer et de représenter avec une grande précision l'ensemble des caractéristiques d'un terrain, qu'il s'agisse du relief naturel ou des ouvrages existants.</p>
-<p><strong>Plans topographiques – Plans de masse</strong></p>
-<p>Nous produisons des plans de haute précision (relief, constructions, réseaux), véritables supports de référence pour la conception, l'étude et la réalisation de vos projets.</p>
-<p><strong>Géoréférencement</strong></p>
-<p>Nous positionnons vos données dans des systèmes de coordonnées officiels afin d'en garantir la précision, la cohérence et la fiabilité.</p>
-<p><strong>Nivellement</strong></p>
-<p>Nous déterminons avec exactitude les altitudes du terrain afin d'analyser les dénivelés et d'anticiper les contraintes liées à l'aménagement.</p>
-<p><strong>Implantations</strong></p>
-<p>Nous matérialisons sur le terrain l'implantation exacte de vos ouvrages, dans le strict respect des plans et des autorisations délivrées.</p>`,
+    longDescriptionHtml: `<p>La prescription acquisitive permet à une personne d'acquérir la propriété d'un bien immobilier par l'effet d'une possession prolongée, paisible et non équivoque. Le Géomètre-Expert joue un rôle clé dans la constitution et la validation de ce type de dossier.</p>
+<p><strong>Analyse des titres de propriété</strong></p>
+<p>Nous examinons l'ensemble des titres et documents relatifs au bien afin d'établir l'historique de sa possession et d'apprécier les conditions requises pour la reconnaissance de la prescription.</p>
+<p><strong>Calcul des délais de prescription</strong></p>
+<p>Nous déterminons avec précision les délais de possession accomplis, qu'il s'agisse de la prescription trentenaire de droit commun ou des délais abrégés applicables dans certaines situations.</p>
+<p><strong>Établissement des plans d'assiette de possession</strong></p>
+<p>Nous réalisons les plans définissant avec exactitude l'emprise du bien possédé, document indispensable à la constitution du dossier et à sa présentation devant notaire ou juridiction compétente.</p>
+<p><strong>Constitution du dossier de prescription</strong></p>
+<p>Nous vous accompagnons dans la constitution complète de votre dossier, en rassemblant l'ensemble des pièces techniques et juridiques nécessaires à la reconnaissance de vos droits.</p>`,
   },
   {
-    _id: "3", title: "Urbanisme", icon: "FileCheck",
-    shortDescription: "Certificats d'urbanisme (CUa, CUb) · Déclaration préalable (DP) · Permis d'aménager (PA)",
+    _id: "3",
+    title: "Urbanisme",
+    icon: "FileCheck",
+    items: [
+      "Certificats d'urbanisme (CUa, CUb)",
+      "Déclaration préalable (DP)",
+      "Permis d'aménager (PA)",
+    ],
     order: 3,
     longDescriptionHtml: `<p>Nous vous accompagnons dans vos démarches administratives et réglementaires afin de sécuriser et concrétiser vos projets.</p>
 <p><strong>Certificats d'urbanisme (CUa, CUb)</strong></p>
@@ -44,25 +64,64 @@ const services = [
 <p>Nous vous accompagnons dans la réalisation de dossiers complexes liés à l'aménagement de terrains, notamment dans le cadre de lotissements ou de divisions.</p>`,
   },
   {
-    _id: "4", title: "Copropriété", icon: "Building2",
-    shortDescription: "Mise en copropriété · États Descriptifs de Division en Copropriété · Modificatifs de copropriété · Calcul de charges de copropriété · Calculs de surface privative dite « Carrez »",
+    _id: "4",
+    title: "Évaluation des biens immobiliers",
+    icon: "Coins",
+    items: [
+      "Estimation de la valeur vénale ou locative",
+      "Évaluation pour succession ou donation",
+      "Appréciation objective tenant compte des caractéristiques du bien, de sa situation et du marché",
+    ],
     order: 4,
-    longDescriptionHtml: `<p>Nous structurons juridiquement vos biens immobiliers et garantissons leur conformité réglementaire.</p>
+    longDescriptionHtml: `<p>L'évaluation immobilière permet de déterminer la valeur objective d'un bien en tenant compte de ses caractéristiques intrinsèques, de sa situation et des réalités du marché. Elle constitue un outil indispensable pour éclairer vos décisions patrimoniales et sécuriser vos transactions.</p>
+<p><strong>Estimation de la valeur vénale ou locative</strong></p>
+<p>Nous déterminons la valeur vénale ou locative de votre bien à partir d'une analyse rigoureuse de ses caractéristiques, de son environnement et des données du marché immobilier local, afin de vous fournir une estimation fiable et argumentée.</p>
+<p><strong>Évaluation pour succession ou donation</strong></p>
+<p>Nous réalisons des évaluations immobilières dans le cadre de successions ou de donations, en apportant l'objectivité et la rigueur nécessaires à des situations souvent complexes sur le plan juridique et familial.</p>
+<p><strong>Appréciation objective considérant les caractéristiques du bien, de sa situation et du marché</strong></p>
+<p>Chaque évaluation repose sur une méthodologie structurée, croisant les données du terrain, les éléments juridiques et les tendances du marché, pour vous offrir un avis de valeur solide et défendable.</p>`,
+  },
+  {
+    _id: "5",
+    title: "Copropriété & Division en volumes",
+    icon: "Building2",
+    items: [
+      "Mise en copropriété",
+      "État descriptif de division (EDD)",
+      "Modificatifs de copropriété (MEDD)",
+      "Calcul de charges de copropriété",
+      "Calculs de surface privative (Loi Carrez)",
+      "Division en volumes",
+    ],
+    order: 5,
+    longDescriptionHtml: `<p>Nous structurons juridiquement vos biens immobiliers et garantissons leur conformité réglementaire, qu'il s'agisse d'une organisation en copropriété ou en volumes.</p>
 <p><strong>Mise en copropriété</strong></p>
 <p>Nous organisons la division d'un immeuble en lots privatifs et parties communes, en définissant un cadre juridique clair et pérenne.</p>
 <p><strong>États Descriptifs de Division (EDD)</strong></p>
 <p>Nous définissons avec précision les lots, leurs surfaces et leurs tantièmes, constituant un document fondamental de la copropriété.</p>
-<p><strong>Modificatifs de copropriété</strong></p>
+<p><strong>Modificatifs de copropriété (MEDD)</strong></p>
 <p>Nous adaptons les documents existants en cas de transformation, division ou réunion de lots, afin de refléter fidèlement la réalité du bien.</p>
 <p><strong>Calcul de charges de copropriété</strong></p>
-<p>Nous établissons une répartition équitable et conforme des charges entre les copropriétaires.</p>
+<p>Nous établissons la répartition des charges de copropriété conformément aux dispositions réglementaires prévues par l'article 10 de la loi du 10 juillet 1965.</p>
 <p><strong>Calculs de surface privative (Loi Carrez)</strong></p>
-<p>Nous réalisons les mesurages réglementaires nécessaires lors des ventes en copropriété, garantissant la sécurité juridique des transactions.</p>`,
+<p>Nous réalisons les mesurages de surface privative conformément à la Loi Carrez, garantissant la sécurité juridique des ventes en copropriété.</p>
+<p><strong>Division en volumes</strong></p>
+<p>La division en volumes permet d'organiser juridiquement un ensemble immobilier sans recourir au régime de la copropriété.</p>
+<p>Elle est particulièrement adaptée aux ensembles immobiliers complexes ou aux projets intégrant différentes affectations (logements, commerces, équipements), ainsi qu'aux situations impliquant la coexistence entre domaine public et propriété privée.</p>
+<p>Nous vous accompagnons dans la définition des volumes, l'établissement des documents juridiques associés et la structuration globale de votre projet.</p>`,
   },
   {
-    _id: "5", title: "Plans d'architecture", icon: "Home",
-    shortDescription: "Plans d'intérieurs · Plans de coupe · Plans de façades · Plans d'héberges et de figures de murs · Plans de toiture",
-    order: 5,
+    _id: "6",
+    title: "Plans d'architecture",
+    icon: "Home",
+    items: [
+      "Plans d'intérieurs",
+      "Plans de coupe",
+      "Plans de façades",
+      "Plans d'héberges et de figures de murs",
+      "Plans de toiture",
+    ],
+    order: 6,
     longDescriptionHtml: `<p>Nous réalisons des plans précis et détaillés de bâtiments existants, véritables supports pour la conception, la rénovation ou la valorisation de vos biens.</p>
 <p><strong>Plans d'intérieurs</strong></p>
 <p>Relevé précis des espaces intérieurs, indispensable pour les projets d'aménagement ou de rénovation.</p>
@@ -76,9 +135,37 @@ const services = [
 <p>Représentation détaillée des toitures et de leurs caractéristiques techniques.</p>`,
   },
   {
-    _id: "6", title: "Relevés et acquisitions 3D", icon: "Scan",
-    shortDescription: "Relevé par scanner 3D · Relevé par drone · Orthophotographie · Visites virtuelles",
-    order: 6,
+    _id: "7",
+    title: "Topographie",
+    icon: "Mountain",
+    items: [
+      "Plans topographiques",
+      "Géoréférencement",
+      "Nivellement",
+      "Implantations",
+    ],
+    order: 7,
+    longDescriptionHtml: `<p>La topographie permet de mesurer et de représenter avec une grande précision l'ensemble des caractéristiques d'un terrain, qu'il s'agisse du relief naturel ou des ouvrages existants.</p>
+<p><strong>Plans topographiques – Plans de masse</strong></p>
+<p>Nous produisons des plans de haute précision (relief, constructions, réseaux), véritables supports de référence pour la conception, l'étude et la réalisation de vos projets.</p>
+<p><strong>Géoréférencement</strong></p>
+<p>Nous positionnons vos données dans des systèmes de coordonnées officiels afin d'en garantir la précision, la cohérence et la fiabilité.</p>
+<p><strong>Nivellement</strong></p>
+<p>Nous déterminons avec exactitude les altitudes du terrain afin d'analyser les dénivelés et d'anticiper les contraintes liées à l'aménagement.</p>
+<p><strong>Implantations</strong></p>
+<p>Nous matérialisons sur le terrain l'implantation exacte de vos ouvrages, dans le strict respect des plans et des autorisations délivrées.</p>`,
+  },
+  {
+    _id: "8",
+    title: "Relevés et acquisitions 3D",
+    icon: "Scan",
+    items: [
+      "Relevé par scanner 3D",
+      "Relevé par drone",
+      "Orthophotographie",
+      "Visites virtuelles",
+    ],
+    order: 8,
     longDescriptionHtml: `<p>Nous intégrons des technologies de pointe pour capturer, analyser et modéliser les environnements avec un haut niveau de précision.</p>
 <p><strong>Relevé par scanner 3D</strong></p>
 <p>Acquisition rapide et extrêmement précise de l'existant sous forme de nuages de points, permettant une modélisation fidèle.</p>
@@ -93,10 +180,11 @@ const services = [
 
 export const metadata: Metadata = {
   title: "Nos prestations — CLBGE, Géomètre-Expert en Guadeloupe",
-  description: "Découvrez nos 6 prestations : foncier, topographie, urbanisme, copropriété, plans d'architecture, relevés et acquisitions 3D.",
+  description:
+    "Découvrez nos 8 prestations : foncier, prescription acquisitive, urbanisme, évaluation des biens immobiliers, copropriété & division en volumes, plans d'architecture, topographie, relevés et acquisitions 3D.",
   openGraph: {
     title: "Nos prestations — CLBGE",
-    description: "Découvrez nos 6 prestations de géomètre-expert en Guadeloupe.",
+    description: "Découvrez nos 8 prestations de géomètre-expert en Guadeloupe.",
     type: "website",
   },
 };

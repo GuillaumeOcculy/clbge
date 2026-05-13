@@ -24,14 +24,23 @@ export default function RendezVousPage() {
       <section className="bg-background py-12 md:py-20">
         <div className="mx-auto max-w-3xl px-4 md:px-8 lg:px-16">
           <div className="mb-12 text-center">
-            <h1 className="mb-4">Prendre rendez-vous</h1>
+            <h1 className="mb-4">Prenez rendez-vous</h1>
             <div className="mx-auto h-0.5 w-12 bg-primary" />
           </div>
 
-          <p className="mb-10 text-center text-lg text-muted-foreground">
-            Consultation avec paiement sécurisé en ligne. Choisissez votre
-            créneau, réglez en quelques clics. Réponse sous 24h.
-          </p>
+          <div className="mb-10 space-y-4 text-center">
+            <p className="text-lg text-muted-foreground">
+              La consultation initiale vous permet d&apos;exposer votre projet, d&apos;obtenir nos premiers conseils et de recevoir un devis adapté à votre situation. Elle est proposée en visioconférence ou au cabinet, selon votre convenance.
+            </p>
+            <p className="text-lg font-semibold text-foreground">
+              Tarif de la consultation : 100 € TTC
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Choisissez votre créneau, réglez en quelques clics.
+              <br />
+              Réponse sous 24h.
+            </p>
+          </div>
 
           <ZcalEmbed calendarUrl={calendarUrl} title="Prise de rendez-vous" />
         </div>
@@ -40,7 +49,7 @@ export default function RendezVousPage() {
       <CtaBanner
         title="Vous ne savez pas encore ce dont vous avez besoin ?"
         subtitle="Répondez à quelques questions pour identifier la prestation adaptée."
-        buttonText="Faire le diagnostic"
+        buttonText="Identifier mon besoin"
         href="/diagnostic"
       />
     </>

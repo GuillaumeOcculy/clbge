@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["127.0.0.1", "localhost", "192.168.1.53"],
   images: {
     remotePatterns: [
       {
@@ -23,7 +24,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tally.so https://static.zcal.co https://*.google-analytics.com https://*.googletagmanager.com",
               "style-src 'self' 'unsafe-inline' https://static.zcal.co",
               "img-src 'self' https://cdn.sanity.io https://static.zcal.co data:",
-              "connect-src 'self' https://*.google-analytics.com https://zcal.co https://*.zcal.co",
+              `connect-src 'self' https://*.google-analytics.com https://zcal.co https://*.zcal.co${process.env.NODE_ENV === "development" ? " ws://localhost:* ws://127.0.0.1:*" : ""}`,
               "font-src 'self' data:",
             ].join("; "),
           },

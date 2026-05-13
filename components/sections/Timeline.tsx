@@ -11,38 +11,38 @@ export function Timeline({ items }: TimelineProps) {
   return (
     <section className="bg-card py-12 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
-        <h2 className="mb-12 text-center">Parcours</h2>
+        <h2 className="mb-12 text-center">Notre histoire</h2>
 
         {/* Desktop: horizontal */}
         <div className="hidden md:block">
-          <div className="relative mx-auto max-w-4xl pr-10">
+          <div className="relative mx-auto max-w-5xl pr-12">
             {/* Ligne horizontale : du centre du 1er point jusqu'à la flèche */}
             <div
               className="absolute h-[2px] bg-primary"
               style={{
-                top: "15px",
+                top: "19px",
                 left: `${100 / items.length / 2}%`,
-                right: "-2.5rem",
+                right: "-3rem",
               }}
             />
             {/* Flèche à droite */}
             <div
               className="absolute"
-              style={{ top: "8px", right: "calc(-2.5rem - 14px)" }}
+              style={{ top: "10px", right: "calc(-3rem - 18px)" }}
             >
-              <svg width="16" height="14" viewBox="0 0 16 14" className="text-primary">
-                <polygon points="0,0 16,7 0,14" fill="currentColor" />
+              <svg width="20" height="18" viewBox="0 0 20 18" className="text-primary">
+                <polygon points="0,0 20,9 0,18" fill="currentColor" />
               </svg>
             </div>
 
-            <div className="relative flex justify-between">
+            <div className="relative flex justify-between gap-4">
               {items.map((item) => (
                 <div key={item.year} className="flex flex-col items-center" style={{ width: `${100 / items.length}%` }}>
-                  <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-                    <div className="h-3 w-3 rounded-full bg-white" />
+                  <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+                    <div className="h-4 w-4 rounded-full bg-white" />
                   </div>
-                  <span className="mt-3 text-lg font-bold text-primary">{item.year}</span>
-                  <p className="mt-1 text-center text-sm text-muted-foreground">{item.label}</p>
+                  <span className="mt-4 text-2xl font-bold text-primary">{item.year}</span>
+                  <p className="mt-2 text-center text-base text-muted-foreground">{item.label}</p>
                 </div>
               ))}
             </div>
@@ -61,9 +61,9 @@ export function Timeline({ items }: TimelineProps) {
               </svg>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-5">
               {items.map((item) => (
-                <div key={item.year} className="relative flex gap-6">
+                <div key={item.year} className="relative flex gap-5">
                   <div className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary">
                     <div className="h-3 w-3 rounded-full bg-white" />
                   </div>

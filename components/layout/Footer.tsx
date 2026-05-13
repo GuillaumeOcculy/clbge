@@ -13,12 +13,14 @@ interface FooterProps {
 }
 
 const prestationLinks = [
-  { label: "Foncier", href: "/nos-prestations" },
-  { label: "Topographie", href: "/nos-prestations" },
-  { label: "Urbanisme", href: "/nos-prestations" },
-  { label: "Copropriété", href: "/nos-prestations" },
-  { label: "Plans d'architecture", href: "/nos-prestations" },
-  { label: "Relevés et acquisitions 3D", href: "/nos-prestations" },
+  { label: "Foncier", href: "/nos-prestations#foncier" },
+  { label: "Prescription acquisitive et usucapion", href: "/nos-prestations#prescription-acquisitive-et-usucapion" },
+  { label: "Urbanisme", href: "/nos-prestations#urbanisme" },
+  { label: "Évaluation des biens immobiliers", href: "/nos-prestations#evaluation-des-biens-immobiliers" },
+  { label: "Copropriété & Division en volumes", href: "/nos-prestations#copropriete-division-en-volumes" },
+  { label: "Plans d'architecture", href: "/nos-prestations#plans-d-architecture" },
+  { label: "Topographie", href: "/nos-prestations#topographie" },
+  { label: "Relevés et acquisitions 3D", href: "/nos-prestations#releves-et-acquisitions-3d" },
 ]
 
 export function Footer({
@@ -37,11 +39,27 @@ export function Footer({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
           <div>
-            <Image src="/images/logo-clb.svg" alt="Logo CLB Géomètre-Expert" width={140} height={140} className="mb-4 h-16 w-auto" />
+            <div className="mb-4 inline-flex h-32 w-32 items-center justify-center rounded-full bg-card">
+              <Image
+                src="/images/logo-clb.svg"
+                alt="Logo CLB Géomètre-Expert"
+                width={200}
+                height={200}
+                className="h-20 w-auto"
+              />
+            </div>
             <p className="mb-4 text-sm text-muted-foreground">
-              Cabinet Laurent Bazile<br />
+              Cabinet Laurent BAZILE Géomètre-Expert<br />
               Inscrit au tableau de l&apos;Ordre des Géomètres-Experts<br />
-              Guadeloupe, Marie-Galante, Les Saintes, La Désirade
+              sous le numéro 07178<br />
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=16.231611,-61.588806"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-background transition-colors"
+              >
+                Guadeloupe, Marie-Galante, Les Saintes, La Désirade
+              </a>
             </p>
             {linkedinUrl && (
               <a
@@ -136,7 +154,7 @@ export function Footer({
               </li>
               <li>
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(address.replace(/\n/g, ", "))}`}
+                  href="https://www.google.com/maps/search/?api=1&query=16.231611,-61.588806"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-background transition-colors"
