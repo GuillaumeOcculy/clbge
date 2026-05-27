@@ -25,13 +25,14 @@ export function DiagnosticSection({
           </div>
 
           {/* Visuel droite — card teasing */}
-          <div className="flex w-full items-center justify-center md:w-1/2">
-            <div className="flex flex-col items-center gap-4 rounded-2xl border bg-background p-8 text-center shadow-sm">
-              <ClipboardCheck className="h-16 w-16 text-primary" />
-              <p className="text-lg font-semibold">Quelques questions simples</p>
+          <div className="w-full md:w-1/2">
+            <div className="flex h-full flex-col items-center justify-center gap-4 rounded-2xl border bg-card p-8 text-center">
+              <ClipboardCheck className="h-12 w-12 text-primary" aria-hidden="true" />
+              <h3 className="text-xl font-semibold">Identifier votre besoin</h3>
               <p className="text-sm text-muted-foreground">
-                Identifiez la prestation adaptée à votre situation en moins de 2 minutes
+                Pas de jargon, on vous guide. Répondez à quelques questions simples pour identifier la prestation adaptée à votre situation.
               </p>
+              <TallyPopupButton formId={formId} label="Identifier mon besoin" />
             </div>
           </div>
         </div>

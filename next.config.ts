@@ -10,6 +10,35 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/qui-suis-je",
+        destination: "/qui-sommes-nous",
+        permanent: true,
+      },
+      {
+        source: "/notre-mission",
+        destination: "/notre-demarche",
+        permanent: true,
+      },
+      {
+        source: "/diagnostic",
+        destination: "/identifier-mon-besoin",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        destination: "/actualites-et-publications",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug*",
+        destination: "/actualites-et-publications/:slug*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       // CSP pour le site (appliquée en premier)

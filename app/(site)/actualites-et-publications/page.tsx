@@ -45,7 +45,7 @@ export default async function BlogPage() {
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
-                <Link key={post._id} href={`/blog/${post.slug?.current}`} className="group block">
+                <Link key={post._id} href={`/actualites-et-publications/${post.slug?.current}`} className="group block">
                   <Card className="h-full transition-all duration-200 group-hover:border-primary group-hover:shadow-md">
                     <div className="relative aspect-video overflow-hidden rounded-t-xl">
                       {post.mainImage?.asset ? (

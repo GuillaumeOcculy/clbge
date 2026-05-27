@@ -1,15 +1,17 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Embeds tiers', () => {
-  test('page /diagnostic — bouton popup Tally', async ({ page }) => {
-    await page.goto('/diagnostic');
+  test('page /identifier-mon-besoin — bouton popup Tally', async ({ page }) => {
+    await page.goto('/identifier-mon-besoin');
 
     const button = page.locator('button[data-tally-open]');
     await expect(button).toBeVisible({ timeout: 10000 });
   });
 
-  test('page /rendez-vous — iframe Zcal', async ({ page }) => {
+  test('page /rendez-vous — iframe Zcal après choix de modalité', async ({ page }) => {
     await page.goto('/rendez-vous');
+
+    await page.getByRole('button', { name: /Réserver une visio/i }).click();
 
     const embed = page.locator('iframe[src*="zcal.co"]');
     await expect(embed).toBeVisible({ timeout: 10000 });

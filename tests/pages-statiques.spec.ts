@@ -3,10 +3,10 @@ import { test, expect } from '@playwright/test';
 const PAGES = [
   { path: '/', name: 'Homepage' },
   { path: '/nos-prestations', name: 'Nos Prestations' },
-  { path: '/qui-suis-je', name: 'Qui suis-je' },
-  { path: '/notre-mission', name: 'Notre Mission' },
+  { path: '/qui-sommes-nous', name: 'Qui sommes-nous' },
+  { path: '/notre-demarche', name: 'Notre démarche' },
   { path: '/nos-technologies', name: 'Nos Technologies' },
-  { path: '/diagnostic', name: 'Diagnostic' },
+  { path: '/identifier-mon-besoin', name: 'Identifier mon besoin' },
   { path: '/rendez-vous', name: 'Rendez-vous' },
   { path: '/contact', name: 'Contact' },
 ] as const;

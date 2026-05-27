@@ -64,7 +64,6 @@ export function HeroSection({
                 data-tally-width="700"
                 data-tally-emoji-text="👋"
                 data-tally-emoji-animation="wave"
-                data-tally-auto-close="3000"
                 className="inline-flex h-8 cursor-pointer items-center justify-center rounded-lg border-2 border-primary bg-transparent px-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 {heroCtaSecondary}

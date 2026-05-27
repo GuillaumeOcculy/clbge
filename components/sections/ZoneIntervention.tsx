@@ -14,7 +14,7 @@ export function ZoneIntervention() {
     <section className="bg-background py-12 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-xl font-semibold md:text-2xl">Zone d&apos;intervention</h2>
+          <h2 className="mb-4 text-xl font-semibold md:text-2xl">Zones d&apos;intervention</h2>
           <div className="mx-auto h-0.5 w-12 bg-primary" />
           <p className="mt-4 text-muted-foreground">
             Le cabinet intervient sur l&apos;ensemble de l&apos;archipel guadeloupéen
