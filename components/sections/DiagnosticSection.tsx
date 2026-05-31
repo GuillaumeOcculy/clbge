@@ -20,8 +20,7 @@ export function DiagnosticSection({
           <div className="md:w-1/2">
             <p className="mb-2 text-[13px] font-semibold uppercase tracking-[1.5px] text-primary">Mon besoin</p>
             <h2 className="mb-4">{diagnosticTitle}</h2>
-            <p className="mb-6 text-muted-foreground">{diagnosticDescription}</p>
-            <TallyPopupButton formId={formId} label="Identifier mon besoin" />
+            <p className="text-muted-foreground">{diagnosticDescription}</p>
           </div>
 
           {/* Visuel droite — card teasing */}
