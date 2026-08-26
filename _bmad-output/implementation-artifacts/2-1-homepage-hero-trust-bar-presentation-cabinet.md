@@ -33,7 +33,7 @@ Afin de savoir si ce professionnel peut répondre à mon besoin.
   - [x] 1.6 Sous-titre depuis props `heroSubtitle` (Sanity)
   - [x] 1.7 CTA primary "Prendre rendez-vous" → lien `/rendez-vous` (Button shadcn/ui `default` avec `render` prop)
   - [x] 1.8 CTA secondary "Diagnostic gratuit" → lien `/diagnostic` (Button shadcn/ui `outline` avec `render` prop)
-  - [x] 1.9 Numéro click-to-call `tel:0690612224` avec icône `Phone` de Lucide, reçu en props `phone`
+  - [x] 1.9 Numéro click-to-call `tel:0690612422` avec icône `Phone` de Lucide, reçu en props `phone`
   - [x] 1.10 Section fond crème (`bg-background`), padding section 48px mobile / 80px desktop
 
 - [x] Task 2 : Créer le composant TrustBar (AC: #2, #6)

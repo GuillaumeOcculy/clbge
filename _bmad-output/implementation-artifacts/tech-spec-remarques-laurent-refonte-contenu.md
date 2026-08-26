@@ -53,7 +53,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
 - **Section Pattern** : `bg-background py-12 md:py-20` / `mx-auto max-w-7xl px-4 md:px-8 lg:px-16`
 - **Footer** : 4 colonnes (Brand, Navigation, Prestations, Contact) — grid `lg:grid-cols-[2fr_1fr_1fr_1fr]`
 - **Prestations** : `ServiceAccordion` (client component) utilise `longDescription` (PortableText) avec fallback `shortDescription`
-- **Phone** : Format affiché "0690 61 22 24", tel: link via `phone.replace(/\s/g, "")`
+- **Phone** : Format affiché "0690 61 24 22", tel: link via `phone.replace(/\s/g, "")`
 
 ### Files to Reference
 
@@ -67,7 +67,7 @@ Appliquer systématiquement les remarques de Laurent : correction des textes, r�
 | `app/nos-technologies/page.tsx` | Page technologies — cards logiciels/matériel + ZoneIntervention |
 | `app/contact/page.tsx` | Page contact — formulaire Tally + infos contact |
 | `components/layout/Footer.tsx` | Footer — 4 colonnes, prestationLinks hardcodé |
-| `components/layout/MobileMenu.tsx` | Menu mobile — phone default "0690 61 22 24" |
+| `components/layout/MobileMenu.tsx` | Menu mobile — phone default "0690 61 24 22" |
 | `components/sections/HeroSection.tsx` | Hero — titre, sous-titre, portrait, badge, CTAs |
 | `components/sections/ServicesGrid.tsx` | Grille services accueil — titre section hardcodé |
 | `components/sections/MissionSteps.tsx` | Étapes mission — numérotées avec connecteurs |

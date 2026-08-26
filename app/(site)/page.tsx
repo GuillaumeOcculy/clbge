@@ -185,7 +185,7 @@ export default function Home() {
         heroSubtitle={hero.heroSubtitle}
         heroCtaPrimary={hero.heroCtaPrimary}
         heroCtaSecondary={hero.heroCtaSecondary}
-        phone="0690 61 22 24"
+        phone="0690 61 24 22"
         phoneLandline="0590 26 35 90"
       />
       <TrustBar items={hero.trustBarItems} />

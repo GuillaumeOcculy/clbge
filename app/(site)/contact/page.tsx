@@ -36,18 +36,18 @@ export default function ContactPage() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
               <a
-                href="tel:+596590263590"
+                href="tel:+590590263590"
                 className="flex items-center gap-3 text-foreground hover:text-primary"
               >
                 <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
                 0590 26 35 90 (fixe)
               </a>
               <a
-                href="tel:+596690612224"
+                href="tel:+590690612422"
                 className="flex items-center gap-3 text-foreground hover:text-primary"
               >
                 <Phone className="h-5 w-5 text-primary" aria-hidden="true" />
-                0690 61 22 24 (mobile)
+                0690 61 24 22 (mobile)
               </a>
               <a
                 href="mailto:contact@clbge.com"

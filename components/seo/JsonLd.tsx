@@ -5,7 +5,7 @@ const jsonLd = {
   description:
     'Cabinet de géomètre-expert en Guadeloupe. Bornage, division, copropriété, topographie et diagnostics immobiliers à Petit-Bourg.',
   url: 'https://clbge.com',
-  telephone: '+590690612224',
+  telephone: '+590690612422',
   email: 'contact@clbge.com',
   address: {
     '@type': 'PostalAddress',

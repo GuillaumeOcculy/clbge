@@ -27,7 +27,7 @@ Afin de poser une question ou me rendre sur place.
   - [x] 1.4 Paragraphe d'introduction (depuis Sanity `introText`, fallback hardcodé si pas de contenu)
   - [x] 1.5 Layout 2 colonnes desktop (`lg:grid lg:grid-cols-2 lg:gap-12`) : colonne gauche = formulaire Tally, colonne droite = coordonnées + Google Maps. Stack vertical sur mobile.
   - [x] 1.6 Intégrer le composant `TallyEmbed` existant avec `formId` depuis Sanity (`tallyFormId`) ou variable d'environnement `NEXT_PUBLIC_TALLY_CONTACT_FORM_ID`. **NE PAS passer de `redirectUrl`** — pas de redirection après soumission du formulaire contact (contrairement au diagnostic).
-  - [x] 1.7 Section coordonnées : téléphone click-to-call (`tel:0690612224`), email click-to-mailto (`mailto:contact@clbge.com`), adresse Petit-Bourg Guadeloupe. Utiliser des icônes Lucide (`Phone`, `Mail`, `MapPin`).
+  - [x] 1.7 Section coordonnées : téléphone click-to-call (`tel:0690612422`), email click-to-mailto (`mailto:contact@clbge.com`), adresse Petit-Bourg Guadeloupe. Utiliser des icônes Lucide (`Phone`, `Mail`, `MapPin`).
   - [x] 1.8 Intégrer Google Maps embed (voir Task 2)
   - [x] 1.9 CtaBanner en bas de page : "Vous savez déjà ce dont vous avez besoin ?" → "Prendre rendez-vous" (href par défaut `/rendez-vous`)
   - [x] 1.10 Exporter `generateMetadata()` avec title, description, openGraph — utiliser les meta Sanity si disponibles (`metaTitle`, `metaDescription`), sinon fallback hardcodé
@@ -114,7 +114,7 @@ Voir sur Google Maps →
 │              Texte introduction               │
 ├──────────────────┬───────────────────────────┤
 │  Formulaire      │  Coordonnées              │
-│  Tally embed     │  📞 06 90 61 22 24        │
+│  Tally embed     │  📞 06 90 61 24 22        │
 │  (TallyEmbed)    │  ✉️ contact@clbge.com     │
 │                  │  📍 Petit-Bourg, GP        │
 │                  │                           │
@@ -129,7 +129,7 @@ Sur mobile : stack vertical — titre → intro → formulaire Tally → coordon
 
 ### Coordonnées du cabinet (hardcodées)
 
-- **Téléphone :** `06 90 61 22 24` — lien `tel:0690612224`
+- **Téléphone :** `06 90 61 24 22` — lien `tel:0690612422`
 - **Email :** `contact@clbge.com` — lien `mailto:contact@clbge.com`
 - **Adresse :** Petit-Bourg, Guadeloupe
 
@@ -239,7 +239,7 @@ Les notifications email à Laurent après soumission du formulaire contact sont 
 - **NE PAS** passer `redirectUrl` au TallyEmbed pour le formulaire contact — pas de redirection après soumission
 - **NE PAS** gérer les notifications email ou l'anti-spam côté code — c'est natif Tally
 - **NE PAS** fetch côté client avec `useEffect` pour du contenu Sanity — c'est SSG au build
-- **NE PAS** inventer des coordonnées — utiliser les mêmes que le Footer (06 90 61 22 24, contact@clbge.com, Petit-Bourg)
+- **NE PAS** inventer des coordonnées — utiliser les mêmes que le Footer (06 90 61 24 22, contact@clbge.com, Petit-Bourg)
 - **NE PAS** mettre les coordonnées dans Sanity — elles sont hardcodées dans le Footer et doivent rester cohérentes
 
 ### Pièges techniques critiques

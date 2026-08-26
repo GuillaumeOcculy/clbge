@@ -651,7 +651,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     A[Homepage] --> B{Thomas préfère\nappeler ?}
-    B -->|Oui| C[Click-to-call\n0690 61 22 24\ndepuis header ou footer]
+    B -->|Oui| C[Click-to-call\n0690 61 24 22\ndepuis header ou footer]
     B -->|Non| D[CTA 'Prendre RDV'\n→ /rendez-vous → Zcal]
 ```
 

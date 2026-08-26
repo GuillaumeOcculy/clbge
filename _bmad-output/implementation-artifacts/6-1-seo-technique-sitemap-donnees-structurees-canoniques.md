@@ -24,7 +24,7 @@ Afin d'indexer correctement le site et afficher des résultats enrichis.
 **Given** un crawler accède à n'importe quelle page
 **When** il analyse le HTML
 **Then** des données structurées JSON-LD sont présentes dans un `<script type="application/ld+json">`
-**And** le schéma LocalBusiness est utilisé avec : nom du cabinet, adresse (Petit-Bourg, Guadeloupe), téléphone (`0690 61 22 24`), email (`contact@clbge.com`), zone d'intervention (archipel guadeloupéen)
+**And** le schéma LocalBusiness est utilisé avec : nom du cabinet, adresse (Petit-Bourg, Guadeloupe), téléphone (`0690 61 24 22`), email (`contact@clbge.com`), zone d'intervention (archipel guadeloupéen)
 **And** le schéma ProfessionalService est utilisé avec : services proposés (Foncier, Topographie, Copropriété, Plans d'architecture, Relevés 3D, Surfaces réglementaires)
 
 ### AC3 : Balises canoniques
@@ -147,7 +147,7 @@ const jsonLd = {
   name: 'Cabinet Laurent Bazile Géomètre-Expert',
   description: 'Cabinet de géomètre-expert en Guadeloupe...',
   url: 'https://clbge.com',
-  telephone: '+590690612224',
+  telephone: '+590690612422',
   email: 'contact@clbge.com',
   address: {
     '@type': 'PostalAddress',

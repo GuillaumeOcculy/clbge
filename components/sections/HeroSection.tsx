@@ -20,9 +20,9 @@ export function HeroSection({
   phoneLandline,
 }: HeroSectionProps) {
   const phoneDigits = phone.replace(/\s/g, "");
-  const phoneTel = "+596" + phoneDigits.replace(/^0/, "");
+  const phoneTel = "+590" + phoneDigits.replace(/^0/, "");
   const landlineDigits = phoneLandline?.replace(/\s/g, "");
-  const landlineTel = landlineDigits ? "+596" + landlineDigits.replace(/^0/, "") : undefined;
+  const landlineTel = landlineDigits ? "+590" + landlineDigits.replace(/^0/, "") : undefined;
 
   return (
     <section className="bg-background py-12 md:pt-20 md:pb-16">

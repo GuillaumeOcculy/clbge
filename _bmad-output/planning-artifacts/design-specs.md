@@ -49,7 +49,7 @@
 - **Titre :** Géomètre-Expert Foncier DPLG
 - **Ordre :** Inscrit à l'Ordre des Géomètres-Experts n°12345
 - **Tel fixe :** 0590 26 35 90
-- **Tel mobile :** 0690 61 22 24
+- **Tel mobile :** 0690 61 24 22
 - **Email :** contact@clbge.fr
 - **Adresse :** 17, rue Amédée FENGAROL, Lotissement Vince Arnouville, 97170 PETIT-BOURG
 - **Services :** Bornage, Division foncière, Copropriété, Plans d'architecture, Topographie

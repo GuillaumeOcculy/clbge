@@ -24,7 +24,7 @@ const prestationLinks = [
 ]
 
 export function Footer({
-  phone = "0690 61 22 24",
+  phone = "0690 61 24 22",
   phoneLandline = "0590 26 35 90",
   email = "contact@clbge.com",
   address = "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",
@@ -129,7 +129,7 @@ export function Footer({
               {phoneLandline && (
                 <li>
                   <a
-                    href={`tel:+596${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
+                    href={`tel:+590${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
                     className="hover:text-background transition-colors"
                   >
                     {phoneLandline} (fixe)
@@ -138,7 +138,7 @@ export function Footer({
               )}
               <li>
                 <a
-                  href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
+                  href={`tel:+590${phone.replace(/\s/g, "").replace(/^0/, "")}`}
                   className="hover:text-background transition-colors"
                 >
                   {phone} (mobile)

@@ -272,7 +272,7 @@ Afin de trouver rapidement l'information dont j'ai besoin.
 **And** le menu mobile s'ouvre en slide-in depuis la droite (Sheet shadcn/ui)
 **And** les liens sont empilés verticalement avec padding 16px
 **And** un CTA "Prendre RDV" pleine largeur est affiché en bas du menu
-**And** le numéro de téléphone click-to-call (`tel:0690612224`) est visible dans le menu
+**And** le numéro de téléphone click-to-call (`tel:0690612422`) est visible dans le menu
 **And** le CTA "Prendre RDV" reste visible dans le header même quand le menu est fermé
 
 **Given** je suis sur n'importe quelle page

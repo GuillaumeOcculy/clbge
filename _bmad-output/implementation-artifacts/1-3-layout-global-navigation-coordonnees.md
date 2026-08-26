@@ -12,7 +12,7 @@ Afin de trouver rapidement l'information dont j'ai besoin.
 
 1. **Given** je suis sur n'importe quelle page du site **When** je consulte le header **Then** le logo CLB est affiché à gauche (image placeholder jusqu'à réception du SVG) **And** un menu principal affiche les liens vers toutes les sections (Accueil, Nos prestations, Qui suis-je, Notre mission, Nos technologies, Diagnostic, Blog, Contact) **And** un bouton CTA "Prendre RDV" est visible en permanence à droite **And** le header est sticky (reste visible au scroll)
 
-2. **Given** je suis sur mobile (< 768px) **When** je consulte le header **Then** le menu est remplacé par un menu hamburger **And** le menu mobile s'ouvre en slide-in depuis la droite (Sheet shadcn/ui) **And** les liens sont empilés verticalement avec padding 16px **And** un CTA "Prendre RDV" pleine largeur est affiché en bas du menu **And** le numéro de téléphone click-to-call (`tel:0690612224`) est visible dans le menu **And** le CTA "Prendre RDV" reste visible dans le header même quand le menu est fermé
+2. **Given** je suis sur mobile (< 768px) **When** je consulte le header **Then** le menu est remplacé par un menu hamburger **And** le menu mobile s'ouvre en slide-in depuis la droite (Sheet shadcn/ui) **And** les liens sont empilés verticalement avec padding 16px **And** un CTA "Prendre RDV" pleine largeur est affiché en bas du menu **And** le numéro de téléphone click-to-call (`tel:0690612422`) est visible dans le menu **And** le CTA "Prendre RDV" reste visible dans le header même quand le menu est fermé
 
 3. **Given** je suis sur n'importe quelle page **When** je consulte le footer **Then** les coordonnées du cabinet sont affichées (téléphone click-to-call, email click-to-mailto, adresse) **And** le footer inclut les liens de navigation et les liens vers les prestations **And** un lien LinkedIn avec icône est affiché **And** le copyright est visible
 
@@ -34,13 +34,13 @@ Afin de trouver rapidement l'information dont j'ai besoin.
   - [x] 2.2 Bouton hamburger (icône `Menu` de Lucide) visible uniquement < md (768px)
   - [x] 2.3 Sheet shadcn/ui `side="right"` avec les 8 liens empilés, padding 16px vertical par lien
   - [x] 2.4 CTA "Prendre RDV" pleine largeur en bas du Sheet (Button primary `w-full`)
-  - [x] 2.5 Numéro de téléphone click-to-call (`tel:0690612224`) visible avec icône `Phone`
+  - [x] 2.5 Numéro de téléphone click-to-call (`tel:0690612422`) visible avec icône `Phone`
   - [x] 2.6 Fermer le Sheet automatiquement au clic sur un lien (utiliser `onOpenChange` ou `SheetClose`)
   - [x] 2.7 CTA "Prendre RDV" visible dans le header mobile AUSSI quand le menu est fermé (à côté du hamburger)
 
 - [x] Task 3 : Créer le composant Footer (AC: #3)
   - [x] 3.1 Créer `components/layout/Footer.tsx` — Server Component
-  - [x] 3.2 Section coordonnées : téléphone `tel:0690612224` (click-to-call), email `mailto:` (click-to-mailto), adresse texte
+  - [x] 3.2 Section coordonnées : téléphone `tel:0690612422` (click-to-call), email `mailto:` (click-to-mailto), adresse texte
   - [x] 3.3 Section liens de navigation (mêmes 8 liens que le header)
   - [x] 3.4 Lien LinkedIn avec icône `Linkedin` de Lucide et `rel="noopener noreferrer"` `target="_blank"`
   - [x] 3.5 Copyright : `© {année courante} Cabinet Laurent Bazile Géomètre-Expert`
@@ -186,7 +186,7 @@ const settings = await client.fetch(siteSettingsQuery)
 **Fallback hardcoded** si Sanity pas encore alimenté :
 ```typescript
 const defaults = {
-  phone: "0690 61 22 24",
+  phone: "0690 61 24 22",
   email: "contact@clbge.com",
   address: "Petit-Bourg, Guadeloupe",
   linkedinUrl: null,

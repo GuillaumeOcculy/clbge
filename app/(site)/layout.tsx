@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import Script from "next/script";
 
 const settings = {
-  phone: "0690 61 22 24",
+  phone: "0690 61 24 22",
   phoneLandline: "0590 26 35 90",
   email: "contact@clbge.com",
   address: "17, rue Amédée FENGAROL\nLotissement Vince Arnouville\n97170 PETIT-BOURG",

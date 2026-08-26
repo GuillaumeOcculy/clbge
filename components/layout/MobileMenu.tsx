@@ -21,7 +21,7 @@ interface MobileMenuProps {
   phoneLandline?: string
 }
 
-export function MobileMenu({ phone = "0690 61 22 24", phoneLandline }: MobileMenuProps) {
+export function MobileMenu({ phone = "0690 61 24 22", phoneLandline }: MobileMenuProps) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
@@ -69,7 +69,7 @@ export function MobileMenu({ phone = "0690 61 22 24", phoneLandline }: MobileMen
         <div className="flex flex-col">
           {phoneLandline && (
             <a
-              href={`tel:+596${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
+              href={`tel:+590${phoneLandline.replace(/\s/g, "").replace(/^0/, "")}`}
               className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
             >
               <Phone className="h-5 w-5 text-primary" />
@@ -77,7 +77,7 @@ export function MobileMenu({ phone = "0690 61 22 24", phoneLandline }: MobileMen
             </a>
           )}
           <a
-            href={`tel:+596${phone.replace(/\s/g, "").replace(/^0/, "")}`}
+            href={`tel:+590${phone.replace(/\s/g, "").replace(/^0/, "")}`}
             className="flex items-center gap-2 px-4 py-3 text-base hover:bg-muted transition-colors"
           >
             <Phone className="h-5 w-5 text-primary" />
