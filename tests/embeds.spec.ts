@@ -15,6 +15,9 @@ test.describe('Embeds tiers', () => {
 
     const embed = page.locator('iframe[src*="zcal.co"]');
     await expect(embed).toBeVisible({ timeout: 10000 });
+    // Les liens courts zcal.co/<compte>/<slug> renvoient X-Frame-Options: DENY ;
+    // seuls les liens d'invitation zcal.co/i/<id> peuvent être intégrés en iframe.
+    await expect(embed).toHaveAttribute('src', /^https:\/\/zcal\.co\/i\//);
   });
 
   test('page /contact — informations de contact', async ({ page }) => {
